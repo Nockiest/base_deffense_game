@@ -1,7 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://2icamt22lsy2"]
 
 [ext_resource type="Script" path="res://scenes/turret/turret.gd" id="1_xdj7m"]
-[ext_resource type="PackedScene" uid="uid://b1l6j3mk2joqe" path="res://shared/components/aiming_component/aiming_component.tscn" id="2_tn1k7"]
 [ext_resource type="Texture2D" uid="uid://ch4xo76r5jmrx" path="res://assets/icon.svg" id="3_uy220"]
 [ext_resource type="PackedScene" uid="uid://bjvr1segvh8bd" path="res://scenes/bullet/bullet.tscn" id="4_mafdm"]
 [ext_resource type="Script" path="res://utils/state-machine/state-machine.gd" id="5_balcf"]
@@ -9,14 +8,13 @@
 [ext_resource type="Script" path="res://scenes/turret/aiming.gd" id="7_8kmil"]
 [ext_resource type="PackedScene" uid="uid://p5of0eh7hp6m" path="res://shared/components/ammo_magazine_component/ammo_magazine.tscn" id="8_tbida"]
 [ext_resource type="PackedScene" uid="uid://bdcu3imq3e6t1" path="res://shared/components/health_component/health_component.tscn" id="9_h2e32"]
+[ext_resource type="PackedScene" uid="uid://nls03m7yaqpj" path="res://shared/components/aiming_components/mouse_aiming_component/mouse_aiming_component.tscn" id="9_ttun8"]
 
 [node name="Turret" type="Node2D" node_paths=PackedStringArray("aiming_component", "ammo_magazine_component", "health_component") groups=["turrets"]]
 script = ExtResource("1_xdj7m")
-aiming_component = NodePath("AimingComponent")
+aiming_component = NodePath("MouseAimingComponent")
 ammo_magazine_component = NodePath("AmmoMagazine")
 health_component = NodePath("HealthComponent")
-
-[node name="AimingComponent" parent="." instance=ExtResource("2_tn1k7")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_uy220")
@@ -33,5 +31,8 @@ script = ExtResource("7_8kmil")
 
 [node name="AmmoMagazine" parent="." instance=ExtResource("8_tbida")]
 stored_bullet = ExtResource("4_mafdm")
+shoot_interval_sec = 5.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("9_h2e32")]
+
+[node name="MouseAimingComponent" parent="." instance=ExtResource("9_ttun8")]

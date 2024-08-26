@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://nls03m7yaqpj"]
+
+[ext_resource type="Script" path="res://shared/components/aiming_components/mouse_aiming_component/mouse_aiming_component.gd" id="1_gl4on"]
+
+[node name="MouseAimingComponent" type="Node2D"]
+script = ExtResource("1_gl4on")

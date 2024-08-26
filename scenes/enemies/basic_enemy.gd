@@ -6,13 +6,8 @@ class_name Enemy
 @export var movement_component: MomvementComponent
 @export var death_component: DeathComponent
 @export var aiming_component: AimingComponent  # Reference to the AimingComponent
-
+@export var melee_attack_component: MeleeAttackComponent  # Reference to the AimingComponent
 # Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-	## Ensure aiming_component is assigned and valid
-	#if aiming_component:
-		## Set up any necessary initial configurations
-		#pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
