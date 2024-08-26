@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2icamt22lsy2"]
+[gd_scene load_steps=10 format=3 uid="uid://2icamt22lsy2"]
 
 [ext_resource type="Script" path="res://scenes/turret/turret.gd" id="1_xdj7m"]
 [ext_resource type="PackedScene" uid="uid://b1l6j3mk2joqe" path="res://shared/components/aiming_component/aiming_component.tscn" id="2_tn1k7"]
@@ -8,12 +8,13 @@
 [ext_resource type="Script" path="res://scenes/turret/idle.gd" id="6_5r8n1"]
 [ext_resource type="Script" path="res://scenes/turret/aiming.gd" id="7_8kmil"]
 [ext_resource type="PackedScene" uid="uid://p5of0eh7hp6m" path="res://shared/components/ammo_magazine_component/ammo_magazine.tscn" id="8_tbida"]
+[ext_resource type="PackedScene" uid="uid://bdcu3imq3e6t1" path="res://shared/components/health_component/health_component.tscn" id="9_h2e32"]
 
-[node name="Turret" type="Node2D" node_paths=PackedStringArray("aiming_component", "ammo_magazine_component") groups=["turrets"]]
+[node name="Turret" type="Node2D" node_paths=PackedStringArray("aiming_component", "ammo_magazine_component", "health_component") groups=["turrets"]]
 script = ExtResource("1_xdj7m")
 aiming_component = NodePath("AimingComponent")
 ammo_magazine_component = NodePath("AmmoMagazine")
-bullet_scene = ExtResource("4_mafdm")
+health_component = NodePath("HealthComponent")
 
 [node name="AimingComponent" parent="." instance=ExtResource("2_tn1k7")]
 
@@ -32,3 +33,5 @@ script = ExtResource("7_8kmil")
 
 [node name="AmmoMagazine" parent="." instance=ExtResource("8_tbida")]
 stored_bullet = ExtResource("4_mafdm")
+
+[node name="HealthComponent" parent="." instance=ExtResource("9_h2e32")]

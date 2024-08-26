@@ -15,20 +15,19 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:  # Check if the event is a mouse button event
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if owner.bullet_scene:
-				fire_bullet()
-			print("Left mouse button clicked")
-		else:
-			print("Other mouse button event")
+			#if owner.bullet_scene:
+			fire_bullet()
+	
 
 func fire_bullet():
-	if owner.ammo_magazine_component.current_ammo <= 0:
-		owner.ammo_magazine_component.load_ammo()
-		print('Told mag to load one ammo')
-		return
+	# i should try to get rid of this if check
+	#if owner.ammo_magazine_component.current_ammo <= 0:
+		#owner.ammo_magazine_component.load_ammo()
+		#print('Told mag to load one ammo')
+		#return
 	var bullet_instance =  owner.ammo_magazine_component.expend_ammo()
 	if    bullet_instance  == null :
-		print('magazine didnt gave me ammo', bullet_instance)
+		printerr('magazine didnt gave me ammo', bullet_instance)
 		return
 	# Instantiate the bullet scene
 	print(bullet_instance,  bullet_instance  == null)

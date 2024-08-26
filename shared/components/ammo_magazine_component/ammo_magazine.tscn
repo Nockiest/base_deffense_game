@@ -8,6 +8,7 @@
 
 [node name="AmmoMagazine" type="Node2D"]
 script = ExtResource("1_fa41y")
+shoot_interval_sec = 1.0
 
 [node name="RemainingBulletsBar" type="ProgressBar" parent="."]
 anchors_preset = 8
