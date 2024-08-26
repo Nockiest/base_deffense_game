@@ -1,21 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://t6n6ewambkd0"]
+[gd_scene load_steps=8 format=3 uid="uid://t6n6ewambkd0"]
 
 [ext_resource type="Script" path="res://scenes/enemies/basic_enemy.gd" id="1_6v72k"]
 [ext_resource type="Texture2D" uid="uid://dm4o26ffnkchn" path="res://assets/red_box.jpeg" id="2_lga5a"]
 [ext_resource type="PackedScene" uid="uid://bdcu3imq3e6t1" path="res://shared/components/health_component/health_component.tscn" id="2_olrbd"]
 [ext_resource type="PackedScene" uid="uid://djape1yn3meth" path="res://shared/components/movement_component/movement-component.tscn" id="4_a30ae"]
 [ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://shared/components/death-component/death-component.tscn" id="5_y3vvn"]
+[ext_resource type="PackedScene" uid="uid://b1l6j3mk2joqe" path="res://shared/components/aiming_component/aiming_component.tscn" id="6_e466i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxigd"]
 size = Vector2(97, 99)
 
-[node name="BasicEnemy" type="Area2D" node_paths=PackedStringArray("health_component", "movement_component", "death_component")]
+[node name="BasicEnemy" type="Area2D" node_paths=PackedStringArray("health_component", "movement_component", "death_component", "aiming_component")]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_6v72k")
 health_component = NodePath("HealthComponent")
 movement_component = NodePath("MovementComponent")
 death_component = NodePath("DeathComponent")
+aiming_component = NodePath("AimingComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.16961e-05, 0.500005)
@@ -31,6 +33,10 @@ position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_xxigd")
 
 [node name="DeathComponent" parent="." instance=ExtResource("5_y3vvn")]
+
+[node name="AimingComponent" parent="." instance=ExtResource("6_e466i")]
+targeting_mode = 1
+enemy_group = "turrets"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="health_ran_out" from="HealthComponent" to="." method="_on_health_component_health_ran_out"]

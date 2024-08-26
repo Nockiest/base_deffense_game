@@ -6,7 +6,7 @@ func _process(delta: float) -> void:
 		# Get the position of the turret
 		var turret_position = owner.global_position
 		# Get the position of the mouse from the AimingComponent
-		var mouse_position = owner.aiming_component.mouse_position
+		var mouse_position = owner.aiming_component.target_position
 		# Calculate the direction vector from the turret to the mouse
 		var direction = (mouse_position - turret_position).normalized()
 		# Calculate the angle from the direction vector and set the rotation of the turret

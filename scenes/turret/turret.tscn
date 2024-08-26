@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scenes/turret/aiming.gd" id="7_8kmil"]
 [ext_resource type="PackedScene" uid="uid://p5of0eh7hp6m" path="res://shared/components/ammo_magazine_component/ammo_magazine.tscn" id="8_tbida"]
 
-[node name="Turret" type="Node2D" node_paths=PackedStringArray("aiming_component", "ammo_magazine_component")]
+[node name="Turret" type="Node2D" node_paths=PackedStringArray("aiming_component", "ammo_magazine_component") groups=["turrets"]]
 script = ExtResource("1_xdj7m")
 aiming_component = NodePath("AimingComponent")
 ammo_magazine_component = NodePath("AmmoMagazine")

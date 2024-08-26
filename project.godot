@@ -28,6 +28,7 @@ enabled=PackedStringArray("res://addons/gdscript_formatter/plugin.cfg")
 [global_group]
 
 projectiles=""
+turrets=""
 
 [layer_names]
 

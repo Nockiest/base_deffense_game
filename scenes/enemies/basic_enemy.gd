@@ -1,19 +1,32 @@
-class_name Enemy
 extends Area2D
 
-@export var health_component:HealthComponent
-@export var movement_component:MomvementComponent
-@export var death_component:DeathComponent
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+class_name Enemy
 
+@export var health_component: HealthComponent
+@export var movement_component: MomvementComponent
+@export var death_component: DeathComponent
+@export var aiming_component: AimingComponent  # Reference to the AimingComponent
+
+# Called when the node enters the scene tree for the first time.
+#func _ready() -> void:
+	## Ensure aiming_component is assigned and valid
+	#if aiming_component:
+		## Set up any necessary initial configurations
+		#pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if aiming_component and movement_component:
+		# Get the target position from the AimingComponent
+		var target_position = aiming_component.target_position
 
- 
+		# Calculate the direction vector from the Enemy to the target position
+		var direction = (target_position - global_position).normalized()
 
+		# Set the direction of the MovementComponent
+		movement_component.direction = direction
+
+# Called when the health component's health runs out
 func _on_health_component_health_ran_out() -> void:
-	$DeathComponent.kill_owner()
+	if death_component:
+		death_component.kill_owner()
