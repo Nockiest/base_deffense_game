@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7pfeg6uypiit"]
+
+[ext_resource type="Script" path="res://shared/components/crafting_component/crafting_component.gd" id="1_giwui"]
+
+[node name="CarftingComponent" type="Node2D"]
+script = ExtResource("1_giwui")

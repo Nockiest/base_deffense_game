@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://couc1pf4gvaeo"]
+
+[node name="WalletComponent" type="Node2D"]

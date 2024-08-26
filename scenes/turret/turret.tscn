@@ -1,0 +1,34 @@
+[gd_scene load_steps=9 format=3 uid="uid://2icamt22lsy2"]
+
+[ext_resource type="Script" path="res://scenes/turret/turret.gd" id="1_xdj7m"]
+[ext_resource type="PackedScene" uid="uid://b1l6j3mk2joqe" path="res://shared/components/aiming_component/aiming_component.tscn" id="2_tn1k7"]
+[ext_resource type="Texture2D" uid="uid://ch4xo76r5jmrx" path="res://assets/icon.svg" id="3_uy220"]
+[ext_resource type="PackedScene" uid="uid://bjvr1segvh8bd" path="res://scenes/bullet/bullet.tscn" id="4_mafdm"]
+[ext_resource type="Script" path="res://utils/state-machine/state-machine.gd" id="5_balcf"]
+[ext_resource type="Script" path="res://scenes/turret/idle.gd" id="6_5r8n1"]
+[ext_resource type="Script" path="res://scenes/turret/aiming.gd" id="7_8kmil"]
+[ext_resource type="PackedScene" uid="uid://p5of0eh7hp6m" path="res://shared/components/ammo_magazine_component/ammo_magazine.tscn" id="8_tbida"]
+
+[node name="Turret" type="Node2D" node_paths=PackedStringArray("aiming_component", "ammo_magazine_component")]
+script = ExtResource("1_xdj7m")
+aiming_component = NodePath("AimingComponent")
+ammo_magazine_component = NodePath("AmmoMagazine")
+bullet_scene = ExtResource("4_mafdm")
+
+[node name="AimingComponent" parent="." instance=ExtResource("2_tn1k7")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_uy220")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("5_balcf")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("6_5r8n1")
+
+[node name="Aiming" type="Node" parent="StateMachine"]
+script = ExtResource("7_8kmil")
+
+[node name="AmmoMagazine" parent="." instance=ExtResource("8_tbida")]
+stored_bullet = ExtResource("4_mafdm")
