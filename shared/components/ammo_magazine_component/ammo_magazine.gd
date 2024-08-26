@@ -5,7 +5,7 @@ extends Node2D
 @export var start_ammo: int = 5
 @export var stored_bullet: PackedScene
 @export var load_time_sec: float = 2.0
-@export var shoot_interval_sec: float = 5
+@export var shoot_interval_sec: float = 0.25
 
 # Current ammo count
 var current_ammo: int: 

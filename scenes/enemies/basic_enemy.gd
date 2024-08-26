@@ -7,8 +7,8 @@ class_name Enemy
 @export var death_component: DeathComponent
 @export var aiming_component: AimingComponent  # Reference to the AimingComponent
 @export var melee_attack_component: MeleeAttackComponent  # Reference to the AimingComponent
-# Called when the node enters the scene tree for the first time.
-
+#@export var flicker_effect_component: FlickerEffectComponent  # Reference to the AimingComponent
+ 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if aiming_component and movement_component:
@@ -21,7 +21,12 @@ func _process(delta: float) -> void:
 		# Set the direction of the MovementComponent
 		movement_component.direction = direction
 
-# Called when the health component's health runs out
-func _on_health_component_health_ran_out() -> void:
+func _on_health_component_health_stat_changed(current_hp: Variant, current_shields: Variant) -> void:
+	pass
+	#print('health changed')
+	#flicker_effect_component.start_flash($Sprite2D)
+
+
+func _on_health_component_hp_ran_out() -> void:
 	if death_component:
-		death_component.kill_owner()
+		death_component.kill_owner() 

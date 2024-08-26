@@ -11,7 +11,10 @@
 [node name="Enemies" type="Node" parent="."]
 
 [node name="BasicEnemy" parent="Enemies" instance=ExtResource("1_67okx")]
-position = Vector2(443, 500)
+position = Vector2(167, 522)
+
+[node name="BasicEnemy2" parent="Enemies" instance=ExtResource("1_67okx")]
+position = Vector2(269, 565)
 
 [node name="DebugWindow" parent="." instance=ExtResource("1_s2ndp")]
 

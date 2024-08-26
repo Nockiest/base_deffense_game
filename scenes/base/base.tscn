@@ -12,3 +12,4 @@ script = ExtResource("1_fddxo")
 [node name="Turret" parent="Turrets" instance=ExtResource("3_a2vyq")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_ufian")]
+visible = false

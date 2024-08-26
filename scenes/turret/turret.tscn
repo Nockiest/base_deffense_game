@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://nls03m7yaqpj" path="res://shared/components/aiming_components/mouse_aiming_component/mouse_aiming_component.tscn" id="9_ttun8"]
 
 [node name="Turret" type="Node2D" node_paths=PackedStringArray("aiming_component", "ammo_magazine_component", "health_component") groups=["turrets"]]
+light_mask = 4
+visibility_layer = 15
 script = ExtResource("1_xdj7m")
 aiming_component = NodePath("MouseAimingComponent")
 ammo_magazine_component = NodePath("AmmoMagazine")
@@ -31,8 +33,10 @@ script = ExtResource("7_8kmil")
 
 [node name="AmmoMagazine" parent="." instance=ExtResource("8_tbida")]
 stored_bullet = ExtResource("4_mafdm")
-shoot_interval_sec = 5.0
+shoot_interval_sec = 0.25
 
 [node name="HealthComponent" parent="." instance=ExtResource("9_h2e32")]
+position = Vector2(-1, 56)
+scale = Vector2(1, 0.394105)
 
 [node name="MouseAimingComponent" parent="." instance=ExtResource("9_ttun8")]
