@@ -1,16 +1,29 @@
-# NearestEnemyAimingComponent.gd
-class_name  EnemyAimingComponent
-extends  AimingComponent
+class_name EnemyAimingComponent
+extends AimingComponent
 
-@export var enemy_group: String = "enemies"  # Group name for enemies
+@export var enemy_group: String    # Group name for enemies
 
+# Variable to store the currently aimed-at enemy
+var current_target: Node2D = null:
+	set(value):
+		if current_target != value:
+			current_target = value
+			emit_signal("target_changed", value)
+
+
+signal target_changed(target: Node2D)
 # Override to update the target position to the nearest enemy's position
-func update_target_position() -> void:
-	target_position = get_nearest_enemy_position()
 
-# Get the position of the nearest enemy
-func get_nearest_enemy_position() -> Vector2:
-	var nearest_enemy_position: Vector2 = Vector2.ZERO
+func update_target_position() -> void:
+	current_target = get_nearest_enemy()
+	if current_target:
+		target_position = current_target.global_position
+
+# Get the nearest enemy and store it
+func get_nearest_enemy() -> Node2D:
+	if   enemy_group == "" :
+		printerr("enemy group not set")
+	var nearest_enemy: Node2D = null
 	var nearest_distance: float = INF
 
 	# Get all enemies in the specified group
@@ -21,6 +34,6 @@ func get_nearest_enemy_position() -> Vector2:
 			var distance = global_position.distance_to(enemy.global_position)
 			if distance < nearest_distance:
 				nearest_distance = distance
-				nearest_enemy_position = enemy.global_position
+				nearest_enemy = enemy
 
-	return nearest_enemy_position
+	return nearest_enemy

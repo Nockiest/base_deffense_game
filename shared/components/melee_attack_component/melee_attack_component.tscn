@@ -2,14 +2,18 @@
 
 [ext_resource type="Script" path="res://shared/components/melee_attack_component/melee_attack_component.gd" id="1_sxpxg"]
 [ext_resource type="PackedScene" uid="uid://cumblegcognst" path="res://shared/components/damage_deal_component/damage_deal_component.tscn" id="2_lvpr8"]
-[ext_resource type="PackedScene" uid="uid://b1l6j3mk2joqe" path="res://shared/components/aiming_components/aiming_component.tscn" id="3_fllcr"]
+[ext_resource type="PackedScene" uid="uid://dkq7f5mbkd78b" path="res://shared/components/aiming_components/entity_aiming_component/entity_aiming_component.tscn" id="3_rures"]
 
-[node name="MeleeAttackComponent" type="Node2D" node_paths=PackedStringArray("damage_deal_component")]
+[node name="MeleeAttackComponent" type="Node2D" node_paths=PackedStringArray("damage_deal_component", "aiming_component")]
 script = ExtResource("1_sxpxg")
+attack_range_px = 200.0
+damage_amount = 1
 damage_deal_component = NodePath("DamageDealComponent")
+aiming_component = NodePath("EntityAimingComponent")
 
 [node name="DamageDealComponent" parent="." instance=ExtResource("2_lvpr8")]
 
-[node name="AimingComponent" parent="." instance=ExtResource("3_fllcr")]
-targeting_mode = 1
+[node name="EntityAimingComponent" parent="." instance=ExtResource("3_rures")]
 enemy_group = "turrets"
+
+[connection signal="target_changed" from="EntityAimingComponent" to="." method="_on_entity_aiming_component_target_changed"]
