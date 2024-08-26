@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwyjhtwut1t30"]
+[gd_scene load_steps=4 format=3 uid="uid://dwyjhtwut1t30"]
 
+[ext_resource type="PackedScene" uid="uid://t6n6ewambkd0" path="res://scenes/enemies/basic_enemy.tscn" id="1_67okx"]
 [ext_resource type="PackedScene" uid="uid://7i2s2qp0nlea" path="res://shared/debug-window/debug-window.tscn" id="1_s2ndp"]
 [ext_resource type="PackedScene" uid="uid://c45cjfnpg8t07" path="res://scenes/base/base.tscn" id="2_nn1dm"]
 
@@ -8,6 +9,9 @@
 [node name="Guns" type="Node" parent="."]
 
 [node name="Enemies" type="Node" parent="."]
+
+[node name="BasicEnemy" parent="Enemies" instance=ExtResource("1_67okx")]
+position = Vector2(189, 330)
 
 [node name="DebugWindow" parent="." instance=ExtResource("1_s2ndp")]
 

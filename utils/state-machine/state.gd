@@ -1,16 +1,12 @@
- 
+class_name State
+extends Node
 
 # THIS IS THE DEFAULT State EXTEND IT TO USE IT IN OTHER COMPOENTNS!
-
-
-
-
 
 # Generic state machine. Initializes states and delegates engine callbacks
 # (_physics_process, _unhandled_input) to the active state.
 # Virtual base class for all states.
-class_name State
-extends Node
+
 # Reference to the state machine, to call its `transition_to()` method directly.
 # That's one unorthodox detail of our state implementation, as it adds a dependency between the
 # state and the state machine objects, but we found it to be most efficient for our needs.

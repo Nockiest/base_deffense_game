@@ -1,5 +1,5 @@
 class_name Enemy
-extends Node2D
+extends Area2D
 
 @export var health_component:HealthComponent
 @export var movement_component:MomvementComponent
@@ -13,7 +13,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+ 
 
-func _on_area_entered(area: Area2D) -> void:
-	if (area is Projectile):
-		health_component.take_hit(area.damage)
+func _on_health_component_health_ran_out() -> void:
+	$DeathComponent.kill_owner()

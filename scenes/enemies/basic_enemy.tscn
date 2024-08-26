@@ -6,15 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://djape1yn3meth" path="res://shared/components/movement_component/movement-component.tscn" id="4_a30ae"]
 [ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://shared/components/death-component/death-component.tscn" id="5_y3vvn"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ucm10"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxigd"]
+size = Vector2(97, 99)
 
-[node name="BasicEnemy" type="Area2D" node_paths=PackedStringArray("health_component")]
+[node name="BasicEnemy" type="Area2D" node_paths=PackedStringArray("health_component", "movement_component", "death_component")]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_6v72k")
 health_component = NodePath("HealthComponent")
+movement_component = NodePath("MovementComponent")
+death_component = NodePath("DeathComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, 0.999996)
-scale = Vector2(0.293333, 0.559524)
+position = Vector2(2.16961e-05, 0.500005)
+scale = Vector2(0.32, 0.565476)
 texture = ExtResource("2_lga5a")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_olrbd")]
@@ -22,8 +27,10 @@ texture = ExtResource("2_lga5a")
 [node name="MovementComponent" parent="." instance=ExtResource("4_a30ae")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ucm10")
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_xxigd")
 
 [node name="DeathComponent" parent="." instance=ExtResource("5_y3vvn")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="health_ran_out" from="HealthComponent" to="." method="_on_health_component_health_ran_out"]

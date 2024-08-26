@@ -6,3 +6,5 @@ func kill_owner():
 	owner.queue_free()
 
  
+
+ 
