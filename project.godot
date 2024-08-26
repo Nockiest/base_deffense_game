@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Base defending"
-run/main_scene="res://screens/battle_ground.tscn"
+run/main_scene="res://screens/battlerground.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
@@ -20,6 +20,10 @@ config/icon="res://assets/icon.svg"
 Utils="*res://shared/utils/utils.gd"
 GridUtils="*res://shared/utils/grid-utils.gd"
 Globals="*res://shared/globals/globals.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdscript_formatter/plugin.cfg")
 
 [physics]
 

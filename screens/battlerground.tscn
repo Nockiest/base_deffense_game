@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwyjhtwut1t30"]
+
+[ext_resource type="PackedScene" uid="uid://7i2s2qp0nlea" path="res://shared/debug-window/debug-window.tscn" id="1_s2ndp"]
+[ext_resource type="PackedScene" uid="uid://c45cjfnpg8t07" path="res://scenes/base/base.tscn" id="2_nn1dm"]
+
+[node name="Battleground" type="Node2D"]
+
+[node name="Guns" type="Node" parent="."]
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="DebugWindow" parent="." instance=ExtResource("1_s2ndp")]
+
+[node name="Base" parent="." instance=ExtResource("2_nn1dm")]
+position = Vector2(592, 305)
