@@ -10,10 +10,7 @@ extends Node2D
 var current_ammo: int: 
 	set(value):
 		current_ammo = value
-		$RemainingBulletsBar.value = float(current_ammo) / float(capacity) * 100
-		$RemainingBulletsBar/Label.text = str(current_ammo) + "/" + str(capacity)
-# Update the progress bar based on current ammo and capacity
- 
+		$RemainingBulletsBar.change_value(value)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_ammo = start_ammo

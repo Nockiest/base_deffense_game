@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://p5of0eh7hp6m"]
+[gd_scene load_steps=6 format=3 uid="uid://p5of0eh7hp6m"]
 
 [ext_resource type="Script" path="res://shared/components/ammo_magazine_component/ammo_magazine.gd" id="1_fa41y"]
+[ext_resource type="Script" path="res://shared/components/ammo_magazine_component/remaining_bullets_bar.gd" id="2_60v5n"]
 [ext_resource type="Script" path="res://utils/state-machine/state-machine.gd" id="2_spfha"]
 [ext_resource type="Script" path="res://shared/components/ammo_magazine_component/loaded.gd" id="3_vfag0"]
 [ext_resource type="Script" path="res://shared/components/ammo_magazine_component/loading.gd" id="4_63yjw"]
@@ -23,6 +24,7 @@ grow_vertical = 2
 rounded = true
 allow_greater = true
 show_percentage = false
+script = ExtResource("2_60v5n")
 
 [node name="Label" type="Label" parent="RemainingBulletsBar"]
 layout_mode = 1
