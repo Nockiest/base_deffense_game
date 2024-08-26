@@ -45,3 +45,6 @@ func get_current_health() -> int:
 	
 func get_current_shields() -> int:
 	return current_shields
+
+
+ 

@@ -1,9 +1,8 @@
- 
-extends Node2D
+extends Area2D
 class_name Projectile 
 @export var directionHandler:DirectionHandler
-@export var collateral_damage: bool = false # wheter it can damage units when flying to the target
-@export var damage:int = 1 # hwo much damage it does in a hit
+#@export var collateral_damage: bool = false # wheter it can damage units when flying to the target
+#@export var damage:int = 1 # hwo much damage it does in a hit
 @export var speed_per_turn:int = 10 # how much distance it covers per turn
 var target_location:Vector2 # where will it land
 
@@ -15,7 +14,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
- 
 func move_to_target():
 	var moving_through_tiles = GridUtils.calculate_tiles_in_path(Vector2i(5,5),  $"direction-handler-comp".current_direction, speed_per_turn, target_location)
 	print_debug(moving_through_tiles)

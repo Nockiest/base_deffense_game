@@ -25,6 +25,10 @@ Globals="*res://shared/globals/globals.gd"
 
 enabled=PackedStringArray("res://addons/gdscript_formatter/plugin.cfg")
 
+[global_group]
+
+projectiles=""
+
 [physics]
 
 2d/default_gravity_vector=Vector2(0, 0)

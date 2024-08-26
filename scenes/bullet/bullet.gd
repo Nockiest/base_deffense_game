@@ -1,18 +1,14 @@
-# Bullet.gd
-extends RigidBody2D
+extends Projectile
 
 class_name Bullet
 
-# Bullet speed
-@export var speed: float = 500
+@export var movement_component: MovementComponent
 
-# Direction in which the bullet will move
-var direction: Vector2 = Vector2()
-
- 
-
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	add_to_group("projectiles")
 # Set the direction for the bullet and immediately update its velocity
 func set_direction(new_direction: Vector2) -> void:
-	direction = new_direction.normalized()
-	print(direction)
-	linear_velocity = direction * speed
+	# Update the movement component's direction
+	if movement_component:
+		movement_component.direction = new_direction.normalized()

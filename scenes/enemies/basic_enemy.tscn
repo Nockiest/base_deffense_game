@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://t6n6ewambkd0"]
+
+[ext_resource type="Script" path="res://scenes/enemies/basic_enemy.gd" id="1_6v72k"]
+[ext_resource type="Texture2D" uid="uid://dm4o26ffnkchn" path="res://assets/red_box.jpeg" id="2_lga5a"]
+[ext_resource type="PackedScene" uid="uid://bdcu3imq3e6t1" path="res://shared/components/health_component/health_component.tscn" id="2_olrbd"]
+[ext_resource type="PackedScene" uid="uid://djape1yn3meth" path="res://shared/components/movement_component/movement-component.tscn" id="4_a30ae"]
+[ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://shared/components/death-component/death-component.tscn" id="5_y3vvn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ucm10"]
+
+[node name="BasicEnemy" type="Area2D" node_paths=PackedStringArray("health_component")]
+script = ExtResource("1_6v72k")
+health_component = NodePath("HealthComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 0.999996)
+scale = Vector2(0.293333, 0.559524)
+texture = ExtResource("2_lga5a")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_olrbd")]
+
+[node name="MovementComponent" parent="." instance=ExtResource("4_a30ae")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ucm10")
+
+[node name="DeathComponent" parent="." instance=ExtResource("5_y3vvn")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

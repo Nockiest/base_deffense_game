@@ -11,5 +11,5 @@
 
 [node name="DebugWindow" parent="." instance=ExtResource("1_s2ndp")]
 
-[node name="Base" parent="." instance=ExtResource("2_nn1dm")]
+[node name="Base" parent="." groups=["projectiles"] instance=ExtResource("2_nn1dm")]
 position = Vector2(592, 305)

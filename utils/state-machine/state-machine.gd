@@ -1,12 +1,8 @@
 class_name StateMachine
 extends Node
 
-
-
 # THIS IS THE DEFAULT STATEMACHIEN EXTEND IT TO USE IT IN OTHER COMPOENTNS!
 
- 
- 
 # Emitted when transitioning to a new state.
 signal transitioned(state_name)
 
