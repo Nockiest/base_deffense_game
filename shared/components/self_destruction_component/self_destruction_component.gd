@@ -1,4 +1,4 @@
-class_name DeathComponent
+class_name SelfDestructionComponent
 extends Node2D
  
 func kill_owner():

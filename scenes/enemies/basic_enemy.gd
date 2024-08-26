@@ -4,7 +4,7 @@ class_name Enemy
 
 @export var health_component: HealthComponent
 @export var movement_component: MomvementComponent
-@export var death_component: DeathComponent
+@export var self_destruction_component: SelfDestructionComponent
 @export var aiming_component: AimingComponent  # Reference to the AimingComponent
 @export var melee_attack_component: MeleeAttackComponent  # Reference to the AimingComponent
 #@export var flicker_effect_component: FlickerEffectComponent  # Reference to the AimingComponent
@@ -28,5 +28,5 @@ func _on_health_component_health_stat_changed(current_hp: Variant, current_shiel
 
 
 func _on_health_component_hp_ran_out() -> void:
-	if death_component:
-		death_component.kill_owner() 
+	if self_destruction_component:
+		self_destruction_component.kill_owner() 

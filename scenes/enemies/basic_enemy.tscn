@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bdcu3imq3e6t1" path="res://shared/components/health_component/health_component.tscn" id="2_olrbd"]
 [ext_resource type="PackedScene" uid="uid://c3rhqdncy7nkq" path="res://shared/components/flicker_component/flicker_component.tscn" id="3_mfxui"]
 [ext_resource type="PackedScene" uid="uid://djape1yn3meth" path="res://shared/components/movement_component/movement-component.tscn" id="4_a30ae"]
-[ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://shared/components/death-component/death-component.tscn" id="5_y3vvn"]
+[ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://shared/components/self_destruction_component/self_destruction_component.tscn" id="5_y3vvn"]
 [ext_resource type="PackedScene" uid="uid://n4jgo8ducj5y" path="res://shared/components/melee_attack_component/melee_attack_component.tscn" id="7_8bsyt"]
 [ext_resource type="PackedScene" uid="uid://dkq7f5mbkd78b" path="res://shared/components/aiming_components/entity_aiming_component/entity_aiming_component.tscn" id="7_flvws"]
 
@@ -16,13 +16,13 @@ shader = ExtResource("2_55cb4")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxigd"]
 size = Vector2(97, 99)
 
-[node name="BasicEnemy" type="Area2D" node_paths=PackedStringArray("health_component", "movement_component", "death_component", "aiming_component", "melee_attack_component")]
+[node name="BasicEnemy" type="Area2D" node_paths=PackedStringArray("health_component", "movement_component", "self_destruction_component", "aiming_component", "melee_attack_component")]
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_6v72k")
 health_component = NodePath("HealthComponent")
 movement_component = NodePath("MovementComponent")
-death_component = NodePath("DeathComponent")
+self_destruction_component = NodePath("DeathComponent")
 aiming_component = NodePath("EntityAimingComponent")
 melee_attack_component = NodePath("MeleeAttackComponent")
 
