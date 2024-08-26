@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjvr1segvh8bd"]
+[gd_scene load_steps=9 format=3 uid="uid://bjvr1segvh8bd"]
 
-[ext_resource type="Script" path="res://scenes/bullet/bullet.gd" id="1_2qxcl"]
-[ext_resource type="Script" path="res://scenes/bullet/color_rect.gd" id="1_5iuyv"]
-[ext_resource type="PackedScene" uid="uid://cumblegcognst" path="res://shared/components/damage_deal_component/damage_deal_component.tscn" id="3_3r7nd"]
+[ext_resource type="Script" path="res://scenes/projectiles/bullet/bullet.gd" id="1_2qxcl"]
+[ext_resource type="Script" path="res://scenes/projectiles/bullet/color_rect.gd" id="1_5iuyv"]
 [ext_resource type="PackedScene" uid="uid://djape1yn3meth" path="res://shared/components/movement_component/movement-component.tscn" id="4_8qh8m"]
+[ext_resource type="PackedScene" uid="uid://opfrimiyjvxy" path="res://shared/components/damage_components/area_damage_component/area_damage_component.tscn" id="5_nrjd1"]
 [ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://shared/components/self_destruction_component/self_destruction_component.tscn" id="5_q365e"]
+[ext_resource type="PackedScene" uid="uid://cumblegcognst" path="res://shared/components/damage_components/single_entity_damage/single_damage_component.tscn" id="6_7wv2o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n45sy"]
 size = Vector2(40, 40)
@@ -15,7 +16,7 @@ size = Vector2(40, 40)
 collision_mask = 6
 script = ExtResource("1_2qxcl")
 movement_component = NodePath("MovementComponent")
-damage_deal_component = NodePath("DamageDealComponent")
+damage_deal_component = NodePath("SingleDamageDealComponent")
 self_destruction_component = NodePath("SelfDestructionComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -38,11 +39,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5iuyv")
 
-[node name="DamageDealComponent" parent="." instance=ExtResource("3_3r7nd")]
-
 [node name="MovementComponent" parent="." instance=ExtResource("4_8qh8m")]
 speed_px_sec = 200.0
 
 [node name="SelfDestructionComponent" parent="." instance=ExtResource("5_q365e")]
+
+[node name="AreaDamageComponent" parent="." instance=ExtResource("5_nrjd1")]
+damage_radius_px = 500.0
+
+[node name="SingleDamageDealComponent" parent="." instance=ExtResource("6_7wv2o")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

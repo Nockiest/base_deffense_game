@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwx5dwtg3if4v"]
+
+[ext_resource type="Script" path="res://scenes/projectiles/bomb/bomb.gd" id="1_1e4cr"]
+[ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://shared/components/self_destruction_component/self_destruction_component.tscn" id="2_8eyou"]
+
+[node name="Bomb" type="Node2D"]
+script = ExtResource("1_1e4cr")
+
+[node name="SelfDestructionComponent" parent="." instance=ExtResource("2_8eyou")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

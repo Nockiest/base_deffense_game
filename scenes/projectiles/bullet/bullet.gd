@@ -17,7 +17,8 @@ func set_direction(new_direction: Vector2) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	print(area)
-	if (area.health_component):
-		area.health_component.take_hit(damage_deal_component.base_damage)
-		queue_free()
+	damage_deal_component.deal_damage(area, ['enemies'])
+	#if (area.health_component):
+		#area.health_component.take_hit(damage_deal_component.base_damage)
+		#queue_free()
 	self_destruction_component.kill_owner()

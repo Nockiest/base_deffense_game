@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cumblegcognst"]
+
+[ext_resource type="Script" path="res://shared/components/damage_components/single_entity_damage/single_damage_component.gd" id="1_vt37l"]
+
+[node name="SingleDamageDealComponent" type="Node2D"]
+script = ExtResource("1_vt37l")

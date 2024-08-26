@@ -29,6 +29,7 @@ enabled=PackedStringArray("res://addons/gdscript_formatter/plugin.cfg")
 
 projectiles=""
 turrets=""
+enemies="everything that attacks the base"
 
 [layer_names]
 
