@@ -1,25 +1,42 @@
 class_name FocusDamageDealComponent
 extends DamageDealComponent
 
+@export var damage_increase_rate: float = 2.0  # Rate at which damage increases over time
+
 
 var focus_time: float = 0.0  # Initialize focus time
+var damaged_entity: Node = null:
+	set(value):  
+		print(value, value != damaged_entity)
+		
+		if value != damaged_entity:
+			damaged_entity = value
+			$state_machine.state.handle_entity_change(damaged_entity)
 
-func toggle_focus():
-	$state_machine.state.toggle_focus()
-	 
-# Function to deal damage, making it stronger with focus time
-func deal_damage(reciever: Node, damagable_object_groups: Array[String], center_position: Vector2 = self.global_position) -> void:
-	# Check if the reciever is in one of the specified damageable groups
-	for group_name in damagable_object_groups:
-		if reciever.is_in_group(group_name):
-			# Calculate the total damage based on focus time
-			var total_damage = base_damage * (1.0 + focus_time)
-			print_debug('total dmg ', total_damage)
-			# Check if the reciever has a health component and a method to take damage
-			if reciever.health_component.has_method("take_hit"):
-				reciever.health_component.take_hit(int(total_damage))  # Apply the damage
-			else:
-				printerr("Receiver doesn't have 'take_hit' method. Skipping:", reciever)
-			return  # Exit after dealing damage to the valid receiver
+# Function to start focusing on an entity
+var last_delta  
+# Function to update focus time and apply damage to the focused entity
+func _process(delta: float) -> void:
+	last_delta = delta
+	if damaged_entity:
+		if    is_instance_valid(damaged_entity) :
+			deal_damage(damaged_entity, [], owner.global_position  )
+# Update the focus time
+func deal_damage(reciever: Node, damagable_object_groups: Array[String] = [], center_position: Vector2 = self.global_position) -> void:
+	# Ensure the entity hasn't been queued for deletion
+	if damaged_entity == null or damaged_entity.is_queued_for_deletion():
+		printerr("Damaged entity is null or has been queued for deletion. Skipping damage.")
+		return
+	
+	# Update focus time
+	focus_time += last_delta
 
-	print("Receiver is not in any of the specified damageable groups:", reciever)
+	# Calculate the increasing damage over time
+	var total_damage = base_damage + (damage_increase_rate * focus_time)
+
+	# Deal damage to the entity if it has a health component with a "take_hit" method
+	if damaged_entity.health_component and damaged_entity.health_component.has_method("take_hit"):
+		damaged_entity.health_component.take_hit(total_damage)
+		print_debug("Dealing", total_damage, "damage to", damaged_entity)
+	else:
+		printerr("Damaged entity doesn't have 'take_hit' method or health_component. Skipping:", damaged_entity)

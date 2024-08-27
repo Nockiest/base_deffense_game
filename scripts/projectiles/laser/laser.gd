@@ -9,11 +9,17 @@ extends Projectile
 @onready var raycast: RayCast2D = $"." 
 	 
 func _process(_delta: float) -> void:
+	give_dmg_comp_entity_to_dmg()
+func give_dmg_comp_entity_to_dmg():
+	var new_entity = null
 	if  raycast.enabled:
 		if raycast.is_colliding():
 			var target = raycast.get_collider()
 			if target and damage_deal_component:
-				damage_deal_component.deal_damage(target, ['enemies'])  # Pass an empty group list if not needed
+				new_entity= target
+	  
+	damage_deal_component.damaged_entity = new_entity
+				#damage_deal_component.deal_damage(target, ['enemies'])  # Pass an empty group list if not needed
 
 func set_direction(new_direction: Vector2) -> void:
 	if raycast:
@@ -25,7 +31,7 @@ func set_direction(new_direction: Vector2) -> void:
 # Method to activate the laser
 func toggle_active() -> void:
 	raycast.enabled = not raycast.enabled
-	damage_deal_component.toggle_focus()
-	print("Laser active?", raycast.enabled)
+	#damage_deal_component.toggle_focus()
+	#print("Laser active?", raycast.enabled)
 
  

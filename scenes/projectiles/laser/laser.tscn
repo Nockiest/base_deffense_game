@@ -13,4 +13,4 @@ damage_deal_component = NodePath("FocusDamageComponent")
 range_px = 1000
 
 [node name="FocusDamageComponent" parent="." instance=ExtResource("2_byvo4")]
-base_damage = 0.1
+base_damage = 0.001

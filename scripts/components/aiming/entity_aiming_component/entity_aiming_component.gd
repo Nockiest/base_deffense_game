@@ -17,8 +17,11 @@ signal target_changed(target: Node2D)
 
 func update_target_position() -> void:
 	current_target = get_nearest_enemy()
-	if current_target:
+	if current_target and is_instance_valid(current_target):
+		print(current_target)
 		target_position = current_target.global_position
+	else:
+		target_position = owner.global_position
 
 # Get the nearest enemy and store it
 func get_nearest_enemy() -> Node2D:
@@ -33,7 +36,7 @@ func get_nearest_enemy() -> Node2D:
 	for enemy in enemies:
 		if enemy is Node2D:
 			# Check if the enemy node is still in the scene tree
-			if not enemy.is_inside_tree():
+			if not enemy.is_inside_tree() or not is_instance_valid(enemy):
 				continue
 
 			var distance = global_position.distance_to(enemy.global_position)

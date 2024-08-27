@@ -40,6 +40,7 @@ max_hp = 4
 start_shields = 0
 
 [node name="MovementComponent" parent="." instance=ExtResource("4_a30ae")]
+speed_px_sec = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
