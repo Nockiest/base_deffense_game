@@ -1,9 +1,12 @@
+class_name FocusDamageDealComponent
 extends DamageDealComponent
 
 
 var focus_time: float = 0.0  # Initialize focus time
 
-
+func toggle_focus():
+	$state_machine.state.toggle_focus()
+	 
 # Function to deal damage, making it stronger with focus time
 func deal_damage(reciever: Node, damagable_object_groups: Array[String], center_position: Vector2 = self.global_position) -> void:
 	# Check if the reciever is in one of the specified damageable groups
@@ -11,10 +14,10 @@ func deal_damage(reciever: Node, damagable_object_groups: Array[String], center_
 		if reciever.is_in_group(group_name):
 			# Calculate the total damage based on focus time
 			var total_damage = base_damage * (1.0 + focus_time)
-			
+			print_debug('total dmg ', total_damage)
 			# Check if the reciever has a health component and a method to take damage
-			if reciever.has_method("take_hit"):
-				reciever.take_hit(int(total_damage))  # Apply the damage
+			if reciever.health_component.has_method("take_hit"):
+				reciever.health_component.take_hit(int(total_damage))  # Apply the damage
 			else:
 				printerr("Receiver doesn't have 'take_hit' method. Skipping:", reciever)
 			return  # Exit after dealing damage to the valid receiver

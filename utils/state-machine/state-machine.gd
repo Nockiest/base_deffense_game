@@ -13,7 +13,8 @@ signal transitioned(state_name)
 @onready var state: State = get_node(initial_state)
 
 
-func init() -> void:
+func _ready() -> void:
+	print_debug( get_children())
 	for child in get_children():
 		child.state_machine = self
 		child.owner = get_parent()
@@ -29,8 +30,8 @@ func _process(_delta: float) -> void:
 	state.update(_delta)
 
 
-#func _physics_process(_delta: float) -> void:
-#	state.physics_update(_delta)
+func _physics_process(_delta: float) -> void:
+	state.physics_update(_delta)
 
 
 # This function calls the current state's exit() function, then changes the active state,
@@ -45,6 +46,6 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 		return
 	print("entereing state ", target_state_name)
 	state.exit()
-	state = get_node(target_state_name)
+	state = get_node(target_state_name)   
 	state.enter( msg )
 	emit_signal("transitioned", state.name)

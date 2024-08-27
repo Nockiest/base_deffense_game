@@ -1,11 +1,11 @@
 class_name HealthComponent
 extends Node2D
 
-@export var max_hp: int = 1
-@export var start_hp: int = 1
-@export var max_shields: int = 1
-@export var start_shields: int = 1
-@export var regeneration_per_call: int = 1
+@export var max_hp: float = 1
+@export var start_hp: float = 1
+@export var max_shields: float = 1
+@export var start_shields: float = 1
+@export var regeneration_per_call: float = 1
 
 @export var health_bar: ProgressBar  # Reference to the health ProgressBar
 @export var shield_bar: ProgressBar   # Reference to the shield ProgressBar
@@ -15,7 +15,7 @@ signal health_stat_changed(current_hp, current_shields)
 signal shields_ran_out()
 
 # Define the current HP and shields with setter functions
-var current_hp: int = start_hp:
+var current_hp: float = start_hp:
 	set(new_hp):
 		current_hp = clampi(new_hp, 0, max_hp)
 		update_progress_bars()  # Update shield bar when value changes
@@ -24,7 +24,7 @@ var current_hp: int = start_hp:
 		emit_signal("health_stat_changed", current_hp, current_shields)
 		print("current health is", current_hp)
 
-var current_shields: int = start_shields:
+var current_shields: float = start_shields:
 	set(new_shields):
 		current_shields = clampi(new_shields, 0, max_shields)
 		update_progress_bars()  # Update shield bar when value changes
@@ -34,7 +34,7 @@ var current_shields: int = start_shields:
 		print("current shields are", current_shields)
 
 # Called every frame. '_delta' is the elapsed time since the previous frame.
-func take_hit(dmg: int) -> void:
+func take_hit(dmg: float) -> void:
 	print(owner, ' took hit', dmg, current_hp, current_shields)
 	if current_shields > 0:
 		# If there are shields, subtract damage from shields
@@ -44,10 +44,10 @@ func take_hit(dmg: int) -> void:
 		current_hp -= dmg
 		# Check if health ran out
 
-func take_armor_piercing_damage(dmg: int) -> void:
+func take_armor_piercing_damage(dmg: float) -> void:
 	current_hp -= dmg
 
-func regenerate(amount: int = regeneration_per_call) -> void:
+func regenerate(amount: float = regeneration_per_call) -> void:
 	current_hp = clampi(current_hp + amount, 0, max_hp)
 
 # Update functions for ProgressBars

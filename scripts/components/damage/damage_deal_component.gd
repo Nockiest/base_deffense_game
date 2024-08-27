@@ -1,7 +1,7 @@
 class_name DamageDealComponent
 extends Node
 
-@export var base_damage:int = 1 # hwo much damage it does in a hit
+@export var base_damage:float = 1 # hwo much damage it does in a hit
 
 
 # Called when the node enters the scene tree for the first time.

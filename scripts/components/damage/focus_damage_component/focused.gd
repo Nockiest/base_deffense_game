@@ -1,5 +1,5 @@
 class_name FocusTimeState
-extends Node
+extends State
 
 
 # This function is called every frame
@@ -8,6 +8,9 @@ func _process(_delta: float) -> void:
 	owner.focus_time += _delta
 	
 
-
+func toggle_focus():
+	print(state_machine)
+	state_machine.transition_to('Idle')
+	 
 
  

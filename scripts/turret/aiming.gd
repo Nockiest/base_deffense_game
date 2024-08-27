@@ -1,7 +1,6 @@
-extends Node
+extends State
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-var fire_btn_pressed:= false
 
 func _process(delta: float) -> void:
 	if owner.aiming_component:
@@ -13,15 +12,13 @@ func _process(delta: float) -> void:
 		var direction = (mouse_position - turret_position).normalized()
 		# Calculate the angle from the direction vector and set the rotation of the turret
 		owner.rotation = direction.angle() + deg_to_rad(90)  # Fixed the use of direction
-	if fire_btn_pressed:
-		owner.ammo_magazine_component.fire_bullet(owner.rotation)
+	
 func _input(event: InputEvent) -> void:
 	 
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			fire_btn_pressed = true
-		else:
-			fire_btn_pressed=false
+			owner.ammo_magazine_component.fire_bullet(owner.rotation)
+		 
 	#if event is InputEventMouseButton:  # Check if the event is a mouse button event
 		#print( event.button_index == MOUSE_BUTTON_LEFT, event.pressed)
 		 #is_action_pressed

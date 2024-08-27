@@ -7,8 +7,9 @@
 [ext_resource type="Script" path="res://scripts/components/bullet_storage/laser_storage_component/idle.gd" id="3_agcit"]
 [ext_resource type="Script" path="res://scripts/components/bullet_storage/laser_storage_component/shooting.gd" id="4_pa0sl"]
 
-[node name="LaserStorageComponent" type="Node2D" node_paths=PackedStringArray("BulletsBar")]
+[node name="LaserStorageComponent" type="Node2D" node_paths=PackedStringArray("laser_instance", "BulletsBar")]
 script = ExtResource("1_kt8d4")
+laser_instance = NodePath("Laser")
 stored_bullet = ExtResource("2_jdbtb")
 BulletsBar = NodePath("RemainingBulletsBar")
 
@@ -23,3 +24,5 @@ script = ExtResource("3_agcit")
 script = ExtResource("4_pa0sl")
 
 [node name="RemainingBulletsBar" parent="." instance=ExtResource("3_50yp8")]
+
+[node name="Laser" parent="." instance=ExtResource("2_jdbtb")]
