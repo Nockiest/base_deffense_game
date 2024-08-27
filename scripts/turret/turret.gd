@@ -3,7 +3,7 @@ extends Node2D
 class_name Turret
 
 @export var aiming_component: AimingComponent
-@export var ammo_magazine_component: AmmoMagazine
+@export var ammo_magazine_component: ProjectileStorage
 @export var health_component: HealthComponent
 @export var self_destruction_component: SelfDestructionComponent
  

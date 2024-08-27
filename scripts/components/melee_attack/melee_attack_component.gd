@@ -25,7 +25,7 @@ func _ready() -> void:
 		print("No enemy assigned to MeleeAttackComponent!")
 
 func _process(_delta: float) -> void:
-	if enemy:
+	if enemy and is_instance_valid(enemy):
 		# Calculate the distance to the enemy
 		var distance_to_enemy = global_position.distance_to(enemy.global_position)
 		
@@ -35,6 +35,7 @@ func _process(_delta: float) -> void:
 			damage_deal_component.deal_damage(enemy, ['enemies'])  # Deal damage to the enemy
 	else:
 		print("No enemy assigned or enemy not in range!", enemy)
+
 
 func _on_entity_aiming_component_target_changed(target: Node2D) -> void:
 	enemy = target

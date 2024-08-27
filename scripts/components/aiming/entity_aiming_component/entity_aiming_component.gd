@@ -1,6 +1,7 @@
 class_name EnemyAimingComponent
 extends AimingComponent
 
+## TO DO make it an array
 @export var enemy_group: String    # Group name for enemies
 
 # Variable to store the currently aimed-at enemy
@@ -28,9 +29,13 @@ func get_nearest_enemy() -> Node2D:
 
 	# Get all enemies in the specified group
 	var enemies = get_tree().get_nodes_in_group(enemy_group)
-	
+
 	for enemy in enemies:
 		if enemy is Node2D:
+			# Check if the enemy node is still in the scene tree
+			if not enemy.is_inside_tree():
+				continue
+
 			var distance = global_position.distance_to(enemy.global_position)
 			if distance < nearest_distance:
 				nearest_distance = distance

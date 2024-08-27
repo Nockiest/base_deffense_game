@@ -6,7 +6,7 @@
 [node name="AreaDamageComponent" type="Node2D" node_paths=PackedStringArray("area_of_effect_component")]
 script = ExtResource("1_evgwl")
 damage_radius_px = null
-base_damage = null
 area_of_effect_component = NodePath("AreaOfEffectComponent")
+base_damage = null
 
 [node name="AreaOfEffectComponent" parent="." instance=ExtResource("2_yxwqr")]

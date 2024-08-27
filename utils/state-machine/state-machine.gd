@@ -21,6 +21,7 @@ func init() -> void:
 
 # The state machine subscribes to node callbacks and delegates them to the state objects.
 func _unhandled_input(event: InputEvent) -> void:
+	#print('undhandled input print',owner, state)
 	state.handle_input(event)
 
 

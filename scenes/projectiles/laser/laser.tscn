@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://byqbefkro26k"]
+[gd_scene load_steps=3 format=3 uid="uid://byqbefkro26k"]
 
-[node name="Laser" type="Node2D"]
+[ext_resource type="Script" path="res://scripts/projectiles/laser/laser.gd" id="1_47828"]
+[ext_resource type="PackedScene" uid="uid://dxv80whqf5avd" path="res://scripts/components/damage/focus_damage_component/focus_damage_component.tscn" id="2_byvo4"]
+
+[node name="Laser" type="Node2D" node_paths=PackedStringArray("damage_deal_component")]
+script = ExtResource("1_47828")
+damage_deal_component = NodePath("FocusDamageComponent")
+range_px = 1000
+
+[node name="FocusDamageComponent" parent="." instance=ExtResource("2_byvo4")]
+base_damage = 0
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 14
+hit_from_inside = true
+collide_with_areas = true

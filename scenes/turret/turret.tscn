@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://2icamt22lsy2"]
+[gd_scene load_steps=13 format=3 uid="uid://2icamt22lsy2"]
 
 [ext_resource type="Script" path="res://scripts/turret/turret.gd" id="1_xdj7m"]
 [ext_resource type="Texture2D" uid="uid://ch4xo76r5jmrx" path="res://assets/icon.svg" id="3_uy220"]
@@ -6,8 +6,10 @@
 [ext_resource type="Script" path="res://utils/state-machine/state-machine.gd" id="5_balcf"]
 [ext_resource type="Script" path="res://scripts/turret/idle.gd" id="6_5r8n1"]
 [ext_resource type="Script" path="res://scripts/turret/aiming.gd" id="7_8kmil"]
+[ext_resource type="PackedScene" uid="uid://byqbefkro26k" path="res://scenes/projectiles/laser/laser.tscn" id="7_o261j"]
 [ext_resource type="PackedScene" uid="uid://p5of0eh7hp6m" path="res://scripts/components/bullet_storage/ammo_magazine_component/ammo_magazine.tscn" id="8_tbida"]
 [ext_resource type="PackedScene" uid="uid://bdcu3imq3e6t1" path="res://scripts/components/health_component/health_component.tscn" id="9_h2e32"]
+[ext_resource type="PackedScene" uid="uid://qcr7vj3dow5y" path="res://scripts/components/bullet_storage/laser_storage_component/laser_storage_component.tscn" id="9_t2xwk"]
 [ext_resource type="PackedScene" uid="uid://nls03m7yaqpj" path="res://scripts/components/aiming/mouse_aiming_component/mouse_aiming_component.tscn" id="9_ttun8"]
 [ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://scripts/components/self_destruction_component/self_destruction_component.tscn" id="10_4mbsj"]
 
@@ -33,10 +35,6 @@ script = ExtResource("6_5r8n1")
 [node name="Aiming" type="Node" parent="StateMachine"]
 script = ExtResource("7_8kmil")
 
-[node name="AmmoMagazine" parent="." instance=ExtResource("8_tbida")]
-stored_bullet = ExtResource("4_mafdm")
-shoot_interval_sec = 0.25
-
 [node name="HealthComponent" parent="." instance=ExtResource("9_h2e32")]
 position = Vector2(-1, 56)
 scale = Vector2(1, 0.394105)
@@ -44,5 +42,15 @@ scale = Vector2(1, 0.394105)
 [node name="MouseAimingComponent" parent="." instance=ExtResource("9_ttun8")]
 
 [node name="SelfDestructionComponent" parent="." instance=ExtResource("10_4mbsj")]
+
+[node name="LaserStorageComponent" parent="." instance=ExtResource("9_t2xwk")]
+stored_bullet = ExtResource("7_o261j")
+capacity = 5
+start_ammo = 5
+load_time_sec = 2.0
+shoot_interval_sec = 0.25
+
+[node name="AmmoMagazine" parent="." instance=ExtResource("8_tbida")]
+stored_bullet = ExtResource("4_mafdm")
 
 [connection signal="hp_ran_out" from="HealthComponent" to="." method="_on_health_component_hp_ran_out"]
