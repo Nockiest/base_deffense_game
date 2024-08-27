@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1l6j3mk2joqe"]
-
-[ext_resource type="Script" path="res://scripts/components/aiming_components/aiming_component.gd" id="1_hnu8v"]
-
-[node name="AimingComponent" type="Node2D"]
-script = ExtResource("1_hnu8v")
