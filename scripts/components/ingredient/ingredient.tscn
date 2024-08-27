@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtdq6f3yh1xf1"]
+
+[ext_resource type="Script" path="res://scripts/components/ingredient/ingredient.gd" id="1_oi3ap"]
+
+[node name="Ingredient" type="Area2D"]
+script = ExtResource("1_oi3ap")
+
+[node name="Area2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]

@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://t6n6ewambkd0"]
 
-[ext_resource type="Script" path="res://scenes/enemies/basic_enemy.gd" id="1_6v72k"]
+[ext_resource type="Script" path="res://scripts/enemies/basic_enemy.gd" id="1_6v72k"]
 [ext_resource type="Shader" path="res://scenes/enemies/basic_enemy.gdshader" id="2_55cb4"]
 [ext_resource type="Texture2D" uid="uid://dm4o26ffnkchn" path="res://assets/red_box.jpeg" id="2_lga5a"]
-[ext_resource type="PackedScene" uid="uid://bdcu3imq3e6t1" path="res://shared/components/health_component/health_component.tscn" id="2_olrbd"]
-[ext_resource type="PackedScene" uid="uid://c3rhqdncy7nkq" path="res://shared/components/flicker_component/flicker_component.tscn" id="3_mfxui"]
-[ext_resource type="PackedScene" uid="uid://djape1yn3meth" path="res://shared/components/movement_component/movement-component.tscn" id="4_a30ae"]
-[ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://shared/components/self_destruction_component/self_destruction_component.tscn" id="5_y3vvn"]
-[ext_resource type="PackedScene" uid="uid://n4jgo8ducj5y" path="res://shared/components/melee_attack_component/melee_attack_component.tscn" id="7_8bsyt"]
-[ext_resource type="PackedScene" uid="uid://dkq7f5mbkd78b" path="res://shared/components/aiming_components/entity_aiming_component/entity_aiming_component.tscn" id="7_flvws"]
+[ext_resource type="PackedScene" uid="uid://bdcu3imq3e6t1" path="res://scripts/components/health_component/health_component.tscn" id="2_olrbd"]
+[ext_resource type="PackedScene" uid="uid://c3rhqdncy7nkq" path="res://scripts/components/flicker_component/flicker_component.tscn" id="3_mfxui"]
+[ext_resource type="PackedScene" uid="uid://djape1yn3meth" path="res://scripts/components/movement_component/movement-component.tscn" id="4_a30ae"]
+[ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://scripts/components/self_destruction_component/self_destruction_component.tscn" id="5_y3vvn"]
+[ext_resource type="PackedScene" uid="uid://n4jgo8ducj5y" path="res://scripts/components/melee_attack_component/melee_attack_component.tscn" id="7_8bsyt"]
+[ext_resource type="PackedScene" uid="uid://dkq7f5mbkd78b" path="res://scripts/components/aiming_components/entity_aiming_component/entity_aiming_component.tscn" id="7_flvws"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xy4k4"]
 shader = ExtResource("2_55cb4")

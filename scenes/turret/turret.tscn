@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://2icamt22lsy2"]
 
-[ext_resource type="Script" path="res://scenes/turret/turret.gd" id="1_xdj7m"]
+[ext_resource type="Script" path="res://scripts/turret/turret.gd" id="1_xdj7m"]
 [ext_resource type="Texture2D" uid="uid://ch4xo76r5jmrx" path="res://assets/icon.svg" id="3_uy220"]
 [ext_resource type="PackedScene" uid="uid://bjvr1segvh8bd" path="res://scenes/projectiles/bullet/bullet.tscn" id="4_mafdm"]
 [ext_resource type="Script" path="res://utils/state-machine/state-machine.gd" id="5_balcf"]
-[ext_resource type="Script" path="res://scenes/turret/idle.gd" id="6_5r8n1"]
-[ext_resource type="Script" path="res://scenes/turret/aiming.gd" id="7_8kmil"]
-[ext_resource type="PackedScene" uid="uid://p5of0eh7hp6m" path="res://shared/components/ammo_magazine_component/ammo_magazine.tscn" id="8_tbida"]
-[ext_resource type="PackedScene" uid="uid://bdcu3imq3e6t1" path="res://shared/components/health_component/health_component.tscn" id="9_h2e32"]
-[ext_resource type="PackedScene" uid="uid://nls03m7yaqpj" path="res://shared/components/aiming_components/mouse_aiming_component/mouse_aiming_component.tscn" id="9_ttun8"]
+[ext_resource type="Script" path="res://scripts/turret/idle.gd" id="6_5r8n1"]
+[ext_resource type="Script" path="res://scripts/turret/aiming.gd" id="7_8kmil"]
+[ext_resource type="PackedScene" uid="uid://p5of0eh7hp6m" path="res://scripts/components/ammo_magazine_component/ammo_magazine.tscn" id="8_tbida"]
+[ext_resource type="PackedScene" uid="uid://bdcu3imq3e6t1" path="res://scripts/components/health_component/health_component.tscn" id="9_h2e32"]
+[ext_resource type="PackedScene" uid="uid://nls03m7yaqpj" path="res://scripts/components/aiming_components/mouse_aiming_component/mouse_aiming_component.tscn" id="9_ttun8"]
 
 [node name="Turret" type="Node2D" node_paths=PackedStringArray("aiming_component", "ammo_magazine_component", "health_component") groups=["turrets"]]
 light_mask = 4

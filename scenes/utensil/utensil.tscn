@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dr4ifthybwtqi"]
 
 [ext_resource type="Script" path="res://scenes/utensil/utensil.gd" id="1_vwire"]
-[ext_resource type="PackedScene" uid="uid://cekbll0jp5ddf" path="res://shared/components/entity-container/object-container.tscn" id="2_n54ss"]
-[ext_resource type="PackedScene" uid="uid://c7pfeg6uypiit" path="res://shared/components/crafting_component/carfting_component.tscn" id="3_k24ts"]
+[ext_resource type="PackedScene" uid="uid://cekbll0jp5ddf" path="res://scripts/components/entity-container/object-container.tscn" id="2_n54ss"]
+[ext_resource type="PackedScene" uid="uid://c7pfeg6uypiit" path="res://scripts/components/crafting_component/carfting_component.tscn" id="3_k24ts"]
 [ext_resource type="Texture2D" uid="uid://ch4xo76r5jmrx" path="res://assets/icon.svg" id="4_t7m4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtm8m"]

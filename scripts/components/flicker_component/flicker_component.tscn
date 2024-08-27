@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3rhqdncy7nkq"]
+
+[ext_resource type="Script" path="res://scripts/components/flicker_component/flicker_component.gd" id="1_r0h2p"]
+
+[node name="FlickerComponent" type="Node2D"]
+script = ExtResource("1_r0h2p")
+
+[node name="FlashTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timeout"]

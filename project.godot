@@ -17,9 +17,9 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-Utils="*res://shared/utils/utils.gd"
-GridUtils="*res://shared/utils/grid-utils.gd"
-Globals="*res://shared/globals/globals.gd"
+Utils="*res://scripts/utils/utils.gd"
+GridUtils="*res://scripts/utils/grid-utils.gd"
+Globals="*res://scripts/globals/globals.gd"
 
 [editor_plugins]
 

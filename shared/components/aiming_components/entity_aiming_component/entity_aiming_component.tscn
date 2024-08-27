@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkq7f5mbkd78b"]
-
-[ext_resource type="Script" path="res://shared/components/aiming_components/entity_aiming_component/entity_aiming_component.gd" id="1_dwckl"]
-
-[node name="EntityAimingComponent" type="Node2D"]
-script = ExtResource("1_dwckl")
