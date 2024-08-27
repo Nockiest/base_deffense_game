@@ -1,5 +1,5 @@
 extends Area2D
-## TO DO thing about how to make differnt types of bullets
+## TO DO think about how to make differnt types of bullets
 class_name Bullet
 
 @export var movement_component: MomvementComponent 

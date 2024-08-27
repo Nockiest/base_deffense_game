@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://opfrimiyjvxy"]
+[gd_scene load_steps=3 format=3 uid="uid://opfrimiyjvxy"]
 
 [ext_resource type="Script" path="res://shared/components/damage_components/area_damage_component/area_damage_component.gd" id="1_evgwl"]
+[ext_resource type="PackedScene" uid="uid://b33lspjglp7x6" path="res://shared/components/area_of_effect_component/area_of_effect_component.tscn" id="2_yxwqr"]
 
-[node name="AreaDamageComponent" type="Node2D"]
+[node name="AreaDamageComponent" type="Node2D" node_paths=PackedStringArray("area_of_effect_component")]
 script = ExtResource("1_evgwl")
+damage_radius_px = null
+base_damage = null
+area_of_effect_component = NodePath("AreaOfEffectComponent")
+
+[node name="AreaOfEffectComponent" parent="." instance=ExtResource("2_yxwqr")]
