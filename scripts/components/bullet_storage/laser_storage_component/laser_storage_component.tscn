@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://qcr7vj3dow5y"]
+[gd_scene load_steps=7 format=3 uid="uid://qcr7vj3dow5y"]
 
 [ext_resource type="Script" path="res://scripts/components/bullet_storage/laser_storage_component/laser_storage_component.gd" id="1_kt8d4"]
+[ext_resource type="PackedScene" uid="uid://byqbefkro26k" path="res://scenes/projectiles/laser/laser.tscn" id="2_jdbtb"]
 [ext_resource type="Script" path="res://utils/state-machine/state-machine.gd" id="2_y0c84"]
 [ext_resource type="PackedScene" uid="uid://cpah7rdkrhdov" path="res://scenes/ui/remaining_bullets_bar/remaining_bullets_bar.tscn" id="3_50yp8"]
 [ext_resource type="Script" path="res://scripts/components/bullet_storage/laser_storage_component/idle.gd" id="3_agcit"]
@@ -8,6 +9,7 @@
 
 [node name="LaserStorageComponent" type="Node2D" node_paths=PackedStringArray("BulletsBar")]
 script = ExtResource("1_kt8d4")
+stored_bullet = ExtResource("2_jdbtb")
 BulletsBar = NodePath("RemainingBulletsBar")
 
 [node name="StateMachine" type="Node" parent="."]

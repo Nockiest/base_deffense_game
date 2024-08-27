@@ -33,7 +33,7 @@ func create_bullet(initial_rotation:float):
 	new_bullet_instance.global_position = owner.global_position
 	
 	# Calculate the bullet's direction based on the turret's rotation
-	var bullet_direction = Vector2(cos(initial_rotation - deg_to_rad(90)), sin(initial_rotation - deg_to_rad(90)))
+	var bullet_direction = Utils.direction_from_rotation(initial_rotation)#Vector2(cos(initial_rotation - deg_to_rad(90)), sin(initial_rotation - deg_to_rad(90)))
 	print(bullet_direction)
 	
 	# Set the direction for the bullet's movement

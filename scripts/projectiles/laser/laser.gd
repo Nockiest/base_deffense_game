@@ -2,9 +2,14 @@ class_name Laser
 extends Projectile
 
 @export var damage_deal_component: DamageDealComponent
-@export var range_px: int = 100
-
-var raycast: RayCast2D
+@export var range_px: int = 100:
+	set(value):
+		range_px = value
+		#raycast = $RayCast2D
+		#raycast.target_position = Vector2(0,0) * range_px
+		
+@onready var raycast: RayCast2D = $RayCast2D 
+	
 
 func _ready() -> void:
 	raycast = $RayCast2D
@@ -21,10 +26,11 @@ func _process(_delta: float) -> void:
 				damage_deal_component.deal_damage(target, ['enemies'])  # Pass an empty group list if not needed
 
 func set_direction(new_direction: Vector2) -> void:
+	raycast = $RayCast2D
 	if raycast:
 		# Update the RayCast2D's direction and range
-		raycast.cast_to = new_direction.normalized() * range_px
-		print("RayCast2D target position set to:", raycast.cast_to)
+		raycast.target_position = new_direction * range_px
+		print("RayCast2D target position set to:", raycast.target_position)
 	else:
 		print("RayCast2D node not found")
 

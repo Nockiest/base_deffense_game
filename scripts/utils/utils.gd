@@ -217,6 +217,9 @@ func find_ancestor_by_factor(x: int, node: Node) -> Node:
 			break
 
 	return current_node
+	
+func direction_from_rotation(rotation:float)->Vector2:
+	return Vector2(cos(rotation - deg_to_rad(90)), sin(rotation - deg_to_rad(90)))
 # sadly not working
 #func find_ancestor_by_class(name_of_class: String, node: Node) -> Node:
 #	var current_node = node
