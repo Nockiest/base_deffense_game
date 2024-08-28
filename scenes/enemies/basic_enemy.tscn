@@ -37,11 +37,6 @@ texture = ExtResource("2_lga5a")
 [node name="HealthComponent" parent="." instance=ExtResource("2_olrbd")]
 position = Vector2(0, 40)
 scale = Vector2(1, 0.457207)
-max_hp = null
-start_hp = null
-max_shields = null
-start_shields = null
-regeneration_per_call = null
 
 [node name="MovementComponent" parent="." instance=ExtResource("4_a30ae")]
 speed_px_sec = 50.0

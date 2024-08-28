@@ -6,7 +6,7 @@ extends DamageDealComponent
  
 
 # TO DO add checks for aoe damage
-func deal_damage(reciever, damagable_object_groups: Array,center_position: Vector2 = self.global_position):
+func deal_damage(reciever, _damagable_object_groups: Array,_center_position: Vector2 = self.global_position):
 	#func _on_attack_timeout() -> void:
 	## This function is called when the attack delay timer times out
 	if not is_instance_valid(reciever):

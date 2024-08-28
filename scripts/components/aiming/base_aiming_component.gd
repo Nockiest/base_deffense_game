@@ -12,7 +12,7 @@ func _ready() -> void:
 	update_target_position()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_target_position()
 
 # Function to be overridden by subclasses to update the target position

@@ -2,7 +2,7 @@ extends State
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if owner.aiming_component:
 		# Get the position of the turret
 		var turret_position = owner.global_position

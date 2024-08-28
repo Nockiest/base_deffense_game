@@ -6,13 +6,13 @@ extends Node2D
 func _ready() -> void:
 	add_to_group("projectiles")
 # Set the direction for the bullet and immediately update its velocity
-func set_direction(new_direction: Vector2) -> void:
+func set_direction(_new_direction: Vector2) -> void:
 	printerr("dont have fce for setting direction in this comp", owner)
 	# Update the movement component's direction
 	#if movement_component:
 		#movement_component.direction = new_direction.normalized()
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	printerr("dindt set on area enetered fce for projectile", owner)
 	#print(area)
 	#damage_deal_component.deal_damage(area, ['enemies', "turrets"])

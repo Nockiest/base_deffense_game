@@ -57,17 +57,17 @@ func can_apply_on_node(node: Node) -> bool:
 
 func apply_to_entity(entity: Node) -> void:
 	# Check if the entity is valid and has an EffectHoldComponent
-	print ('1',entity, can_apply_on_node(entity))
+	#print ('1',entity, can_apply_on_node(entity))
 	if can_apply_on_node(entity):
 		# Add the effect to the EffectHoldComponent of the entity
 		entity.get_node("EffectHoldComponent").add_effect(self.duplicate())
 		
 		# Iterate through the allowed types and apply the effect to matching nodes
 	for type in allowed_types:
-		print_debug('2', type, entity.has_node(type))
+		#print_debug('2', type, entity.has_node(type))
 		if entity.has_node(type):
 			var entity_module = entity.get_node(type)
-			print_debug('3',entity_module, can_apply_on_node(entity_module))
+			#print_debug('3',entity_module, can_apply_on_node(entity_module))
 			# Ensure the entity module is valid and has an EffectHoldComponent
 			if can_apply_on_node(entity_module):
 				# Create a copy of the current effect

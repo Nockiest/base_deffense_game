@@ -48,6 +48,7 @@ speed_px_sec = 200.0
 
 [node name="AreaDamageComponent" parent="." instance=ExtResource("5_nrjd1")]
 damage_radius_px = 1000.0
+base_damage = 1.0
 
 [node name="SingleDamage" parent="." instance=ExtResource("6_eifrs")]
 

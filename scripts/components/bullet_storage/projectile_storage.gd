@@ -12,13 +12,13 @@ extends Node2D
 var current_ammo: int: 
 	set(value):
 		current_ammo = value
-		BulletsBar.change_value(value)
+		BulletsBar.change_value(value, capacity)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_ammo = start_ammo
 	
  
-func fire_bullet(initial_rotation:float):
+func fire_bullet(_initial_rotation:float):
 	pass
 ## Current ammo count
 #var current_ammo: int: 

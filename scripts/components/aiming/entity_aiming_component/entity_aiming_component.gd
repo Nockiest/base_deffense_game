@@ -3,16 +3,16 @@ extends AimingComponent
 
 ## TO DO make it an array
 @export var enemy_group: String    # Group name for enemies
+signal target_changed(target: Node2D)
 
 # Variable to store the currently aimed-at enemy
 var current_target: Node2D = null:
 	set(value):
 		if current_target != value:
 			current_target = value
-			emit_signal("target_changed", value)
+			target_changed.emit(value)
 
 
-signal target_changed(target: Node2D)
 # Override to update the target position to the nearest enemy's position
 
 func update_target_position() -> void:

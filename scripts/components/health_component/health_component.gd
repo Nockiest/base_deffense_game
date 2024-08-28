@@ -16,7 +16,7 @@ func get_type_name():
 
 signal hp_ran_out()
 signal health_stat_changed(current_hp, current_shields)
-signal shields_ran_out()
+#signal shields_ran_out()
 
 # Define the current HP and shields with setter functions
 var current_hp: float = 0.0:
@@ -24,8 +24,9 @@ var current_hp: float = 0.0:
 		current_hp = clamp(new_hp, 0, max_hp)  # Use clamp() instead of clampi() for float values
 		update_progress_bars()  # Update shield bar when value changes
 		if current_hp <= 0:
-			emit_signal("hp_ran_out")
-		emit_signal("health_stat_changed", current_hp, current_shields)
+			hp_ran_out.emit()
+		health_stat_changed.emit(current_hp, current_shields)
+		#emit_signal("health_stat_changed", current_hp, current_shields)
 		print("Current health is", current_hp)
 
 var current_shields: float = 0.0:
@@ -34,7 +35,8 @@ var current_shields: float = 0.0:
 		update_progress_bars()  # Update shield bar when value changes
 		if current_shields <= 0:
 			emit_signal("shields_ran_out")
-		emit_signal("health_stat_changed", current_hp, current_shields)
+		health_stat_changed.emit(current_hp, current_shields)
+		#emit_signal("health_stat_changed", current_hp, current_shields)
 		print("Current shields are", current_shields)
 
 # Called every frame. '_delta' is the elapsed time since the previous frame.
@@ -73,5 +75,5 @@ func _ready() -> void:
 	current_shields = start_shields
 	update_progress_bars()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
