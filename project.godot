@@ -25,6 +25,16 @@ Globals="*res://scripts/globals/globals.gd"
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "yellow",
+"res://screens/": "gray",
+"res://scripts/": "purple",
+"res://scripts/__tests__/": "red",
+"res://utils/": "pink"
+}
+
 [global_group]
 
 projectiles=""

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/projectiles/bullet/bullet.gd" id="1_2qxcl"]
 [ext_resource type="Script" path="res://scenes/projectiles/bullet/color_rect.gd" id="1_5iuyv"]
 [ext_resource type="PackedScene" uid="uid://djape1yn3meth" path="res://scripts/components/movement/movement-component.tscn" id="4_8qh8m"]
-[ext_resource type="PackedScene" uid="uid://opfrimiyjvxy" path="res://scripts/components/damage/area_damage_component/area_damage_component.tscn" id="5_nrjd1"]
+[ext_resource type="PackedScene" uid="uid://opfrimiyjvxy" path="res://scripts/components/damage_deal/area_damage_component/area_damage_component.tscn" id="5_nrjd1"]
 [ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://scripts/components/self_destruction_component/self_destruction_component.tscn" id="5_q365e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n45sy"]
@@ -14,10 +14,10 @@ size = Vector2(40, 40)
 [node name="Bullet" type="Area2D" node_paths=PackedStringArray("movement_component", "damage_deal_component", "self_destruction_component")]
 collision_mask = 6
 script = ExtResource("1_2qxcl")
-max_pierced_entities = 2
 movement_component = NodePath("MovementComponent")
 damage_deal_component = NodePath("AreaDamageComponent")
 self_destruction_component = NodePath("SelfDestructionComponent")
+max_pierced_entities = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 

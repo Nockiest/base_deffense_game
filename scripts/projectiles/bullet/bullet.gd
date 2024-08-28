@@ -1,7 +1,7 @@
 extends Projectile
 class_name Bullet
 
-@export var movement_component: MomvementComponent 
+@export var movement_component: MovementComponent 
 @export var damage_deal_component: DamageDealComponent
 @export var self_destruction_component: SelfDestructionComponent
 

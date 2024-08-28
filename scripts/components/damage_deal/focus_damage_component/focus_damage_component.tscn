@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dxv80whqf5avd"]
 
-[ext_resource type="Script" path="res://scripts/components/damage/focus_damage_component/focus_damage_component.gd" id="1_btasa"]
+[ext_resource type="Script" path="res://scripts/components/damage_deal/focus_damage_component/focus_damage_component.gd" id="1_btasa"]
 [ext_resource type="Script" path="res://utils/state-machine/state-machine.gd" id="2_v3ipr"]
-[ext_resource type="Script" path="res://scripts/components/damage/focus_damage_component/idle.gd" id="3_deeas"]
-[ext_resource type="Script" path="res://scripts/components/damage/focus_damage_component/focused.gd" id="4_85hex"]
+[ext_resource type="Script" path="res://scripts/components/damage_deal/focus_damage_component/idle.gd" id="3_deeas"]
+[ext_resource type="Script" path="res://scripts/components/damage_deal/focus_damage_component/focused.gd" id="4_85hex"]
 
 [node name="FocusDamageComponent" type="Node2D"]
 script = ExtResource("1_btasa")

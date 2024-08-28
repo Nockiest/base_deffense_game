@@ -1,6 +1,8 @@
 class_name HealthComponent
-extends Node2D
+extends ModClass
 
+func get_type_name():
+	return 'HealthComponent'
 @export var max_hp: float = 1
 @export var start_hp: float = 1
 @export var max_shields: float = 1
@@ -9,6 +11,8 @@ extends Node2D
 
 @export var health_bar: ProgressBar  # Reference to the health ProgressBar
 @export var shield_bar: ProgressBar   # Reference to the shield ProgressBar
+@export var effect_holder: EffectHoldComponent  
+
 
 signal hp_ran_out()
 signal health_stat_changed(current_hp, current_shields)
@@ -68,3 +72,6 @@ func _ready() -> void:
 	current_hp = start_hp
 	current_shields = start_shields
 	update_progress_bars()
+	
+func _process(delta: float) -> void:
+	pass

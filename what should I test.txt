@@ -1,5 +1,4 @@
 if turret moves to target pos
-if enemy moves in a desired location
 if melee component attacks turret properly
 if ammo comp creates a bullet
 if ammo comp counts bullets properly

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://byqbefkro26k"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/laser/laser.gd" id="1_47828"]
-[ext_resource type="PackedScene" uid="uid://dxv80whqf5avd" path="res://scripts/components/damage/focus_damage_component/focus_damage_component.tscn" id="2_byvo4"]
+[ext_resource type="PackedScene" uid="uid://dxv80whqf5avd" path="res://scripts/components/damage_deal/focus_damage_component/focus_damage_component.tscn" id="2_byvo4"]
 
 [node name="Laser" type="RayCast2D" node_paths=PackedStringArray("damage_deal_component")]
 enabled = false

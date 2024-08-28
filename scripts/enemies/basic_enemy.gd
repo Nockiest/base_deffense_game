@@ -3,7 +3,7 @@ extends Area2D
 class_name Enemy
 
 @export var health_component: HealthComponent
-@export var movement_component: MomvementComponent
+@export var movement_component: MovementComponent
 @export var self_destruction_component: SelfDestructionComponent
 @export var aiming_component: AimingComponent  # Reference to the AimingComponent
 @export var melee_attack_component: MeleeAttackComponent  # Reference to the AimingComponent
