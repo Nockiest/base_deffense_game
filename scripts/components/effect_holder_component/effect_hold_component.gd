@@ -7,7 +7,7 @@ extends Node2D
 func add_effect(effect: BaseEffect) -> void:
 	if effect and effect not in get_children():
 		add_child(effect)
-		print("Effect added:", effect.name)
+		print("Effect added:", owner, effect.name)
 	else:
 		Utils.print_spaced(["Effect already exists or is invalid:", effect, owner])
 

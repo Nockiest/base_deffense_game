@@ -9,17 +9,19 @@ var effect_hold_component_invalid: EffectHoldComponent
 
 func before_each() -> void:
 	# Initialize the effect and set allowed classes
-	effect = BaseEffect.new()
-	effect.effect_type = BaseEffect.EFFECT_TYPE.EFFECT_PER_SECOND
-	effect.effect_interval = 1.0  # Set interval for per-second effect
-	effect.duration = 5.0  # Set effect duration
-	effect.allowed_types = [ 'HealthComponent' ]  # Specify allowed class names for the effect
+	effect = Test.instantiate_effect([ 'HealthComponent' ])
+	#effect = BaseEffect.new()
+	#effect.effect_type = EffectTypes.EFFECT_TYPE.EFFECT_PER_SECOND
+	#effect.effect_interval = 1.0  # Set interval for per-second effect
+	#effect.duration = 5.0  # Set effect duration
+	#effect.allowed_types = [ 'HealthComponent' ]  # Specify allowed class names for the effect
 
 	# Create a valid entity with an EffectHoldComponent and a matching script class
-	var health_component_scene = preload("res://scripts/components/health_component/health_component.tscn")  # Replace with your actual path
-	valid_entity = health_component_scene.instantiate()
-	valid_entity.set_script(preload("res://scripts/components/health_component/health_component.gd"))  # Mock script class name: "ValidClass"
-	print(effect_hold_component_valid,valid_entity.get_children())
+	valid_entity = Test.instantiate_health_comp()
+	#var health_component_scene = preload("res://scripts/components/health_component/health_component.tscn")  # Replace with your actual path
+	#valid_entity = health_component_scene.instantiate()
+	#valid_entity.set_script(preload("res://scripts/components/health_component/health_component.gd"))  # Mock script class name: "ValidClass"
+	#print(effect_hold_component_valid,valid_entity.get_children())
 	
 	effect_hold_component_valid = valid_entity.get_node('EffectHoldComponent')
 	#EffectHoldComponent.new()
@@ -51,7 +53,7 @@ func test_apply_to_invalid_entity() -> void:
 
 func test_one_shot_effect() -> void:
 	# Test if a one-shot effect triggers correctly and then is removed
-	effect.effect_type = BaseEffect.EFFECT_TYPE.ONE_SHOT
+	effect.effect_type = EffectTypes.EFFECT_TYPE.ONE_SHOT
 	effect.apply_to_entity(valid_entity)
 	assert_true(effect in effect_hold_component_valid.get_children(), "One-shot effect should be triggered")
 	valid_entity._process(0.1)
@@ -60,7 +62,7 @@ func test_one_shot_effect() -> void:
 
 func test_per_second_effect() -> void:
 	# Test if a per-second effect triggers repeatedly
-	effect.effect_type = BaseEffect.EFFECT_TYPE.EFFECT_PER_SECOND
+	effect.effect_type = EffectTypes.EFFECT_TYPE.EFFECT_PER_SECOND
 	effect.effect_interval = 0.1
 	effect.apply_to_entity(valid_entity)
 	await get_tree().create_timer(0.2).timeout  # Wait for the effect to trigger multiple times
@@ -78,7 +80,7 @@ func test_per_second_effect() -> void:
 	#return false
 func test_on_and_off_effect() -> void:
 	# Test if an on-and-off effect triggers correctly and is removed after the duration
-	effect.effect_type = BaseEffect.EFFECT_TYPE.ON_AND_OFF
+	effect.effect_type = EffectTypes.EFFECT_TYPE.ON_AND_OFF
 	effect.duration = 0.3
 	effect.apply_to_entity(valid_entity)
 	print(effect_hold_component_valid.get_children())

@@ -20,6 +20,7 @@ config/icon="res://assets/icon.svg"
 Utils="*res://scripts/utils/utils.gd"
 GridUtils="*res://scripts/utils/grid-utils.gd"
 Globals="*res://scripts/globals/globals.gd"
+Test="*res://utils/test_utils/test_instantiation.gd"
 
 [editor_plugins]
 
@@ -32,7 +33,8 @@ folder_colors={
 "res://screens/": "gray",
 "res://scripts/": "purple",
 "res://scripts/__tests__/": "red",
-"res://utils/": "pink"
+"res://utils/": "pink",
+"res://utils/test_utils/": "red"
 }
 
 [global_group]

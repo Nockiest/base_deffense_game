@@ -1,5 +1,5 @@
 class_name HealthComponent
-extends ModClass
+extends NodeModClass
 
 func get_type_name():
 	return 'HealthComponent'

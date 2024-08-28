@@ -18,7 +18,6 @@ signal target_changed(target: Node2D)
 func update_target_position() -> void:
 	current_target = get_nearest_enemy()
 	if current_target and is_instance_valid(current_target):
-		print(current_target)
 		target_position = current_target.global_position
 	else:
 		target_position = owner.global_position

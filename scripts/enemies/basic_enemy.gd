@@ -1,6 +1,7 @@
-extends Area2D
-
+extends AreaModClass
 class_name Enemy
+func get_type_name():
+	return 'Enemy'
 
 @export var health_component: HealthComponent
 @export var movement_component: MovementComponent
@@ -13,7 +14,6 @@ func _process(delta: float) -> void:
 	if aiming_component and movement_component:
 		# Get the target position from the AimingComponent
 		var target_position = aiming_component.target_position
-		print(target_position)
 		# Calculate the direction vector from the Enemy to the target position
 		var direction = (target_position - global_position).normalized()
 

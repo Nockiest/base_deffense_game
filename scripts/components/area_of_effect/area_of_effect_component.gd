@@ -12,7 +12,6 @@ func apply_area_effect(effect_function: Callable, target_groups: Array[String], 
 
 	for group_name in target_groups:
 		var entities = get_tree().get_nodes_in_group(group_name)
-		#print('entities', entities)
 		if len(entities) == 0:
 			printerr('No entities in group', group_name, owner)
 			continue

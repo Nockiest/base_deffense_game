@@ -1,23 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjvr1segvh8bd"]
+[gd_scene load_steps=9 format=3 uid="uid://bjvr1segvh8bd"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/bullet/bullet.gd" id="1_2qxcl"]
 [ext_resource type="Script" path="res://scenes/projectiles/bullet/color_rect.gd" id="1_5iuyv"]
 [ext_resource type="PackedScene" uid="uid://djape1yn3meth" path="res://scripts/components/movement/movement-component.tscn" id="4_8qh8m"]
 [ext_resource type="PackedScene" uid="uid://opfrimiyjvxy" path="res://scripts/components/damage_deal/area_damage_component/area_damage_component.tscn" id="5_nrjd1"]
 [ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://scripts/components/self_destruction_component/self_destruction_component.tscn" id="5_q365e"]
+[ext_resource type="PackedScene" uid="uid://mg22vpcew01o" path="res://scenes/effects/single_damage/single_damage.tscn" id="6_eifrs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n45sy"]
 size = Vector2(40, 40)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_80uuc"]
 
-[node name="Bullet" type="Area2D" node_paths=PackedStringArray("movement_component", "damage_deal_component", "self_destruction_component")]
-collision_mask = 6
+[node name="TurretBullet" type="Area2D" node_paths=PackedStringArray("movement_component", "damage_deal_component", "self_destruction_component", "effects")]
+collision_mask = 2
 script = ExtResource("1_2qxcl")
 movement_component = NodePath("MovementComponent")
 damage_deal_component = NodePath("AreaDamageComponent")
 self_destruction_component = NodePath("SelfDestructionComponent")
 max_pierced_entities = 2
+effects = [NodePath("SingleDamage")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
@@ -46,5 +48,7 @@ speed_px_sec = 200.0
 
 [node name="AreaDamageComponent" parent="." instance=ExtResource("5_nrjd1")]
 damage_radius_px = 1000.0
+
+[node name="SingleDamage" parent="." instance=ExtResource("6_eifrs")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

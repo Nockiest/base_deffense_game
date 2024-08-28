@@ -7,8 +7,6 @@ extends DamageDealComponent
 var focus_time: float = 0.0  # Initialize focus time
 var damaged_entity: Node = null:
 	set(value):  
-		print(value, value != damaged_entity)
-		
 		if value != damaged_entity:
 			damaged_entity = value
 			$state_machine.state.handle_entity_change(damaged_entity)
