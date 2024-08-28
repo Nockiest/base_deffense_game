@@ -14,7 +14,7 @@
 position = Vector2(100, 119)
 
 [node name="BasicEnemy2" parent="Enemies" instance=ExtResource("1_67okx")]
-position = Vector2(86, 235)
+position = Vector2(205, 164)
 
 [node name="DebugWindow" parent="." instance=ExtResource("1_s2ndp")]
 

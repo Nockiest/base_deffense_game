@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://t6n6ewambkd0"]
+[gd_scene load_steps=13 format=3 uid="uid://t6n6ewambkd0"]
 
 [ext_resource type="Script" path="res://scripts/enemies/basic_enemy.gd" id="1_6v72k"]
 [ext_resource type="Shader" path="res://scenes/enemies/basic_enemy.gdshader" id="2_55cb4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://scripts/components/self_destruction_component/self_destruction_component.tscn" id="5_y3vvn"]
 [ext_resource type="PackedScene" uid="uid://n4jgo8ducj5y" path="res://scripts/components/melee_attack/melee_attack_component.tscn" id="7_8bsyt"]
 [ext_resource type="PackedScene" uid="uid://dkq7f5mbkd78b" path="res://scripts/components/aiming/entity_aiming_component/entity_aiming_component.tscn" id="7_flvws"]
+[ext_resource type="PackedScene" uid="uid://bli7k15t8yntj" path="res://scripts/components/effect_holder_component/effect_hold_component.tscn" id="10_nw3ah"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xy4k4"]
 shader = ExtResource("2_55cb4")
@@ -36,8 +37,6 @@ texture = ExtResource("2_lga5a")
 [node name="HealthComponent" parent="." instance=ExtResource("2_olrbd")]
 position = Vector2(0, 40)
 scale = Vector2(1, 0.457207)
-max_hp = 4
-start_shields = 0
 
 [node name="MovementComponent" parent="." instance=ExtResource("4_a30ae")]
 speed_px_sec = 50.0
@@ -57,6 +56,8 @@ enemy_group = "turrets"
 position = Vector2(2.16961e-05, 0.500005)
 scale = Vector2(0.32, 0.565476)
 flash_duration_sec = 2.0
+
+[node name="EffectHoldComponent" parent="." instance=ExtResource("10_nw3ah")]
 
 [connection signal="health_stat_changed" from="HealthComponent" to="." method="_on_health_component_health_stat_changed"]
 [connection signal="hp_ran_out" from="HealthComponent" to="." method="_on_health_component_hp_ran_out"]

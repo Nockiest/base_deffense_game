@@ -35,10 +35,6 @@ func get_nearest_enemy() -> Node2D:
 
 	for enemy in enemies:
 		if enemy is Node2D:
-			# Check if the enemy node is still in the scene tree
-			if not enemy.is_inside_tree() or not is_instance_valid(enemy):
-				continue
-
 			var distance = global_position.distance_to(enemy.global_position)
 			if distance < nearest_distance:
 				nearest_distance = distance

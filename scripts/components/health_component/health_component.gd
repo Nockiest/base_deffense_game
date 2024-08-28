@@ -15,40 +15,37 @@ signal health_stat_changed(current_hp, current_shields)
 signal shields_ran_out()
 
 # Define the current HP and shields with setter functions
-var current_hp: float = start_hp:
+var current_hp: float = 0.0:
 	set(new_hp):
-		current_hp = clampi(new_hp, 0, max_hp)
+		current_hp = clamp(new_hp, 0, max_hp)  # Use clamp() instead of clampi() for float values
 		update_progress_bars()  # Update shield bar when value changes
-		if new_hp <= 0:
+		if current_hp <= 0:
 			emit_signal("hp_ran_out")
 		emit_signal("health_stat_changed", current_hp, current_shields)
-		print("current health is", current_hp)
+		print("Current health is", current_hp)
 
-var current_shields: float = start_shields:
+var current_shields: float = 0.0:
 	set(new_shields):
-		current_shields = clampi(new_shields, 0, max_shields)
+		current_shields = clamp(new_shields, 0, max_shields)  # Use clamp() instead of clampi() for float values
 		update_progress_bars()  # Update shield bar when value changes
-		if new_shields <= 0:
+		if current_shields <= 0:
 			emit_signal("shields_ran_out")
 		emit_signal("health_stat_changed", current_hp, current_shields)
-		print("current shields are", current_shields)
+		print("Current shields are", current_shields)
 
 # Called every frame. '_delta' is the elapsed time since the previous frame.
 func take_hit(dmg: float) -> void:
-	print(owner, ' took hit', dmg, current_hp, current_shields)
+	print(owner, " took hit:", dmg, " HP:", current_hp, " Shields:", current_shields)
 	if current_shields > 0:
-		# If there are shields, subtract damage from shields
 		current_shields -= dmg
 	else:
-		# If no shields, subtract damage from health
 		current_hp -= dmg
-		# Check if health ran out
 
 func take_armor_piercing_damage(dmg: float) -> void:
 	current_hp -= dmg
 
 func regenerate(amount: float = regeneration_per_call) -> void:
-	current_hp = clampi(current_hp + amount, 0, max_hp)
+	current_hp = clamp(current_hp + amount, 0, max_hp)
 
 # Update functions for ProgressBars
 func update_progress_bars() -> void:
@@ -60,13 +57,14 @@ func update_progress_bars() -> void:
 		shield_bar.max_value = max_shields
 
 # Add functions to retrieve current health and shields if needed
-func get_current_health() -> int:
+func get_current_health() -> float:
 	return current_hp
 	
-func get_current_shields() -> int:
+func get_current_shields() -> float:
 	return current_shields
 
 func _ready() -> void:
+	# Properly initialize current_hp and current_shields
+	current_hp = start_hp
+	current_shields = start_shields
 	update_progress_bars()
-
- 

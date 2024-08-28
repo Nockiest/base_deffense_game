@@ -17,7 +17,7 @@ light_mask = 4
 visibility_layer = 15
 script = ExtResource("1_xdj7m")
 aiming_component = NodePath("MouseAimingComponent")
-ammo_magazine_component = NodePath("LaserStorageComponent")
+ammo_magazine_component = NodePath("AmmoMagazine")
 health_component = NodePath("HealthComponent")
 self_destruction_component = NodePath("SelfDestructionComponent")
 

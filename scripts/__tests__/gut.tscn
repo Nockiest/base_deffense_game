@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmft4mla4ts8t"]
+
+[ext_resource type="Script" path="res://scripts/__tests__/test_gut_test.gd" id="1_71pww"]
+
+[node name="Gut" type="Node"]
+
+[node name="GutTest" type="Node" parent="."]
+script = ExtResource("1_71pww")

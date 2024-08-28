@@ -23,7 +23,7 @@ Globals="*res://scripts/globals/globals.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdscript_formatter/plugin.cfg")
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
 [global_group]
 

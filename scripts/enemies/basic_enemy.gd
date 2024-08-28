@@ -7,8 +7,7 @@ class_name Enemy
 @export var self_destruction_component: SelfDestructionComponent
 @export var aiming_component: AimingComponent  # Reference to the AimingComponent
 @export var melee_attack_component: MeleeAttackComponent  # Reference to the AimingComponent
-#@export var flicker_effect_component: FlickerEffectComponent  # Reference to the AimingComponent
- 
+@export var effect_hold_component: EffectHoldComponent # Reference to the AimingComponent
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if aiming_component and movement_component:
