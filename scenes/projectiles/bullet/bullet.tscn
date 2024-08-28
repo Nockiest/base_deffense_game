@@ -14,10 +14,10 @@ size = Vector2(40, 40)
 [node name="Bullet" type="Area2D" node_paths=PackedStringArray("movement_component", "damage_deal_component", "self_destruction_component")]
 collision_mask = 6
 script = ExtResource("1_2qxcl")
+max_pierced_entities = 2
 movement_component = NodePath("MovementComponent")
 damage_deal_component = NodePath("AreaDamageComponent")
 self_destruction_component = NodePath("SelfDestructionComponent")
-max_pierced_entities = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
