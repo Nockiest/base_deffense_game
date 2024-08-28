@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjvr1segvh8bd"]
+[gd_scene load_steps=10 format=3 uid="uid://bjvr1segvh8bd"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/bullet/bullet.gd" id="1_2qxcl"]
 [ext_resource type="Script" path="res://scenes/projectiles/bullet/color_rect.gd" id="1_5iuyv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://opfrimiyjvxy" path="res://scripts/components/damage_deal/area_damage_component/area_damage_component.tscn" id="5_nrjd1"]
 [ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://scripts/components/self_destruction_component/self_destruction_component.tscn" id="5_q365e"]
 [ext_resource type="PackedScene" uid="uid://mg22vpcew01o" path="res://scenes/effects/single_damage/single_damage.tscn" id="6_eifrs"]
+[ext_resource type="PackedScene" uid="uid://m2l1ves4ob85" path="res://scenes/effects/fire_effect/fire_effect.tscn" id="7_oeqkb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n45sy"]
 size = Vector2(40, 40)
@@ -48,8 +49,10 @@ speed_px_sec = 200.0
 
 [node name="AreaDamageComponent" parent="." instance=ExtResource("5_nrjd1")]
 damage_radius_px = 1000.0
-base_damage = 1.0
 
 [node name="SingleDamage" parent="." instance=ExtResource("6_eifrs")]
+
+[node name="FireEffect" parent="." instance=ExtResource("7_oeqkb")]
+effect_type = 1
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

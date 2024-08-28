@@ -1,10 +1,12 @@
 class_name BaseEffect
-extends Node
+extends NodeModClass
 
+func get_type_name():
+	return "BaseEffect"
  
 @export var effect_type: EffectTypes.EFFECT_TYPE= EffectTypes.EFFECT_TYPE.ONE_SHOT
 @export var effect_interval: float = 1.0  # Interval in seconds for per-second effect
-@export var duration: float = 5.0  # Total duration for the effect
+@export var duration_sec: float = 5.0  # Total duration for the effect
 
 @export var allowed_types: Array[String] = ['HealthComponent']  # List of script class names this effect can be applied to
 
@@ -15,7 +17,7 @@ var effect_timer: Timer = Timer.new()  # Timer for ON_AND_OFF effects
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if effect_type == EffectTypes.EFFECT_TYPE.ON_AND_OFF:
-		effect_timer.wait_time = duration
+		effect_timer.wait_time = duration_sec
 		effect_timer.one_shot = true
 		effect_timer.connect("timeout",  _on_effect_timeout )
 		add_child(effect_timer)
@@ -61,7 +63,6 @@ func apply_to_entity(entity: Node) -> void:
 	if can_apply_on_node(entity):
 		# Add the effect to the EffectHoldComponent of the entity
 		entity.get_node("EffectHoldComponent").add_effect(self.duplicate())
-		
 		# Iterate through the allowed types and apply the effect to matching nodes
 	for type in allowed_types:
 		#print_debug('2', type, entity.has_node(type))
@@ -76,6 +77,9 @@ func apply_to_entity(entity: Node) -> void:
 				entity_module.get_node("EffectHoldComponent").add_effect(effect_copy)
 				effect_copy.owner = entity_module
 				effect_copy.cause_start_effect()
+				
+				if effect_type == EffectTypes.EFFECT_TYPE.ONE_SHOT:
+					effect_copy.queue_free()
 				# Start the effect if it's an ON_AND_OFF type
 				if effect_type == EffectTypes.EFFECT_TYPE.ON_AND_OFF:
 					effect_copy.effect_timer.start()

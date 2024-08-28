@@ -1,22 +1,20 @@
 class_name  FireEffect
 extends  BaseEffect
+func get_type_name():
+	return "FireEffect"
  
 @export var fire_damage_sec:= 1
 @export var effect_duration_sec:= 3
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+ 
+func _deal_damage(dmg:float= fire_damage_sec):
+	if owner == null or !owner.has_method("take_hit"):
+		printerr("cant deal dmg to owner", self, owner)
+		return
+	owner.take_hit(dmg)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func cause_effect():
-	if owner.health_component:
-		owner.health_component.take_hit()
-
+func cause_per_second_effect():
+	_deal_damage()
 	
 #func end_effect():
 

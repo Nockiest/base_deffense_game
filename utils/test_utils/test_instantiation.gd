@@ -12,7 +12,7 @@ static func instantiate_effect(effect_allowed_types: Array[String]) -> BaseEffec
 	var effect = BaseEffect.new()
 	effect.effect_type = EffectTypes.EFFECT_TYPE.EFFECT_PER_SECOND
 	effect.effect_interval = 1.0  # Set interval for per-second effect
-	effect.duration = 5.0  # Set effect duration
+	effect.duration_sec = 5.0  # Set effect 
 	effect.allowed_types = effect_allowed_types # Specify allowed class names for the effect
 	return effect
 

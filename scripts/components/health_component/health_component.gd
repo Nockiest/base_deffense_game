@@ -16,7 +16,7 @@ func get_type_name():
 
 signal hp_ran_out()
 signal health_stat_changed(current_hp, current_shields)
-#signal shields_ran_out()
+signal shields_ran_out()
 
 # Define the current HP and shields with setter functions
 var current_hp: float = 0.0:
@@ -34,18 +34,19 @@ var current_shields: float = 0.0:
 		current_shields = clamp(new_shields, 0, max_shields)  # Use clamp() instead of clampi() for float values
 		update_progress_bars()  # Update shield bar when value changes
 		if current_shields <= 0:
-			emit_signal("shields_ran_out")
+			shields_ran_out.emit() 
 		health_stat_changed.emit(current_hp, current_shields)
 		#emit_signal("health_stat_changed", current_hp, current_shields)
 		print("Current shields are", current_shields)
 
 # Called every frame. '_delta' is the elapsed time since the previous frame.
 func take_hit(dmg: float) -> void:
-	print(owner, " took hit:", dmg, " HP:", current_hp, " Shields:", current_shields)
 	if current_shields > 0:
 		current_shields -= dmg
 	else:
 		current_hp -= dmg
+	print(owner, " took hit:", dmg, " HP:", current_hp, " Shields:", current_shields)
+		
 
 func take_armor_piercing_damage(dmg: float) -> void:
 	current_hp -= dmg
