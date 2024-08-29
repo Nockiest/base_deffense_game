@@ -1,5 +1,5 @@
 class_name FlickerEffectComponent
-extends Node
+extends Component
 
 @export var flash_duration_sec: float = 1.0  # Duration of the flash effect in seconds
 @export var flashing_color: Color = Color.WHITE  # Color to flash

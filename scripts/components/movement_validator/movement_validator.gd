@@ -1,5 +1,5 @@
 class_name MovementtValidator
-extends Node
+extends Component
 
 # Function to validate the move
 func validate_move(from: Vector2i, to: Vector2i, validation_input_data: Dictionary, objectType:String="Entity") -> bool:

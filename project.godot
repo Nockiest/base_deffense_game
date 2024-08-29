@@ -20,7 +20,7 @@ config/icon="res://assets/icon.svg"
 Utils="*res://scripts/utils/utils.gd"
 GridUtils="*res://scripts/utils/grid-utils.gd"
 Globals="*res://scripts/globals/globals.gd"
-Test="*res://utils/test_utils/test_instantiation.gd"
+Test="*res://utils/test_utils/test.gd"
 
 [editor_plugins]
 

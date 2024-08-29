@@ -1,5 +1,5 @@
 class_name DirectionHandler
-extends Node
+extends Component
 const Directions = preload("res://types/direction_list.gd")
 
 @export var starting_direction: DirectionList.Direction = DirectionList.Direction.UP

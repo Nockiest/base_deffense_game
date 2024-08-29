@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7pfeg6uypiit"]
+[gd_scene load_steps=3 format=3 uid="uid://c7pfeg6uypiit"]
 
 [ext_resource type="Script" path="res://scripts/components/crafting/crafting_component.gd" id="1_giwui"]
+[ext_resource type="PackedScene" uid="uid://bli7k15t8yntj" path="res://scripts/components/effect_holder_component/effect_hold_component.tscn" id="2_m3vlv"]
 
 [node name="CarftingComponent" type="Node2D"]
 script = ExtResource("1_giwui")
+
+[node name="EffectHoldComponent" parent="." instance=ExtResource("2_m3vlv")]

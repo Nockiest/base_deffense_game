@@ -1,4 +1,4 @@
-class_name ObjectContainerManager extends Node2D
+class_name ObjectContainerManager extends Component
 
  
 @export var entity_container: ObjectContainer 

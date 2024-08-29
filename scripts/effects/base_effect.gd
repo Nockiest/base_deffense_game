@@ -13,35 +13,53 @@ func get_type_name():
 var elapsed_time: float = 0.0
 var interval_timer: float = 0.0  # Timer for per-second effects
 var effect_timer: Timer = Timer.new()  # Timer for ON_AND_OFF effects
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if effect_type == EffectTypes.EFFECT_TYPE.ON_AND_OFF:
-		effect_timer.wait_time = duration_sec
-		effect_timer.one_shot = true
-		effect_timer.connect("timeout",  _on_effect_timeout )
-		add_child(effect_timer)
-
+	# Initialize and configure the timer for on-and-off and per-second effects
+	effect_timer.wait_time = duration_sec
+	effect_timer.one_shot = true
+	effect_timer.connect("timeout", cause_exit_effect,  )  # Corrected to connect to a specific function
+	add_child(effect_timer)
+	effect_timer.start()  # Add the timer to the scene tree first
+ 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if effect_type == EffectTypes.EFFECT_TYPE.EFFECT_PER_SECOND:
 		interval_timer += delta
 		if interval_timer >= effect_interval:
 			interval_timer = 0.0
-			cause_per_second_effect()
-
-func cause_start_effect() -> void:
+			cause_per_second_effect(per_second_effect )
+			
+func start_effect():
 	printerr('effect doesn\'t have a start function')
 
-func cause_per_second_effect() -> void:
+func cause_start_effect(start_fce: Callable = start_effect ) -> void:
+	# If a callable is provided, call it; otherwise, use the default `start_effect`
+	if start_fce != null and start_fce.is_valid():
+		start_fce.call()
+	else:
+		start_effect()
+
+func per_second_effect():
 	printerr('effect doesn\'t do anything')
 
-func cause_exit_effect() -> void:
-	printerr('effect doesn\'t have an end function')
+func cause_per_second_effect(per_sec_fce: Callable = per_second_effect ) -> void:
+	if per_sec_fce != null and per_sec_fce.is_valid():
+		per_sec_fce.call()
+	else:
+		per_second_effect()
+		
+func exit_effect():
+	printerr('doesnt have exit effect')
+	
+func cause_exit_effect(callback: Callable = exit_effect  ) -> void:
+	print('calling exit eff ', callback)
+	# Check if a callable function is provided
+	if callback != null and callback.is_valid():
+		# Call the provided function
+		callback.call()
 
-func _on_effect_timeout() -> void:
-	cause_exit_effect()
-	queue_free()  # Remove the effect after it ends
+	queue_free()
 
 func can_apply_on_node(node: Node) -> bool:
 	if !node.has_node("EffectHoldComponent"):

@@ -4,7 +4,7 @@ func get_type_name():
 	return "FireEffect"
  
 @export var fire_damage_sec:= 1
-@export var effect_duration_sec:= 3
+
 
  
 func _deal_damage(dmg:float= fire_damage_sec):
@@ -13,8 +13,9 @@ func _deal_damage(dmg:float= fire_damage_sec):
 		return
 	owner.take_hit(dmg)
 
-func cause_per_second_effect():
-	_deal_damage()
+func per_second_effect():
+	print('per sec eff')
+	_deal_damage(fire_damage_sec)
 	
 #func end_effect():
 

@@ -1,5 +1,5 @@
 class_name CraftingComponent
-extends Node
+extends Component
 
 @export var craftingCost: = 10.0
 @export var inputResources:Array[Ingredient]    # List of required input resources

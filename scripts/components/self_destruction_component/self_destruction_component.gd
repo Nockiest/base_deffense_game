@@ -1,5 +1,5 @@
 class_name SelfDestructionComponent
-extends Node2D
+extends Component
  
 func kill_owner() -> void:
 	if owner and is_instance_valid(owner):

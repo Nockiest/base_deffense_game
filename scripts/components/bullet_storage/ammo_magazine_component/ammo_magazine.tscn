@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://p5of0eh7hp6m"]
+[gd_scene load_steps=7 format=3 uid="uid://p5of0eh7hp6m"]
 
 [ext_resource type="Script" path="res://scripts/components/bullet_storage/ammo_magazine_component/ammo_magazine.gd" id="1_fa41y"]
 [ext_resource type="Script" path="res://utils/state-machine/state-machine.gd" id="2_spfha"]
 [ext_resource type="Script" path="res://scripts/components/bullet_storage/ammo_magazine_component/loaded.gd" id="3_vfag0"]
 [ext_resource type="Script" path="res://scripts/components/bullet_storage/ammo_magazine_component/loading.gd" id="4_63yjw"]
 [ext_resource type="PackedScene" uid="uid://cpah7rdkrhdov" path="res://scenes/ui/remaining_bullets_bar/remaining_bullets_bar.tscn" id="5_mka0l"]
+[ext_resource type="PackedScene" uid="uid://bli7k15t8yntj" path="res://scripts/components/effect_holder_component/effect_hold_component.tscn" id="6_uyinm"]
 
 [node name="AmmoMagazine" type="Node2D" node_paths=PackedStringArray("BulletsBar")]
 script = ExtResource("1_fa41y")
@@ -22,3 +23,5 @@ script = ExtResource("3_vfag0")
 script = ExtResource("4_63yjw")
 
 [node name="RemainingBulletsBar" parent="." instance=ExtResource("5_mka0l")]
+
+[node name="EffectHoldComponent" parent="." instance=ExtResource("6_uyinm")]

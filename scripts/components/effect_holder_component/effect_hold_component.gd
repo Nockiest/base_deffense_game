@@ -1,5 +1,5 @@
 class_name EffectHoldComponent
-extends Node2D
+extends Component
 
 # Holds effects like fire damage, freeze, etc.
 

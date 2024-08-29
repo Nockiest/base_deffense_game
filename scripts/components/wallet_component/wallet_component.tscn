@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://couc1pf4gvaeo"]
+[gd_scene load_steps=3 format=3 uid="uid://couc1pf4gvaeo"]
 
-[node name="WalletComponent" type="Node2D"]
+[ext_resource type="Script" path="res://scripts/components/wallet_component/wallet_component.gd" id="1_eibda"]
+[ext_resource type="PackedScene" uid="uid://bli7k15t8yntj" path="res://scripts/components/effect_holder_component/effect_hold_component.tscn" id="2_vtafh"]
+
+[node name="WalletComponent" type="Node2D" node_paths=PackedStringArray("effect_hold_component")]
+script = ExtResource("1_eibda")
+effect_hold_component = NodePath("EffectHoldComponent")
+
+[node name="EffectHoldComponent" parent="." instance=ExtResource("2_vtafh")]

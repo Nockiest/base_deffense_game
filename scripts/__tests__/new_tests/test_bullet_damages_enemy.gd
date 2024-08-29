@@ -25,7 +25,8 @@ func before_each():
 	# Attach the effect to the Bullet's effects array
 	bullet.effects.append(single_damage_effect)
 	
- 
+	health_component_enemy = Test.instantiate_health_comp()
+	enemy.health_component = health_component_enemy
 	# Add Bullet and Enemy to the scene
 	add_child(bullet)
 	add_child(enemy)
@@ -34,9 +35,9 @@ func before_each():
 func test_bullet_applies_effect():
 	# Simulate the bullet hitting the enemy
 	bullet._on_area_entered(enemy)  # Trigger the collision handler
-	
+	var has_copy = Test.has_copy( single_damage_effect,health_component_enemy)
 	# Verify that the SingleDamage effect was applied to the enemy
-	assert_true(single_damage_effect in enemy.get_node("EffectHoldComponent").get_children(), "SingleDamage effect should be mounted to the enemy")
+	assert_true(has_copy, "SingleDamage effect should be mounted to the enemy")
 	
 	# Verify that the enemy's HP has decreased by the damage amount
 	var expected_hp = 100 - single_damage_effect.damage

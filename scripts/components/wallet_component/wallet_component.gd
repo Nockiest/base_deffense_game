@@ -1,5 +1,5 @@
 class_name WalletComponent
-extends Node
+extends Component
 
 var cash_balance:int 
 # Called when the node enters the scene tree for the first time.

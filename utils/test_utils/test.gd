@@ -33,6 +33,17 @@ func instantiate_single_damage()-> SingleDamage:
 	var dmg = dmg_scene.instantiate()
 	dmg.set_script(preload("res://scripts/effects/single_damage.gd"))  # Mock script class name: "ValidClass"
 	return dmg  
+	
+	
+func has_copy( eff:BaseEffect,node:Node)->bool:
+	var   effect_type_match_found = false
+	for child in node.get_children():
+		if not child.has_method("get_type_name"):
+			continue
+		if child.get_type_name() == eff.get_type_name():
+			effect_type_match_found = true
+			break
+	return effect_type_match_found
 # Utility function to instantiate a node from a scene and set its script
 #func instantiate_node(scene_path: String, script_path: String) -> Node:
 	#var scene = load(scene_path)

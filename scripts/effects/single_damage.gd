@@ -11,6 +11,7 @@ func _deal_damage(dmg:float= damage):
 		return
 	owner.take_hit(dmg)
 
-func cause_start_effect() -> void:
-	print_debug('cause start effect ', owner)
-	_deal_damage()
+func start_effect():
+	_deal_damage( damage)
+
+ 

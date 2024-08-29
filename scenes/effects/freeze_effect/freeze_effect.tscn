@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb7eair2q4oc3"]
+
+[ext_resource type="Script" path="res://scripts/effects/freeze_effect.gd" id="1_k0qqg"]
+
+[node name="FreezeEffect" type="Node2D"]
+script = ExtResource("1_k0qqg")
+effect_type = 2
+allowed_types = Array[String](["MovementComponent"])

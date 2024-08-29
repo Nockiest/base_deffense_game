@@ -1,5 +1,5 @@
 class_name MovementComponent
-extends Node2D
+extends Component
 
 @export var speed_px_sec: float = 20.0
 var direction: Vector2 = Vector2(1, 0)  # Default direction to the right

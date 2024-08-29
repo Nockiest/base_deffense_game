@@ -1,5 +1,5 @@
 class_name MeleeAttackComponent
-extends Node2D
+extends Component
 
 @export var attack_range_px: float = 50.0  # Range within which the attack can happen
 @export var attack_delay_sec: float = 1.0  # Delay between detecting and attacking
@@ -33,8 +33,8 @@ func _process(_delta: float) -> void:
 		if distance_to_enemy <= attack_range_px and attack_timer.is_stopped():
 			attack_timer.start()  # Start the timer for the next attack
 			damage_deal_component.deal_damage(enemy, ['enemies'])  # Deal damage to the enemy
-	else:
-		print("No enemy assigned or enemy not in range!", enemy)
+	#else:
+		#print("No enemy assigned or enemy not in range!", enemy)
 
 
 func _on_entity_aiming_component_target_changed(target: Node2D) -> void:

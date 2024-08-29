@@ -1,5 +1,5 @@
 class_name DamageDealComponent
-extends Node
+extends Component
 
 @export var base_damage:float = 1 # hwo much damage it does in a hit
 

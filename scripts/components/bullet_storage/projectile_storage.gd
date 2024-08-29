@@ -1,5 +1,5 @@
 class_name ProjectileStorage
-extends Node2D
+extends Component
 
 @export var stored_bullet: PackedScene
 @export var capacity: int = 5
