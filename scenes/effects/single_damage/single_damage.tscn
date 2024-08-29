@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://mg22vpcew01o"]
+[gd_scene load_steps=3 format=3 uid="uid://mg22vpcew01o"]
 
+[ext_resource type="PackedScene" uid="uid://7i4m7k7bd4un" path="res://scenes/effects/base_effect.tscn" id="1_8ss2g"]
 [ext_resource type="Script" path="res://scripts/effects/single_damage.gd" id="1_yldxf"]
 
-[node name="SingleDamage" type="Node2D"]
+[node name="SingleDamage" instance=ExtResource("1_8ss2g")]
 script = ExtResource("1_yldxf")
-effect_interval = 0.0
+damage = 1
+allowed_types = Array[String](["SingleDamage"])

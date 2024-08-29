@@ -1,11 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3rhqdncy7nkq"]
+[gd_scene load_steps=3 format=3 uid="uid://c3rhqdncy7nkq"]
 
 [ext_resource type="Script" path="res://scripts/components/flicker_component/flicker_component.gd" id="1_r0h2p"]
+[ext_resource type="PackedScene" uid="uid://bli7k15t8yntj" path="res://scripts/components/effect_holder_component/effect_hold_component.tscn" id="2_p0elf"]
 
 [node name="FlickerComponent" type="Node2D"]
 script = ExtResource("1_r0h2p")
 
 [node name="FlashTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="EffectHoldComponent" parent="." node_paths=PackedStringArray("effect_hold_component") instance=ExtResource("2_p0elf")]
+effect_hold_component = NodePath(".")
 
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timeout"]

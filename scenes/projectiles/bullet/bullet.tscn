@@ -21,7 +21,7 @@ movement_component = NodePath("MovementComponent")
 damage_deal_component = NodePath("AreaDamageComponent")
 self_destruction_component = NodePath("SelfDestructionComponent")
 max_pierced_entities = 2
-effects = [NodePath("FireEffect"), NodePath("FreezeEffect")]
+effects = [NodePath("FreezeEffect")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 

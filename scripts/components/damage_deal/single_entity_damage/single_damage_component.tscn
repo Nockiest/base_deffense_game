@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cumblegcognst"]
+[gd_scene load_steps=3 format=3 uid="uid://cumblegcognst"]
 
 [ext_resource type="Script" path="res://scripts/components/damage_deal/single_entity_damage/single_damage_component.gd" id="1_vt37l"]
+[ext_resource type="PackedScene" uid="uid://bli7k15t8yntj" path="res://scripts/components/effect_holder_component/effect_hold_component.tscn" id="2_3wyl4"]
 
-[node name="SingleDamageDealComponent" type="Node2D"]
+[node name="SingleDamageDealComponent" type="Node2D" node_paths=PackedStringArray("effect_hold_component")]
 script = ExtResource("1_vt37l")
+effect_hold_component = NodePath("EffectHoldComponent")
+
+[node name="EffectHoldComponent" parent="." instance=ExtResource("2_3wyl4")]

@@ -33,7 +33,11 @@ func instantiate_single_damage()-> SingleDamage:
 	var dmg = dmg_scene.instantiate()
 	dmg.set_script(preload("res://scripts/effects/single_damage.gd"))  # Mock script class name: "ValidClass"
 	return dmg  
-	
+func instantiate_freeze()-> FreezeEffect:
+	var freeze_scene = preload("res://scenes/effects/freeze_effect/freeze_effect.tscn")  # Mock script class name: "ValidClass"
+	var freeze = freeze_scene.instantiate()
+	freeze.set_script(preload("res://scripts/effects/freeze_effect.gd"))  # Mock script class name: "ValidClass"
+	return freeze  	
 	
 func has_copy( eff:BaseEffect,node:Node)->bool:
 	var   effect_type_match_found = false

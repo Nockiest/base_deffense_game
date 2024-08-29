@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnkur2kld0tc4"]
+[gd_scene load_steps=3 format=3 uid="uid://bnkur2kld0tc4"]
 
 [ext_resource type="Script" path="res://scripts/components/self_destruction_component/self_destruction_component.gd" id="1_3dmkl"]
+[ext_resource type="PackedScene" uid="uid://bli7k15t8yntj" path="res://scripts/components/effect_holder_component/effect_hold_component.tscn" id="2_yfgv3"]
 
-[node name="SelfDestructionComponent" type="Node2D"]
+[node name="SelfDestructionComponent" type="Node2D" node_paths=PackedStringArray("effect_hold_component")]
 script = ExtResource("1_3dmkl")
+effect_hold_component = NodePath("EffectHoldComponent")
+
+[node name="EffectHoldComponent" parent="." instance=ExtResource("2_yfgv3")]

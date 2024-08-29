@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://m2l1ves4ob85"]
+[gd_scene load_steps=3 format=3 uid="uid://m2l1ves4ob85"]
 
+[ext_resource type="PackedScene" uid="uid://7i4m7k7bd4un" path="res://scenes/effects/base_effect.tscn" id="1_7hp0e"]
 [ext_resource type="Script" path="res://scripts/effects/fire_effect.gd" id="1_ry8da"]
 
-[node name="FireEffect" type="Node2D"]
+[node name="FireEffect" instance=ExtResource("1_7hp0e")]
 script = ExtResource("1_ry8da")
+fire_damage_sec = 1
+effect_type = 1
+duration_sec = 1.0
+allowed_types = Array[String](["HealthComponent"])

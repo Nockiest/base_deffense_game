@@ -3,7 +3,9 @@
 [ext_resource type="Script" path="res://scripts/components/crafting/crafting_component.gd" id="1_giwui"]
 [ext_resource type="PackedScene" uid="uid://bli7k15t8yntj" path="res://scripts/components/effect_holder_component/effect_hold_component.tscn" id="2_m3vlv"]
 
-[node name="CarftingComponent" type="Node2D"]
+[node name="CarftingComponent" type="Node2D" node_paths=PackedStringArray("effect_hold_component")]
 script = ExtResource("1_giwui")
+craftingCost = null
+effect_hold_component = NodePath("EffectHoldComponent")
 
 [node name="EffectHoldComponent" parent="." instance=ExtResource("2_m3vlv")]

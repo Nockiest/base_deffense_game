@@ -7,10 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://cpah7rdkrhdov" path="res://scenes/ui/remaining_bullets_bar/remaining_bullets_bar.tscn" id="5_mka0l"]
 [ext_resource type="PackedScene" uid="uid://bli7k15t8yntj" path="res://scripts/components/effect_holder_component/effect_hold_component.tscn" id="6_uyinm"]
 
-[node name="AmmoMagazine" type="Node2D" node_paths=PackedStringArray("BulletsBar")]
+[node name="AmmoMagazine" type="Node2D" node_paths=PackedStringArray("BulletsBar", "effect_hold_component")]
 script = ExtResource("1_fa41y")
 shoot_interval_sec = 1.0
 BulletsBar = NodePath("RemainingBulletsBar")
+effect_hold_component = NodePath("EffectHoldComponent")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_spfha")

@@ -8,11 +8,12 @@
 [ext_resource type="Script" path="res://scripts/components/bullet_storage/laser_storage_component/shooting.gd" id="4_pa0sl"]
 [ext_resource type="PackedScene" uid="uid://bli7k15t8yntj" path="res://scripts/components/effect_holder_component/effect_hold_component.tscn" id="7_npmvi"]
 
-[node name="LaserStorageComponent" type="Node2D" node_paths=PackedStringArray("laser_instance", "BulletsBar")]
+[node name="LaserStorageComponent" type="Node2D" node_paths=PackedStringArray("laser_instance", "BulletsBar", "effect_hold_component")]
 script = ExtResource("1_kt8d4")
 laser_instance = NodePath("Laser")
 stored_bullet = ExtResource("2_jdbtb")
 BulletsBar = NodePath("RemainingBulletsBar")
+effect_hold_component = NodePath("EffectHoldComponent")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_y0c84")

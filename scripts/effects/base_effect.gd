@@ -7,20 +7,13 @@ func get_type_name():
 @export var effect_type: EffectTypes.EFFECT_TYPE= EffectTypes.EFFECT_TYPE.ONE_SHOT
 @export var effect_interval: float = 1.0  # Interval in seconds for per-second effect
 @export var duration_sec: float = 5.0  # Total duration for the effect
+@export var effect_timer: Timer  
 
-@export var allowed_types: Array[String] = ['HealthComponent']  # List of script class names this effect can be applied to
+@export var allowed_types: Array[String] = [ ]  # List of script class names this effect can be applied to
 
 var elapsed_time: float = 0.0
-var interval_timer: float = 0.0  # Timer for per-second effects
-var effect_timer: Timer = Timer.new()  # Timer for ON_AND_OFF effects
+var interval_timer: float = 0.0  
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	# Initialize and configure the timer for on-and-off and per-second effects
-	effect_timer.wait_time = duration_sec
-	effect_timer.one_shot = true
-	effect_timer.connect("timeout", cause_exit_effect,  )  # Corrected to connect to a specific function
-	add_child(effect_timer)
-	effect_timer.start()  # Add the timer to the scene tree first
  
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -48,7 +41,9 @@ func cause_per_second_effect(per_sec_fce: Callable = per_second_effect ) -> void
 		per_sec_fce.call()
 	else:
 		per_second_effect()
-		
+func _on_effect_timer_end():
+	print("timer ended")
+	cause_exit_effect(exit_effect  ) 
 func exit_effect():
 	printerr('doesnt have exit effect')
 	
@@ -58,8 +53,7 @@ func cause_exit_effect(callback: Callable = exit_effect  ) -> void:
 	if callback != null and callback.is_valid():
 		# Call the provided function
 		callback.call()
-
-	queue_free()
+	get_parent().remove_effect(self)
 
 func can_apply_on_node(node: Node) -> bool:
 	if !node.has_node("EffectHoldComponent"):
@@ -80,26 +74,28 @@ func apply_to_entity(entity: Node) -> void:
 	#print ('1',entity, can_apply_on_node(entity))
 	if can_apply_on_node(entity):
 		# Add the effect to the EffectHoldComponent of the entity
-		entity.get_node("EffectHoldComponent").add_effect(self.duplicate())
+		entity.effect_hold_component.add_effect(self.duplicate())
 		# Iterate through the allowed types and apply the effect to matching nodes
 	for type in allowed_types:
 		#print_debug('2', type, entity.has_node(type))
 		if entity.has_node(type):
-			var entity_module = entity.get_node(type)
+			var entity_component = entity.get_node(type) as Component
 			#print_debug('3',entity_module, can_apply_on_node(entity_module))
 			# Ensure the entity module is valid and has an EffectHoldComponent
-			if can_apply_on_node(entity_module):
+			if can_apply_on_node(entity_component):
 				# Create a copy of the current effect
-				var effect_copy = self.duplicate()
-				# Add the effect copy to the EffectHoldComponent of the entity module
-				entity_module.get_node("EffectHoldComponent").add_effect(effect_copy)
-				effect_copy.owner = entity_module
-				effect_copy.cause_start_effect()
-				
-				if effect_type == EffectTypes.EFFECT_TYPE.ONE_SHOT:
-					effect_copy.queue_free()
-				# Start the effect if it's an ON_AND_OFF type
-				if effect_type == EffectTypes.EFFECT_TYPE.ON_AND_OFF:
-					effect_copy.effect_timer.start()
+				create_copy(entity_component)
 
- 
+func create_copy(entity_component:Component):
+	var effect_copy = self.duplicate()
+	entity_component.effect_hold_component.add_effect(effect_copy)
+	effect_copy.owner = entity_component
+	effect_copy.cause_start_effect()
+	effect_copy.effect_timer.wait_time = duration_sec
+	effect_copy.effect_timer.start()
+	if effect_type == EffectTypes.EFFECT_TYPE.ONE_SHOT:
+		effect_copy.queue_free()
+		
+func _on_timer_timeout() -> void:
+	print('timer ended')
+	cause_exit_effect( exit_effect  )
