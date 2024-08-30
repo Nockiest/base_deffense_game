@@ -1,5 +1,5 @@
 class_name HealthComponent
-extends NodeModClass
+extends Component
 
 func get_type_name():
 	return 'HealthComponent'
@@ -11,7 +11,7 @@ func get_type_name():
 
 @export var health_bar: ProgressBar  # Reference to the health ProgressBar
 @export var shield_bar: ProgressBar   # Reference to the shield ProgressBar
-@export var effect_holder: EffectHoldComponent  
+#@export var effect_hold_component: EffectHoldComponent  
 
 
 signal hp_ran_out()

@@ -56,11 +56,12 @@ func cause_exit_effect(callback: Callable = exit_effect  ) -> void:
 	get_parent().remove_effect(self)
 
 func can_apply_on_node(node: Node) -> bool:
-	if !node.has_node("EffectHoldComponent"):
+	if node == null or !node.has_node("EffectHoldComponent"):
 		printerr('Entity does not have EffectHoldComponent:', node)
 		return false
 
 	if node.has_method('get_type_name'):
+		prints("x ", node.get_type_name() , node.get_type_name() in allowed_types)
 		if node.get_type_name() in allowed_types:
 			return true
 	else:
@@ -71,30 +72,39 @@ func can_apply_on_node(node: Node) -> bool:
 
 func apply_to_entity(entity: Node) -> void:
 	# Check if the entity is valid and has an EffectHoldComponent
-	#print ('1',entity, can_apply_on_node(entity))
 	if can_apply_on_node(entity):
-		# Add the effect to the EffectHoldComponent of the entity
-		entity.effect_hold_component.add_effect(self.duplicate())
-		# Iterate through the allowed types and apply the effect to matching nodes
+		create_copy(entity)
+	print("allowed ", allowed_types)
 	for type in allowed_types:
-		#print_debug('2', type, entity.has_node(type))
+		print( "entiity has?", type, entity.has_node(type))
 		if entity.has_node(type):
 			var entity_component = entity.get_node(type) as Component
-			#print_debug('3',entity_module, can_apply_on_node(entity_module))
+			if entity_component is Component:
+				var component_cast = entity_component as Component
+			else:
+				printerr("Failed to cast node to Component:", entity_component)
 			# Ensure the entity module is valid and has an EffectHoldComponent
+			prints( entity, type, entity_component )
 			if can_apply_on_node(entity_component):
 				# Create a copy of the current effect
 				create_copy(entity_component)
 
 func create_copy(entity_component:Component):
 	var effect_copy = self.duplicate()
+	if not entity_component.effect_hold_component:
+		printerr('entity doesnt have effect hold comp ', entity_component)
 	entity_component.effect_hold_component.add_effect(effect_copy)
 	effect_copy.owner = entity_component
 	effect_copy.cause_start_effect()
+	if effect_copy.effect_timer.wait_time!= 1:
+		printerr("dont set effect timer duration directly in wait time it will be overriden")
 	effect_copy.effect_timer.wait_time = duration_sec
 	effect_copy.effect_timer.start()
+	if not effect_copy.get_parent() is EffectHoldComponent:
+		printerr("parent isnt effect hold comp, ", get_parent())
 	if effect_type == EffectTypes.EFFECT_TYPE.ONE_SHOT:
-		effect_copy.queue_free()
+		effect_copy.get_parent().remove_effect(self)
+	print("added duplicate ", self.duplicate, " into ", entity_component)
 		
 func _on_timer_timeout() -> void:
 	print('timer ended')

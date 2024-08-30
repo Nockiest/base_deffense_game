@@ -1,11 +1,12 @@
 # AreaEffectComponent.gd
 class_name AreaOfEffectComponent
-extends Node
+extends Component 
 
-#@export var effect_radius_px: float = 100.0  # Radius within which to apply the effect
+@export var effect_radius_px: float = 400.0  # Radius within which to apply the effect
 
 # Function to apply an effect to nearby entities
-func apply_area_effect(effect_function: Callable, target_groups: Array[String], effect_radius_px: float, center_position: Vector2 = self.global_position) -> void:
+func apply_area_effect(effect_function: Callable, target_groups: Array[String], effect_radius_px: float= effect_radius_px, center_position: Vector2 = self.global_position) -> void:
+	prints('called',effect_function,target_groups,effect_radius_px)
 	if len(target_groups) == 0:
 		printerr('Target groups set badly', owner)
 		return

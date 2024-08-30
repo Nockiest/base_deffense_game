@@ -6,14 +6,20 @@ var valid_entity: Node2D
 var invalid_entity: Node2D
 var effect_hold_component_valid: EffectHoldComponent
 var effect_hold_component_invalid: EffectHoldComponent
-
+var health_component:HealthComponent
 
 
 func before_each() -> void:
 	# Initialize the effect and set allowed classes
 	effect = Test.instantiate_effect([ 'HealthComponent' ])
+	health_component =  Test.instantiate_health_comp()
+	effect_hold_component_valid = preload("res://scripts/components/effect_holder_component/effect_hold_component.tscn").instantiate()
+	health_component.add_child(effect_hold_component_valid)
+	health_component.effect_holder = effect_hold_component_valid
 	valid_entity = Test.instantiate_enemy()
-	effect_hold_component_valid = valid_entity.get_node( 'HealthComponent' ).get_node('EffectHoldComponent')
+	valid_entity.health_component = health_component
+	valid_entity.add_child(health_component)
+	effect_hold_component_valid = health_component.effect_holder
 	invalid_entity = Node2D.new()
 	invalid_entity.set_script(preload("res://scripts/components/aiming/base_aiming_component.gd"))  # Mock script class name: "InvalidClass"
 	effect_hold_component_invalid = EffectHoldComponent.new()
@@ -22,14 +28,12 @@ func before_each() -> void:
 	# Add entities to the scene for testing
 	add_child(valid_entity)
 	add_child(invalid_entity)
-
+	await get_tree().process_frame #, "idle_frame"
 func test_apply_to_valid_entity() -> void:
 	# Apply the effect to the valid entity
+	Utils.print_spaced([valid_entity,valid_entity.health_component, valid_entity.health_component.effect_holder, effect_hold_component_valid] )
 	effect.apply_to_entity(valid_entity)
-	
-	# Process a frame to ensure the effect application is handled
-	valid_entity._process(0.1)
-
+	print("1",effect.can_apply_on_node(valid_entity.health_component),effect_hold_component_valid,effect_hold_component_valid.get_children())
 	# Check if any child of the effect holder is of the same type as the effect
 	var effect_type_match_found = Test.has_copy( effect,effect_hold_component_valid)
 	

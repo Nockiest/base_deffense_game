@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://burqtism06kl2"]
+
+[ext_resource type="Script" path="res://scripts/obstacles/mine.gd" id="1_iaf5u"]
+[ext_resource type="PackedScene" uid="uid://b33lspjglp7x6" path="res://scripts/components/area_of_effect/area_of_effect_component.tscn" id="2_wyffc"]
+[ext_resource type="PackedScene" uid="uid://mg22vpcew01o" path="res://scenes/effects/single_damage/single_damage.tscn" id="3_41a3x"]
+[ext_resource type="Texture2D" uid="uid://cwchngyv02nu5" path="res://assets/img/Trap and Weapon/Bomb.png" id="4_5r4ff"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2ahr"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_uhrw0"]
+resource_name = "explosion"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 4]
+}
+
+[sub_resource type="Animation" id="Animation_idgai"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1apf"]
+_data = {
+"RESET": SubResource("Animation_idgai"),
+"explosion": SubResource("Animation_uhrw0")
+}
+
+[node name="Mine" type="Area2D" node_paths=PackedStringArray("area_of_effect_component", "single_damage_component")]
+collision_layer = 4
+collision_mask = 14
+script = ExtResource("1_iaf5u")
+area_of_effect_component = NodePath("AreaOfEffectComponent")
+single_damage_component = NodePath("SingleDamage")
+
+[node name="AreaOfEffectComponent" parent="." instance=ExtResource("2_wyffc")]
+
+[node name="SingleDamage" parent="." instance=ExtResource("3_41a3x")]
+damage = 5
+allowed_types = Array[String](["HealthComponent"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_u2ahr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -8)
+texture = ExtResource("4_5r4ff")
+hframes = 5
+
+[node name="ExplosionAnimation" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_g1apf")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

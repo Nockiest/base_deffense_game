@@ -52,7 +52,6 @@ speed_px_sec = 200.0
 damage_radius_px = 1000.0
 
 [node name="FireEffect" parent="." instance=ExtResource("7_oeqkb")]
-effect_type = 1
 duration_sec = 3.0
 
 [node name="SingleDamage" parent="." instance=ExtResource("6_eifrs")]

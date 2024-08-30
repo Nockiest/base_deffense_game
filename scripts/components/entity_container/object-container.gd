@@ -1,5 +1,5 @@
 class_name ObjectContainer 
-extends Node2D 
+extends Component 
 
 signal objects_changed(objects)
 

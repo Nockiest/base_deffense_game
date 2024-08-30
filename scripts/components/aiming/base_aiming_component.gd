@@ -1,6 +1,6 @@
 # BaseAimingComponent.gd
 class_name AimingComponent
-extends NodeModClass
+extends Component 
 
 func get_type_name():
 	return 'AimingComponent'
