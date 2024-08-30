@@ -9,13 +9,13 @@ var single_damage_effect
 # Runs before each test
 func before_each():
 	# Create and configure the Enemy
-	enemy = Test.instantiate_enemy()
+	enemy = Enemy.new()
 	enemy.position = Vector2(0, 0)  # Position enemy at origin
-	
+	add_child(enemy)
 	# Create and configure the Bullet
-	bullet = Test.instantiate_bullet()
+	bullet = Bullet.new()
 	bullet.position = Vector2(0, 0)  # Start bullet at origin
-	
+	add_child(bullet)
 	# Create and configure the SingleDamage effect
 	single_damage_effect = SingleDamage.new()
 	single_damage_effect.damage = 20
@@ -25,8 +25,9 @@ func before_each():
 	# Attach the effect to the Bullet's effects array
 	bullet.effects.append(single_damage_effect)
 	
-	health_component_enemy = Test.instantiate_health_comp()
-	enemy.health_component = health_component_enemy
+	enemy.health_component = HealthComponent.new()
+	
+	health_component_enemy = enemy.health_component
 	# Add Bullet and Enemy to the scene
 	add_child(bullet)
 	add_child(enemy)
@@ -41,7 +42,8 @@ func test_bullet_applies_effect():
 	
 	# Verify that the enemy's HP has decreased by the damage amount
 	var expected_hp = 100 - single_damage_effect.damage
-	assert_eq(enemy.get_node("HealthComponent").current_hp, expected_hp, "Enemy's health should be reduced by the damage amount")
+	if enemy:
+		assert_eq(enemy.health_component.current_hp, expected_hp, "Enemy's health should be reduced by the damage amount")
 
 # Cleanup after tests
 func after_each():

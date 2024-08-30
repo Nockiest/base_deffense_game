@@ -19,7 +19,7 @@ func before_each():
 	enemy.add_child(melee_attack_component)
 	
 	# Create and assign a mock DamageDealComponent
-	var damage_deal_component = preload("res://scripts/components/damage/single_entity_damage/single_damage_component.tscn").instantiate()
+	var damage_deal_component =SingleDamageDealComponent.new()
 	damage_deal_component.base_damage = 10
 	melee_attack_component.damage_deal_component = damage_deal_component
 	

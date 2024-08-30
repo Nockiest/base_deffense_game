@@ -21,6 +21,7 @@ Utils="*res://scripts/utils/utils.gd"
 GridUtils="*res://scripts/utils/grid-utils.gd"
 Globals="*res://scripts/globals/globals.gd"
 Test="*res://utils/test_utils/test.gd"
+oneErr="*res://scripts/utils/oneTimeErrorLogger.gd"
 
 [editor_plugins]
 
@@ -32,7 +33,9 @@ folder_colors={
 "res://assets/": "yellow",
 "res://screens/": "gray",
 "res://scripts/": "purple",
+"res://scripts/__ignore_tests/": "red",
 "res://scripts/__tests__/": "red",
+"res://scripts/components/": "green",
 "res://utils/": "pink",
 "res://utils/test_utils/": "red"
 }

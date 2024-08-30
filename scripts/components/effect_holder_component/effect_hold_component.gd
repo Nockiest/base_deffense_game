@@ -9,7 +9,7 @@ func add_effect(effect: BaseEffect) -> void:
 		add_child(effect)
 		print("Effect added:", owner, effect.name)
 	else:
-		Utils.print_spaced(["Effect already exists or is invalid:", effect, owner])
+		oneErr.printerr_once('invalid effect', ["Effect already exists or is invalid:", effect, owner])
 
 # Removes an effect from the component
 func remove_effect(effect: BaseEffect) -> void:
@@ -17,4 +17,4 @@ func remove_effect(effect: BaseEffect) -> void:
 		remove_child(effect)
 		print("Effect removed:", effect.name)
 	else:
-		Utils.print_spaced(["Effect holder doesn't have the effect:", effect, owner])
+		oneErr.printerr_once( 'effect holder without effect',["Effect holder doesn't have the effect:", effect, owner])

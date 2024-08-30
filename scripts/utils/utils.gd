@@ -166,18 +166,6 @@ func do_lines_intersect_in_viewport(p1: Vector2, p2: Vector2, p3: Vector2, p4: V
 
 	return Vector2.ZERO
 
-func print_spaced(messages: Array, debug:bool=true) -> void:
-	var formatted_message: String = ""
-	for i in range(messages.size()):
-		formatted_message += str(messages[i])
-		if i < messages.size() - 1:
-			formatted_message += "; "
-	if debug:
-		print_debug(formatted_message)
-	else:
-		print(formatted_message)
-
- 
 func calculate_is_inside(polygon, point = Vector2(100,100)):
 #	print(collision_shape.polygon)
 #	var point_in_local = polygon.to_local(point ) #.get_global_transform()

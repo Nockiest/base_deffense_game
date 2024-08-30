@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwyjhtwut1t30"]
+[gd_scene load_steps=6 format=3 uid="uid://dwyjhtwut1t30"]
 
 [ext_resource type="PackedScene" uid="uid://burqtism06kl2" path="res://scenes/obstacles/mine/mine.tscn" id="1_0mfcq"]
 [ext_resource type="PackedScene" uid="uid://t6n6ewambkd0" path="res://scenes/enemies/basic_enemy.tscn" id="1_67okx"]
 [ext_resource type="PackedScene" uid="uid://7i2s2qp0nlea" path="res://scripts/debug-window/debug-window.tscn" id="1_s2ndp"]
 [ext_resource type="PackedScene" uid="uid://2icamt22lsy2" path="res://scenes/turret/turret.tscn" id="4_hk75r"]
+[ext_resource type="PackedScene" uid="uid://cvshclvyanljm" path="res://scenes/player/player.tscn" id="5_0g1fa"]
 
 [node name="Battleground" type="Node2D"]
 
@@ -27,3 +28,6 @@ position = Vector2(205, 164)
 
 [node name="Turret2" parent="Turrets" instance=ExtResource("4_hk75r")]
 position = Vector2(622, 418)
+
+[node name="Player" parent="." instance=ExtResource("5_0g1fa")]
+position = Vector2(572, 296)

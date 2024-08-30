@@ -11,7 +11,7 @@ func recieve_child_node(child_node:Node):
 	var is_valid_type = child_node.is_class(allowed_object_type)
 	var is_within_limit = get_child_count() < max_objects
 
-	Utils.print_spaced([
+	oneErr.printerr_once([
 		"Type mismatch:", not is_valid_type,
 		"Maximum objects reached:", not is_within_limit,
 #		"Child type:",  child_node.get_type(),
@@ -22,7 +22,7 @@ func recieve_child_node(child_node:Node):
 		add_child(child_node)
 		emit_signal("objects_changed", get_children())
 	else:
-		Utils.print_spaced(["Cannot add child node: Type mismatch or maximum number of objects reached", get_children()], true)
+		oneErr.printerr_once(["Cannot add child node: Type mismatch or maximum number of objects reached", get_children()], true)
 
 func is_full() -> bool:
 	return get_child_count() >= max_objects

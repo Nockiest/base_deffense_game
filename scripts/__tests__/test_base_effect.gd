@@ -15,11 +15,11 @@ func before_each() -> void:
 	health_component =  Test.instantiate_health_comp()
 	effect_hold_component_valid = preload("res://scripts/components/effect_holder_component/effect_hold_component.tscn").instantiate()
 	health_component.add_child(effect_hold_component_valid)
-	health_component.effect_holder = effect_hold_component_valid
+	health_component.effect_hold_component = effect_hold_component_valid
 	valid_entity = Test.instantiate_enemy()
 	valid_entity.health_component = health_component
 	valid_entity.add_child(health_component)
-	effect_hold_component_valid = health_component.effect_holder
+	effect_hold_component_valid = health_component.effect_hold_component
 	invalid_entity = Node2D.new()
 	invalid_entity.set_script(preload("res://scripts/components/aiming/base_aiming_component.gd"))  # Mock script class name: "InvalidClass"
 	effect_hold_component_invalid = EffectHoldComponent.new()
@@ -31,7 +31,7 @@ func before_each() -> void:
 	await get_tree().process_frame #, "idle_frame"
 func test_apply_to_valid_entity() -> void:
 	# Apply the effect to the valid entity
-	Utils.print_spaced([valid_entity,valid_entity.health_component, valid_entity.health_component.effect_holder, effect_hold_component_valid] )
+	oneErr.printerr_once([valid_entity,valid_entity.health_component, valid_entity.health_component.effect_hold_component, effect_hold_component_valid] )
 	effect.apply_to_entity(valid_entity)
 	print("1",effect.can_apply_on_node(valid_entity.health_component),effect_hold_component_valid,effect_hold_component_valid.get_children())
 	# Check if any child of the effect holder is of the same type as the effect
@@ -68,7 +68,7 @@ func test_on_and_off_effect() -> void:
 	effect.duration_sec = 0.3
 	effect.apply_to_entity(valid_entity)
 	print('x',effect_hold_component_valid.get_children())
-	Utils.print_spaced([valid_entity.get_type_name(), valid_entity.has_node("EffectHoldComponent") ,   valid_entity.get_type_name() in effect.allowed_types],false)
+	oneErr.printerr_once([valid_entity.get_type_name(), valid_entity.has_node("EffectHoldComponent") ,   valid_entity.get_type_name() in effect.allowed_types],false)
 	await get_tree().create_timer(0.1).timeout  # Wait during the effect duration
 	var  effect_type_match_found = Test.has_copy( effect,effect_hold_component_valid)
 	assert_true(effect_type_match_found, "On-and-off effect should be active")

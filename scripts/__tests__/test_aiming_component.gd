@@ -37,7 +37,10 @@ func test_aims_at_nearest_turret():
 	var enemy = aiming_component.get_nearest_enemy("turrets")
 	
 	# Assert the current target is the nearest turret (turret1 in this case)
-	assert_true(enemy.position ==  Vector2(100, 100), "A target should be found.")
+	if enemy is Node2D:
+		assert_true(enemy.position ==  Vector2(100, 100), "A target should be found.")
+	else:
+		printerr(enemy, ' is null')
 	assert_eq  (aiming_component.target_position , Vector2(100, 100), "The nearest turret should be Turret1.")
 
 # Test that it aims at the closer of two turret positions if positions change

@@ -24,22 +24,33 @@ func update_target_position() -> void:
 	else:
 		printerr("owner not set")
 # Get the nearest enemy and store it
-func get_nearest_enemy(enemy_group:String) -> Node2D:
-	if   enemy_group == "" or enemy_group == null :
-		printerr("enemy group not set")
-		return
+func get_nearest_enemy(enemy_group: String) -> Node2D:
+	# Check if the enemy group is set and not null
+	if enemy_group == "" or enemy_group == null:
+		printerr("Error: Enemy group not set or is null")
+		return null  # Return null explicitly in error cases
+
 	var nearest_enemy: Node2D = null
 	var nearest_distance: float = INF
 
-	# Get all enemies in the specified group
-	#print_debug(enemy_group)
-	var enemies = get_tree().get_nodes_in_group(enemy_group)
+	# Attempt to retrieve all enemies in the specified group
+	var enemies = []
+	if get_tree() != null:
+		enemies = get_tree().get_nodes_in_group(enemy_group)
+	else:
+		printerr("Error: Unable to access the scene tree.")
+		return null  # Return early if the scene tree is not accessible
 
+	# Iterate through the enemies and find the nearest one
 	for enemy in enemies:
 		if enemy is Node2D:
 			var distance = global_position.distance_to(enemy.global_position)
 			if distance < nearest_distance:
 				nearest_distance = distance
 				nearest_enemy = enemy
+
+	# If no enemies were found or the group was empty, log an error
+	if nearest_enemy == null:
+		oneErr.printerr_once('targets not found',["Warning: No enemies found in the group: ", enemy_group])
 
 	return nearest_enemy

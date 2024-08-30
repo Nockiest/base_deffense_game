@@ -20,7 +20,7 @@ func apply_area_effect(effect_function: Callable, target_groups: Array[String], 
 		for entity in entities:
 			if entity is Node2D and  is_instance_valid(entity) :
 				var distance_to_entity = center_position.distance_to(entity.global_position)
-				#Utils.print_spaced([entity  ,distance_to_entity])
+				#oneErr.printerr_once([entity  ,distance_to_entity])
 				# Check if the entity is within the effect radius
 				if distance_to_entity <= effect_radius_px:
 					# Apply the effect using the provided callback function

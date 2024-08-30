@@ -41,6 +41,7 @@ func cause_per_second_effect(per_sec_fce: Callable = per_second_effect ) -> void
 		per_sec_fce.call()
 	else:
 		per_second_effect()
+		
 func _on_effect_timer_end():
 	print("timer ended")
 	cause_exit_effect(exit_effect  ) 
@@ -78,10 +79,8 @@ func apply_to_entity(entity: Node) -> void:
 	for type in allowed_types:
 		print( "entiity has?", type, entity.has_node(type))
 		if entity.has_node(type):
-			var entity_component = entity.get_node(type) as Component
-			if entity_component is Component:
-				var component_cast = entity_component as Component
-			else:
+			var entity_component = entity.get_node(type)  
+			if not entity_component is Component:
 				printerr("Failed to cast node to Component:", entity_component)
 			# Ensure the entity module is valid and has an EffectHoldComponent
 			prints( entity, type, entity_component )
@@ -96,7 +95,10 @@ func create_copy(entity_component:Component):
 	entity_component.effect_hold_component.add_effect(effect_copy)
 	effect_copy.owner = entity_component
 	effect_copy.cause_start_effect()
-	if effect_copy.effect_timer.wait_time!= 1:
+	if effect_copy.effect_timer == null:
+		printerr("effect copy doesmt have an effect timer")
+		return 
+	if  effect_copy.effect_timer.wait_time!= 1:
 		printerr("dont set effect timer duration directly in wait time it will be overriden")
 	effect_copy.effect_timer.wait_time = duration_sec
 	effect_copy.effect_timer.start()

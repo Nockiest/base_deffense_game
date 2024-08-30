@@ -49,6 +49,7 @@ shape = SubResource("RectangleShape2D_xxigd")
 [node name="DeathComponent" parent="." instance=ExtResource("5_y3vvn")]
 
 [node name="MeleeAttackComponent" parent="." instance=ExtResource("7_8bsyt")]
+attack_delay_sec = 1.0
 
 [node name="EntityAimingComponent" parent="." instance=ExtResource("7_flvws")]
 enemy_group = "turrets"
