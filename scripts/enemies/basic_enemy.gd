@@ -1,7 +1,7 @@
-extends AreaModClass
 class_name Enemy
-func get_type_name():
-	return 'Enemy'
+extends Area2D
+
+ 
 
 @export var health_component: HealthComponent
 @export var movement_component: MovementComponent

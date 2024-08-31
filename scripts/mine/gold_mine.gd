@@ -1,11 +1,9 @@
 class_name GoldMine
-extends NodeModClass
+extends Node2D
 
 @export var gold_per_click = 1
 
-func get_type_name():
-	return "Mine"
-
+ 
 
 func provide_recource()->int:
 	return gold_per_click

@@ -1,9 +1,7 @@
 # BaseAimingComponent.gd
 class_name AimingComponent
 extends Component 
-
-func get_type_name():
-	return 'AimingComponent'
+ 
 # The target position to aim at
 var target_position: Vector2 = Vector2.ZERO
 

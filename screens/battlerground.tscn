@@ -13,6 +13,7 @@
 [node name="Mine" parent="Obstacles" instance=ExtResource("1_0mfcq")]
 position = Vector2(353, 237)
 scale = Vector2(2.81397, 2.8741)
+target_groups = null
 
 [node name="Enemies" type="Node" parent="."]
 

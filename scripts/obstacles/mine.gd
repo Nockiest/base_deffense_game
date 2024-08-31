@@ -1,12 +1,11 @@
 class_name Mine
-extends AreaModClass
+extends Area2D
 
 @export var area_of_effect_component: AreaOfEffectComponent
 @export var single_damage_component: SingleDamage
 @export var target_groups: Array[String] = ['enemies']
 
-func get_type_name():
-	return 'Mine'
+ 
 
 
 func _on_area_entered(_area: Area2D) -> void:

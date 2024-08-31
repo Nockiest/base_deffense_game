@@ -1,7 +1,5 @@
 class_name  FireEffect
 extends  BaseEffect
-func get_type_name():
-	return "FireEffect"
  
 @export var fire_damage_sec:= 1
 

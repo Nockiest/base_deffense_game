@@ -1,8 +1,7 @@
 extends Area2D
 class_name Turret
 
-func get_type_name():
-	return 'Turret'
+ 
 
 @export var aiming_component: AimingComponent
 @export var ammo_magazine_component: ProjectileStorage

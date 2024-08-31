@@ -1,7 +1,6 @@
 class_name SingleDamage
 extends BaseEffect 
-func get_type_name():
-	return "SingleDamage"
+ 
 @export var damage:int= 1
 #effect_type = EffectTypes.EFFECT_TYPE.ONE_SHOT
 # Called when the node enters the scene tree for the first time.

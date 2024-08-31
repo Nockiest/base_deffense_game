@@ -1,9 +1,7 @@
 class_name MovementCollisionHandlerComp
-extends NodeModClass
+extends Node2D
 
-func get_type_name():
-	return 'MovementCollisionHandlerComp'
-
+ 
 @export var owner_movement_comp:MovementComponent
 @export var impassable_object_groups:Array[String]
 

@@ -2,10 +2,7 @@ class_name  FreezeEffect
 extends BaseEffect
 
 var owner_original_speed:float
-
-
-func get_type_name():
-	return 'FreezeEffect'
+ 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

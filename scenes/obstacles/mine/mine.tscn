@@ -51,6 +51,7 @@ collision_mask = 14
 script = ExtResource("1_iaf5u")
 area_of_effect_component = NodePath("AreaOfEffectComponent")
 single_damage_component = NodePath("SingleDamage")
+target_groups = null
 
 [node name="AreaOfEffectComponent" parent="." instance=ExtResource("2_wyffc")]
 

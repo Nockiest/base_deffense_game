@@ -1,8 +1,6 @@
 class_name BaseEffect
-extends NodeModClass
-
-func get_type_name():
-	return "BaseEffect"
+extends Node2D
+ 
  
 @export var effect_type: EffectTypes.EFFECT_TYPE= EffectTypes.EFFECT_TYPE.ONE_SHOT
 @export var effect_interval: float = 1.0  # Interval in seconds for per-second effect
@@ -61,9 +59,9 @@ func can_apply_on_node(node: Node) -> bool:
 		printerr('Entity does not have EffectHoldComponent:', node)
 		return false
 
-	if node.has_method('get_type_name'):
-		prints("x ", node.get_type_name() , node.get_type_name() in allowed_types)
-		if node.get_type_name() in allowed_types:
+	if node.name:
+		prints("x ", node.name , node.name in allowed_types)
+		if node.name in allowed_types:
 			return true
 	else:
 		printerr(node, 'isn\'t inheriting from modclass')

@@ -1,3 +1,4 @@
+class_name MovableCamera
 extends Camera2D
 
 @export var speed = 200

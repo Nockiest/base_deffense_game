@@ -1,8 +1,7 @@
 class_name MovementComponent
 extends Component
 
-func get_type_name():
-	return "MovementComponent"
+ 
 
 @export var base_speed_px_sec: float = 20.0#:
  

@@ -1,9 +1,7 @@
 class_name KinematicComponent
 extends MovementComponent
 
-func get_type_name():
-	return "MovementComponent"
-
+ 
 var velocity: Vector2 = Vector2.ZERO    # To hold the velocity
 
 func _process(delta: float) -> void:
