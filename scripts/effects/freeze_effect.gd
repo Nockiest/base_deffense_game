@@ -1,23 +1,23 @@
 class_name  FreezeEffect
 extends BaseEffect
 
-var owner_original_speed:float
- 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass  # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func start_effect():
-	print("freeze started")
-	owner_original_speed = owner.speed_px_sec
-	owner.speed_px_sec  = 0.0
-	
-func exit_effect():
-	print("freeze ends")
-	owner.speed_px_sec  = owner_original_speed
+func start_effect() -> void:
+	print("Freeze effect started")
+	if owner:
+ 
+		
+		# Apply a -100% speed modifier to stop the movement
+		owner.add_speed_modifier("freeze", -1.0)  # -100% modifier
+
+func exit_effect() -> void:
+	print("Freeze effect ended")
+	if owner:
+		# Remove the -100% speed modifier and restore original speed
+		owner.remove_speed_modifier("freeze")

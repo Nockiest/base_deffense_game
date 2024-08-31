@@ -1,11 +1,10 @@
-class_name MovementCollisionHandlerComp
 extends Node2D
 
- 
-@export var owner_movement_comp:MovementComponent
-@export var impassable_object_groups:Array[String]
+@export var owner_movement_comp: MovementComponent
+@export var impassable_object_groups: Array[String]
 
-var blockingObjects:Array[Node2D]
+var blockingObjects: Array[Node2D] = []
+
 func start_on_collision(area: Node2D) -> void:
 	print_debug("Collision started with: ", area)
 	print_debug("Current blockingObjects: ", blockingObjects)
@@ -18,7 +17,8 @@ func start_on_collision(area: Node2D) -> void:
 			break
 
 	if is_impassable:
-		owner_movement_comp.speed_px_sec = 0
+		# Apply a -100% modifier to speed
+		owner_movement_comp.add_speed_modifier("collision", -1.0)  # -100% modifier
 		if not blockingObjects.has(area):
 			blockingObjects.append(area)
 	else:
@@ -27,11 +27,13 @@ func start_on_collision(area: Node2D) -> void:
 func stop_on_collision(area: Node2D) -> void:
 	print_debug("Collision ended with: ", area)
 	print_debug("Current blockingObjects: ", blockingObjects)
+	
 	if blockingObjects.has(area):
 		blockingObjects.erase(area)
 		if blockingObjects.size() == 0:
-			owner_movement_comp.speed_px_sec = owner_movement_comp.base_speed_px_sec
+			# Remove the -100% modifier to restore base speed
+			owner_movement_comp.remove_speed_modifier("collision")
 		else:
-			printerr('area ', blockingObjects[0], ' still blocks', owner)
+			printerr('Area ', blockingObjects[0], ' still blocks', owner)
 	else:
-		printerr('area ', area, ' not found in blockingObjects', owner)
+		printerr('Area ', area, ' not found in blockingObjects', owner)
