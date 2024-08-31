@@ -45,6 +45,7 @@ folder_colors={
 projectiles=""
 turrets=""
 enemies="everything that attacks the base"
+base_objects="all the buildings enemies can attack"
 
 [input]
 

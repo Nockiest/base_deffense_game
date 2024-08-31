@@ -4,7 +4,7 @@ extends Component
 func get_type_name():
 	return 'HealthComponent'
 @export var max_hp: float = 1
-@export var start_hp: float = 1
+@export var start_hp: float = max_hp
 @export var max_shields: float = 1
 @export var start_shields: float = 1
 @export var regeneration_per_call: float = 1

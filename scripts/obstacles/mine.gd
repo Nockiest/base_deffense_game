@@ -9,7 +9,7 @@ func get_type_name():
 	return 'Mine'
 
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	$Sprite2D/ExplosionAnimation.play("explosion")
 
 # Called when the explosion animation finishes playing

@@ -25,3 +25,8 @@ func _process(_delta: float) -> void:
 func _on_health_component_hp_ran_out() -> void:
 	if self_destruction_component:
 		self_destruction_component.kill_owner() 
+
+
+ 
+
+ 

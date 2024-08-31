@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://t6n6ewambkd0"]
+[gd_scene load_steps=13 format=3 uid="uid://t6n6ewambkd0"]
 
 [ext_resource type="Script" path="res://scripts/enemies/basic_enemy.gd" id="1_6v72k"]
 [ext_resource type="Shader" path="res://scenes/enemies/basic_enemy.gdshader" id="2_55cb4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://scripts/components/self_destruction_component/self_destruction_component.tscn" id="5_y3vvn"]
 [ext_resource type="PackedScene" uid="uid://n4jgo8ducj5y" path="res://scripts/components/melee_attack/melee_attack_component.tscn" id="7_8bsyt"]
 [ext_resource type="PackedScene" uid="uid://dkq7f5mbkd78b" path="res://scripts/components/aiming/entity_aiming_component/entity_aiming_component.tscn" id="7_flvws"]
+[ext_resource type="PackedScene" uid="uid://b6qml8jc7uq1v" path="res://scripts/components/movement_collision_handler/movement_collision_handler_comp.tscn" id="10_ar15a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xy4k4"]
 shader = ExtResource("2_55cb4")
@@ -40,7 +41,7 @@ max_hp = 5.0
 start_hp = 5.0
 
 [node name="MovementComponent" parent="." instance=ExtResource("4_a30ae")]
-speed_px_sec = 50.0
+base_speed_px_sec = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
@@ -50,6 +51,7 @@ shape = SubResource("RectangleShape2D_xxigd")
 
 [node name="MeleeAttackComponent" parent="." instance=ExtResource("7_8bsyt")]
 attack_delay_sec = 1.0
+damage_amount = 0
 
 [node name="EntityAimingComponent" parent="." instance=ExtResource("7_flvws")]
 enemy_group = "turrets"
@@ -59,5 +61,11 @@ position = Vector2(2.16961e-05, 0.500005)
 scale = Vector2(0.32, 0.565476)
 flash_duration_sec = 2.0
 
-[connection signal="health_stat_changed" from="HealthComponent" to="." method="_on_health_component_health_stat_changed"]
+[node name="MovementCollisionHandlerComp" parent="." node_paths=PackedStringArray("owner_movement_comp") instance=ExtResource("10_ar15a")]
+owner_movement_comp = NodePath("../MovementComponent")
+impassable_object_groups = Array[String](["turrets"])
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_entered" from="." to="MovementCollisionHandlerComp" method="start_on_collision"]
+[connection signal="area_exited" from="." to="MovementCollisionHandlerComp" method="stop_on_collision"]
 [connection signal="hp_ran_out" from="HealthComponent" to="." method="_on_health_component_hp_ran_out"]

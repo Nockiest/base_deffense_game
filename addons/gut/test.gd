@@ -1317,6 +1317,7 @@ func get_summary_text():
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 func _smart_double(thing, double_strat, partial):
+	prints(thing, double_strat, partial)
 	var override_strat = GutUtils.nvl(double_strat, gut.get_doubler().get_strategy())
 	var to_return = null
 

@@ -40,6 +40,8 @@ script = ExtResource("7_8kmil")
 [node name="HealthComponent" parent="." instance=ExtResource("9_h2e32")]
 position = Vector2(-1, 56)
 scale = Vector2(1, 0.394105)
+max_hp = 100.0
+start_hp = 10.0
 
 [node name="MouseAimingComponent" parent="." instance=ExtResource("9_ttun8")]
 

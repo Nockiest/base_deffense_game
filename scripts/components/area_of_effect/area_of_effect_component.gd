@@ -12,6 +12,13 @@ func apply_area_effect(effect_function: Callable, target_groups: Array[String], 
 		return
 
 	for group_name in target_groups:
+		# Check if the scene tree has the target group
+		if not get_tree():
+			printerr("tree not set")
+			return
+		if not get_tree().has_group(group_name):
+			printerr('Group does not exist in the scene tree:', group_name)
+			continue
 		var entities = get_tree().get_nodes_in_group(group_name)
 		if len(entities) == 0:
 			printerr('No entities in group', group_name, owner)

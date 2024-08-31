@@ -4,8 +4,11 @@ extends Component
 func get_type_name():
 	return "MovementComponent"
 
-@export var speed_px_sec: float = 20.0
+@export var base_speed_px_sec: float = 20.0#:
+ 
+@onready var speed_px_sec = base_speed_px_sec
 var direction: Vector2 = Vector2(1, 0)  # Default direction to the right
+
 
 func _process(delta: float) -> void:
 	if owner:
@@ -14,3 +17,12 @@ func _process(delta: float) -> void:
 		
 		# Move the parent by adjusting its position
 		owner.position += movement
+	else:
+		printerr('movement comp doesnt have an owner ', self)
+
+## TO DO ADD LOGIC TO ONLY CHANGE THE MOVEMENT BY A CERTAIN AMMOUNT OF BASE MOVEMENT PERCENT, MAYE USE AMODIFIER
+func stop_movement():
+	speed_px_sec = 0
+	
+func resume_movement():
+	speed_px_sec = base_speed_px_sec

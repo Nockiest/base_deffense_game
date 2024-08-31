@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6qml8jc7uq1v"]
+
+[ext_resource type="Script" path="res://scripts/components/movement_collision_handler/movement_collision_handler_comp.gd" id="1_gdf1w"]
+
+[node name="MovementCollisionHandlerComp" type="Node2D"]
+script = ExtResource("1_gdf1w")
