@@ -1,7 +1,7 @@
 class_name BaseEffect
 extends Node2D
  
- 
+@export var effect_name:String
 @export var effect_type: EffectTypes.EFFECT_TYPE= EffectTypes.EFFECT_TYPE.ONE_SHOT
 @export var effect_interval: float = 1.0  # Interval in seconds for per-second effect
 @export var duration_sec: float = 5.0  # Total duration for the effect

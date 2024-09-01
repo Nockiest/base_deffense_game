@@ -6,5 +6,6 @@
 [node name="CollisionEffect" instance=ExtResource("1_4t70c")]
 script = ExtResource("1_x7kmp")
 speed_decimal_change = -1.0
+effect_name = "collision"
 effect_type = 2
 applicable_components = Array[String](["MovementComponent"])

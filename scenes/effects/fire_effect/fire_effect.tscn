@@ -6,6 +6,7 @@
 [node name="FireEffect" instance=ExtResource("1_7hp0e")]
 script = ExtResource("1_ry8da")
 fire_damage_sec = 1
+effect_name = "fire"
 effect_type = 1
 duration_sec = 1.0
 applicable_components = Array[String](["HealthComponent"])
