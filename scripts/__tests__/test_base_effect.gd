@@ -68,7 +68,7 @@ func test_on_and_off_effect() -> void:
 	effect.duration_sec = 0.3
 	effect.apply_to_entity(valid_entity)
 	print('x',effect_hold_component_valid.get_children())
-	prints( valid_entity.name, valid_entity.has_node("EffectHoldComponent") ,   valid_entity.get_type_name() in effect.allowed_types ,false)
+	prints( valid_entity.name, valid_entity.has_node("EffectHoldComponent") ,   valid_entity.get_type_name() in effect.applicable_components ,false)
 	await get_tree().create_timer(0.1).timeout  # Wait during the effect duration
 	var  effect_type_match_found = Test.has_copy( effect,effect_hold_component_valid)
 	assert_true(effect_type_match_found, "On-and-off effect should be active")

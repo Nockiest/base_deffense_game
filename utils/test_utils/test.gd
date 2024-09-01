@@ -8,12 +8,12 @@ func instantiate_health_comp():
 	# Initialize the effect and set allowed classes
 	
 
-static func instantiate_effect(effect_allowed_types: Array[String]) -> BaseEffect:
+static func instantiate_effect(effect_applicable_components: Array[String]) -> BaseEffect:
 	var effect = BaseEffect.new()
 	effect.effect_type = EffectTypes.EFFECT_TYPE.EFFECT_PER_SECOND
 	effect.effect_interval = 1.0  # Set interval for per-second effect
 	effect.duration_sec = 5.0  # Set effect 
-	effect.allowed_types = effect_allowed_types # Specify allowed class names for the effect
+	effect.applicable_components = effect_applicable_components # Specify allowed class names for the effect
 	return effect
 
 func instantiate_enemy()-> Enemy:
@@ -22,22 +22,22 @@ func instantiate_enemy()-> Enemy:
 	enemy.set_script(preload("res://scripts/enemies/basic_enemy.gd"))  # Mock script class name: "ValidClass"
 	return enemy 
 
-func instantiate_bullet()-> Bullet:
-	var bullet_scene = preload("res://scenes/projectiles/bullet/bullet.tscn")  # Replace with your actual path
-	var bullet = bullet_scene.instantiate()
-	bullet.set_script(preload("res://scripts/projectiles/bullet/bullet.gd"))  # Mock script class name: "ValidClass"
-	return bullet 
+#func instantiate_bullet()-> Bullet:
+	#var bullet_scene = preload("res://bullet")  # Replace with your actual path
+	#var bullet = bullet_scene.instantiate()
+	#bullet.set_script(preload("res://scripts/projectiles/bullet/bullet.gd"))  # Mock script class name: "ValidClass"
+	#return bullet 
 
 func instantiate_single_damage()-> SingleDamage:
 	var dmg_scene = preload("res://scenes/effects/single_damage/single_damage.tscn")  # Mock script class name: "ValidClass"
 	var dmg = dmg_scene.instantiate()
 	dmg.set_script(preload("res://scripts/effects/single_damage.gd"))  # Mock script class name: "ValidClass"
 	return dmg  
-func instantiate_freeze()-> FreezeEffect:
-	var freeze_scene = preload("res://scenes/effects/freeze_effect/freeze_effect.tscn")  # Mock script class name: "ValidClass"
-	var freeze = freeze_scene.instantiate()
-	freeze.set_script(preload("res://scripts/effects/freeze_effect.gd"))  # Mock script class name: "ValidClass"
-	return freeze  	
+#func instantiate_freeze()-> FreezeEffect:
+	#var freeze_scene = preload("res://scenes/effects/freeze_effect/freeze_effect.tscn")  # Mock script class name: "ValidClass"
+	#var freeze = freeze_scene.instantiate()
+	#freeze.set_script(preload("res://scripts/effects/free "))  # Mock script class name: "ValidClass"
+	#return freeze  	
 	
 func has_copy( eff:BaseEffect,node:Node)->bool:
 	var   effect_type_match_found = false

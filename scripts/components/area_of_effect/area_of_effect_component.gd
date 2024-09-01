@@ -5,8 +5,8 @@ extends Component
 @export var effect_radius_px: float = 400.0  # Radius within which to apply the effect
 
 # Function to apply an effect to nearby entities
-func apply_area_effect(effect_function: Callable, target_groups: Array[String], effect_radius_px: float= effect_radius_px, center_position: Vector2 = self.global_position) -> void:
-	prints('called',effect_function,target_groups,effect_radius_px)
+func apply_area_effect(effect_function: Callable, target_groups: Array[String],  radius_px: float= effect_radius_px, center_position: Vector2 = self.global_position) -> void:
+	prints('called',effect_function,target_groups,radius_px)
 	if len(target_groups) == 0:
 		printerr('Target groups set badly', owner)
 		return
@@ -29,7 +29,7 @@ func apply_area_effect(effect_function: Callable, target_groups: Array[String], 
 				var distance_to_entity = center_position.distance_to(entity.global_position)
 				#oneErr.printerr_once([entity  ,distance_to_entity])
 				# Check if the entity is within the effect radius
-				if distance_to_entity <= effect_radius_px:
+				if distance_to_entity <= radius_px:
 					# Apply the effect using the provided callback function
 					effect_function.call(entity)
 				else:

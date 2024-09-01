@@ -4,7 +4,8 @@ extends Node2D
 @export var impassable_object_groups: Array[String]
 
 var blockingObjects: Array[Node2D] = []
-
+var collision_effect = preload('res://scripts/effects/movement_effects/collision_effect.gd')
+var collision_instance:CollisionEffect
 func start_on_collision(area: Node2D) -> void:
 	print_debug("Collision started with: ", area)
 	print_debug("Current blockingObjects: ", blockingObjects)
@@ -18,7 +19,9 @@ func start_on_collision(area: Node2D) -> void:
 
 	if is_impassable:
 		# Apply a -100% modifier to speed
-		owner_movement_comp.add_speed_modifier("collision", -1.0)  # -100% modifier
+		prints( "adding child ",owner, owner_movement_comp.effect_hold_component, collision_effect)
+		collision_instance = collision_effect.instantiate()
+		owner_movement_comp.effect_hold_component.add_child(collision_instance)  # -100% modifier
 		if not blockingObjects.has(area):
 			blockingObjects.append(area)
 	else:
@@ -32,7 +35,7 @@ func stop_on_collision(area: Node2D) -> void:
 		blockingObjects.erase(area)
 		if blockingObjects.size() == 0:
 			# Remove the -100% modifier to restore base speed
-			owner_movement_comp.remove_speed_modifier("collision")
+			owner_movement_comp.effect_hold_component.remove_child(collision_instance)
 		else:
 			printerr('Area ', blockingObjects[0], ' still blocks', owner)
 	else:

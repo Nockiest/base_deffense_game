@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0wvqd25m5t6j"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/glue/glue.gd" id="1_ehc80"]
+[ext_resource type="Texture2D" uid="uid://bvrnfjkcmpr8s" path="res://addons/gut/images/green.png" id="2_og84r"]
+[ext_resource type="PackedScene" uid="uid://djape1yn3meth" path="res://scripts/components/movement/movement-component.tscn" id="3_5otd6"]
+[ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://scripts/components/self_destruction_component/self_destruction_component.tscn" id="4_qr2ws"]
+[ext_resource type="PackedScene" uid="uid://ccdxj42urvt06" path="res://scenes/effects/glue_effect/glue_effect.tscn" id="5_7swva"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr2uk"]
+
+[node name="Glue" type="Area2D" node_paths=PackedStringArray("movement_component", "self_destruction_component", "effects")]
+scale = Vector2(1.97474, 1.97474)
+script = ExtResource("1_ehc80")
+movement_component = NodePath("MovementComponent")
+self_destruction_component = NodePath("SelfDestructionComponent")
+effects = [NodePath("GlueEffect")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_og84r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qr2uk")
+
+[node name="MovementComponent" parent="." instance=ExtResource("3_5otd6")]
+
+[node name="SelfDestructionComponent" parent="." instance=ExtResource("4_qr2ws")]
+
+[node name="GlueEffect" parent="." instance=ExtResource("5_7swva")]
+speed_decimal_change = 1.0
+applicable_components = Array[String](["MovementComponent"])
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

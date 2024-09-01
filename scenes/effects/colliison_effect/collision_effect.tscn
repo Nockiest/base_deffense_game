@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1f6vftt3y5aw"]
+
+[ext_resource type="PackedScene" uid="uid://7i4m7k7bd4un" path="res://scenes/effects/base_effect.tscn" id="1_4t70c"]
+[ext_resource type="Script" path="res://scripts/effects/movement_effects/collision_effect.gd" id="1_x7kmp"]
+
+[node name="CollisionEffect" instance=ExtResource("1_4t70c")]
+script = ExtResource("1_x7kmp")
+speed_decimal_change = -1.0
+effect_type = 2
+applicable_components = Array[String](["MovementComponent"])

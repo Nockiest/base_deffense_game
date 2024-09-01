@@ -57,7 +57,6 @@ target_groups = null
 
 [node name="SingleDamage" parent="." instance=ExtResource("3_41a3x")]
 damage = 5
-allowed_types = Array[String](["HealthComponent"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

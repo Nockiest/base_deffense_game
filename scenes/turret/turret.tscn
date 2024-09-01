@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/turret/turret.gd" id="1_xdj7m"]
 [ext_resource type="Texture2D" uid="uid://ch4xo76r5jmrx" path="res://assets/icon.svg" id="3_uy220"]
-[ext_resource type="PackedScene" uid="uid://bjvr1segvh8bd" path="res://scenes/projectiles/bullet/bullet.tscn" id="4_mafdm"]
+[ext_resource type="PackedScene" uid="uid://bjvr1segvh8bd" path="res://projectiles/bullet/bullet.tscn" id="4_mafdm"]
 [ext_resource type="Script" path="res://utils/state-machine/state-machine.gd" id="5_balcf"]
 [ext_resource type="Script" path="res://scripts/turret/idle.gd" id="6_5r8n1"]
 [ext_resource type="Script" path="res://scripts/turret/aiming.gd" id="7_8kmil"]

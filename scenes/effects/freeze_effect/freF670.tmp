@@ -1,13 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://bb7eair2q4oc3"]
 
 [ext_resource type="PackedScene" uid="uid://7i4m7k7bd4un" path="res://scenes/effects/base_effect.tscn" id="1_qo72q"]
-[ext_resource type="Script" path="res://scripts/effects/movement_effects/freeze_effect.gd" id="2_o78s1"]
+
+[sub_resource type="GDScript" id="GDScript_dlcyf"]
+script/source = "class_name FreezeEffect
+extends MovementEffect
+
+
+ 
+"
 
 [node name="FreezeEffect" instance=ExtResource("1_qo72q")]
-script = ExtResource("2_o78s1")
-speed_decimal_change = -1.0
+script = SubResource("GDScript_dlcyf")
 effect_type = 2
-applicable_components = Array[String](["MovementComponent"])
+speed_decimal_change = -1.0
 
 [node name="Timer" parent="." index="0"]
 wait_time = 5.0

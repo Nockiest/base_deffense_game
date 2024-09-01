@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccdxj42urvt06"]
+
+[ext_resource type="PackedScene" uid="uid://7i4m7k7bd4un" path="res://scenes/effects/base_effect.tscn" id="1_xv1xk"]
+[ext_resource type="Script" path="res://scripts/effects/movement_effects/glue_effect.gd" id="2_4nxak"]
+
+[node name="GlueEffect" instance=ExtResource("1_xv1xk")]
+script = ExtResource("2_4nxak")
+speed_decimal_change = -0.75
+effect_type = 2
+applicable_components = Array[String](["MovementComponent"])

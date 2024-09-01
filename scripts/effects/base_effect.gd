@@ -7,7 +7,7 @@ extends Node2D
 @export var duration_sec: float = 5.0  # Total duration for the effect
 @export var effect_timer: Timer  
 
-@export var allowed_types: Array[String] = [ ]  # List of script class names this effect can be applied to
+@export var applicable_components: Array[String] = [ ]  # List of script class names this effect can be applied to
 
 var elapsed_time: float = 0.0
 var interval_timer: float = 0.0  
@@ -60,21 +60,21 @@ func can_apply_on_node(node: Node) -> bool:
 		return false
 
 	if node.name:
-		prints("x ", node.name , node.name in allowed_types)
-		if node.name in allowed_types:
+		prints("x ", node.name , node.name in applicable_components)
+		if node.name in applicable_components:
 			return true
 	else:
 		printerr(node, 'isn\'t inheriting from modclass')
 
-	printerr('Cannot apply effect to node', node, node.get_class(), 'Allowed classes:', allowed_types)
+	printerr('Cannot apply effect to node', node, node.get_class(), 'Allowed classes:', applicable_components)
 	return false
 
 func apply_to_entity(entity: Node) -> void:
 	# Check if the entity is valid and has an EffectHoldComponent
 	if can_apply_on_node(entity):
 		create_copy(entity)
-	print("allowed ", allowed_types)
-	for type in allowed_types:
+	print("allowed ", applicable_components)
+	for type in applicable_components:
 		print( "entiity has?", type, entity.has_node(type))
 		if entity.has_node(type):
 			var entity_component = entity.get_node(type)  

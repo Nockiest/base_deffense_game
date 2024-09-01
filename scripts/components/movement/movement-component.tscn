@@ -8,3 +8,7 @@ script = ExtResource("1_qaepy")
 effect_hold_component = NodePath("EffectHoldComponent")
 
 [node name="EffectHoldComponent" parent="." instance=ExtResource("3_ahoag")]
+
+[connection signal="child_entered_tree" from="EffectHoldComponent" to="." method="_on_effect_hold_component_child_entered_tree"]
+[connection signal="child_entered_tree" from="EffectHoldComponent" to="." method="update_speed"]
+[connection signal="child_exiting_tree" from="EffectHoldComponent" to="." method="update_speed"]

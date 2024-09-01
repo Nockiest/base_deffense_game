@@ -8,4 +8,4 @@ script = ExtResource("1_ry8da")
 fire_damage_sec = 1
 effect_type = 1
 duration_sec = 1.0
-allowed_types = Array[String](["HealthComponent"])
+applicable_components = Array[String](["HealthComponent"])
