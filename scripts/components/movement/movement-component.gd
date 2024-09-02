@@ -17,21 +17,27 @@ func _process(delta: float) -> void:
 
 # Update speed modifiers based on child nodes of EffectHoldComponent
 func update_modifier() -> void:
-	speed_modifier = 1
 	if not effect_hold_component:
 		printerr("EffectHoldComponent is not set on MovementComponent")
 		return
-	print('updating speed', effect_hold_component.get_children())
-	
-	# Retrieve all unique modifiers from EffectHoldComponent's children
-	# Dictionary to hold unique modifiers based on child nodes of EffectHoldComponent
+	var unique_modifiers =  parse_effect_modifiers_from_children(effect_hold_component,'speed_decimal_change')
+	# Calculate the total modifier percentage	
+	speed_modifier = Utils.calculate_modifier_from_dict(unique_modifiers) 
+	# Apply only unique modifiers once
+func parse_effect_modifiers_from_children(node: EffectHoldComponent, value_property: String) -> Dictionary:
 	var unique_modifiers: Dictionary = {}
 
-	for child in effect_hold_component.get_children():
+	for child in node.get_children():
+		if not value_property in child:
+			printerr(child, " doesn't contain the property ", value_property, ", occurred in ", owner)
+			continue
+		
 		if not child.effect_name:
-			printerr(child, ' doesnt contain an effect name, ocurred in ', owner)
+			printerr(child, " doesn't contain an effect name, occurred in ", owner)
+			continue
+		
 		var modifier_type = child.effect_name  # Assuming unique modifier types are identified by name
-		var new_value = child.speed_decimal_change  # Assuming each child has this property
+		var new_value = child.get(value_property)  # Use get() to retrieve the value dynamically
 		
 		# Check if the modifier type already exists in the dictionary
 		if unique_modifiers.has(modifier_type):
@@ -41,15 +47,12 @@ func update_modifier() -> void:
 		else:
 			# Add the new modifier type with its value
 			unique_modifiers[modifier_type] = new_value
-
-
-	# Calculate the total modifier percentage	
-	speed_modifier = Utils.calculate_modifier_from_dict(unique_modifiers) 
-	# Apply only unique modifiers once
- 
+			
+	return unique_modifiers
 
 	
 
 
 func _on_effect_hold_component_child_entered_tree(node: Node) -> void:
 	print_debug("child entered")
+	

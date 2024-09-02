@@ -22,7 +22,6 @@ texture = ExtResource("2_og84r")
 shape = SubResource("CircleShape2D_qr2uk")
 
 [node name="MovementComponent" parent="." instance=ExtResource("3_5otd6")]
-base_speed_px_sec = null
 
 [node name="SelfDestructionComponent" parent="." instance=ExtResource("4_qr2ws")]
 
