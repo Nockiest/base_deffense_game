@@ -4,7 +4,7 @@ extends Node2D
 @export var impassable_object_groups: Array[String]
 
 var blockingObjects: Array[Node2D] = []
-var collision_effect = preload('res://scripts/effects/movement_effects/collision_effect.gd')
+var collision_effect = preload('res://scenes/effects/colliison_effect/collision_effect.tscn')
 var collision_instance:CollisionEffect
 func start_on_collision(area: Node2D) -> void:
 	print_debug("Collision started with: ", area)

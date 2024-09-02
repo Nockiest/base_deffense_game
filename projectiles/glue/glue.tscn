@@ -27,6 +27,5 @@ shape = SubResource("CircleShape2D_qr2uk")
 
 [node name="GlueEffect" parent="." instance=ExtResource("5_7swva")]
 speed_decimal_change = 1.0
-applicable_components = Array[String](["MovementComponent"])
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

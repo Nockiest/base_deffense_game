@@ -23,7 +23,7 @@ func  test_mine_damages_enemy():
 	print_tree()
 	print_debug(get_tree()," ", get_tree().get_nodes_in_group)
 	# Arrange: Configure mine's area of effect and position
-	mine.area_of_effect_component.effect_radius_px = 1000  # Large enough radius to include the enemy
+	mine.area_of_effect_component.effect_radius_px = 1000  # Large enough radius_px to include the enemy
 	mine.global_position = Vector2(0, 0)
 	mine.single_damage_component.damage = 1
 	add_child(mine)

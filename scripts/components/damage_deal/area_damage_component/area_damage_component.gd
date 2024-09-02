@@ -1,7 +1,7 @@
 class_name AreaDamageComponent
 extends DamageDealComponent
 
-@export var damage_radius_px: float = 100.0  # Radius within which to deal damage
+@export var damage_radius_px: float = 100.0  # radius_px within which to deal damage
 @export var area_of_effect_component: AreaOfEffectComponent
 
 # Called when the node needs to deal damage

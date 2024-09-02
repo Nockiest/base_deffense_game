@@ -1,6 +1,7 @@
 class_name MovementComponent
 extends Component
 
+## TO DO promyslet jak zajistit aby se speed modifier p5i aktualizaci vždy propočítal od základu jedna
 @export var base_speed_px_sec: float = 20.0
 var speed_modifier: float = 1.0  # Start with base speed, which is 100%
 var direction: Vector2 = Vector2(1, 0)

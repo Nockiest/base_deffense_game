@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://scripts/projectiles/bomb/bomb.gd" id="1_vfpbj"]
 [ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://scripts/components/self_destruction_component/self_destruction_component.tscn" id="2_8eyou"]
 
-[node name="Bomb" type="Node2D"]
+[node name="Bomb" type="Node2D" node_paths=PackedStringArray("self_destruction_component")]
 script = ExtResource("1_vfpbj")
+self_destruction_component = NodePath("SelfDestructionComponent")
 
 [node name="SelfDestructionComponent" parent="." instance=ExtResource("2_8eyou")]
 

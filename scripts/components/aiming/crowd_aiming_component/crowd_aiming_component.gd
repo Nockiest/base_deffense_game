@@ -3,18 +3,18 @@
 class_name CrowdAimingComponent
 extends  AimingComponent
 
-@export var concentration_radius: float = 100.0  # Radius for concentration calculation
+@export var concentration_radius: float = 100.0  # radius_px for concentration calculation
 
 # Override to update the target position to the highest concentration position
 func update_target_position() -> void:
 	target_position = get_highest_concentration_position()
 
-# Get the position of the highest concentration of nodes within a radius
+# Get the position of the highest concentration of nodes within a radius_px
 func get_highest_concentration_position() -> Vector2:
 	var highest_concentration_position: Vector2 = Vector2.ZERO
 	var highest_concentration: int = 0
 
-	# Check all nodes in the scene within the specified radius
+	# Check all nodes in the scene within the specified radius_px
 	var nodes_in_range = get_tree().get_nodes_in_group("scene_objects")
 	for node in nodes_in_range:
 		if node is Node2D:

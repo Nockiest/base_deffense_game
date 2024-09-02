@@ -8,12 +8,6 @@
 
 [node name="Battleground" type="Node2D"]
 
-[node name="Obstacles" type="Node" parent="."]
-
-[node name="Mine" parent="Obstacles" instance=ExtResource("1_0mfcq")]
-position = Vector2(353, 237)
-scale = Vector2(2.81397, 2.8741)
-
 [node name="Enemies" type="Node" parent="."]
 
 [node name="BasicEnemy" parent="Enemies" instance=ExtResource("1_67okx")]
@@ -21,6 +15,13 @@ position = Vector2(100, 119)
 
 [node name="BasicEnemy2" parent="Enemies" instance=ExtResource("1_67okx")]
 position = Vector2(205, 164)
+
+[node name="Obstacles" type="Node" parent="."]
+
+[node name="Mine" parent="Obstacles" instance=ExtResource("1_0mfcq")]
+position = Vector2(353, 237)
+scale = Vector2(2.81397, 2.8741)
+target_groups = Array[String](["enemies"])
 
 [node name="DebugWindow" parent="." instance=ExtResource("1_s2ndp")]
 
