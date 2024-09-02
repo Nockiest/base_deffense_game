@@ -5,7 +5,7 @@
 
 [node name="FreezeEffect" instance=ExtResource("1_qo72q")]
 script = ExtResource("2_o78s1")
-speed_decimal_change = -1.0
+speed_modifier_change = -1.0
 effect_name = "freeze"
 effect_type = 2
 applicable_components = Array[String](["MovementComponent"])

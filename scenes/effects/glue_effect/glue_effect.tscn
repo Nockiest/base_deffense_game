@@ -5,7 +5,7 @@
 
 [node name="GlueEffect" instance=ExtResource("1_xv1xk")]
 script = ExtResource("2_4nxak")
-speed_decimal_change = -0.75
+speed_modifier_change = -0.75
 effect_name = "glue"
 effect_type = 2
 applicable_components = Array[String](["MovementComponent"])
