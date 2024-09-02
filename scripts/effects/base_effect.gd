@@ -1,6 +1,7 @@
 class_name BaseEffect
 extends Node2D
  
+@export var modulated_modifier:String
 @export var effect_name:String
 @export var effect_type: EffectTypes.EFFECT_TYPE= EffectTypes.EFFECT_TYPE.ONE_SHOT
 @export var effect_interval: float = 1.0  # Interval in seconds for per-second effect
@@ -58,10 +59,14 @@ func create_copy(entity_component:Component):
 	var effect_copy = self.duplicate()
 	if not entity_component.effect_hold_component:
 		printerr('entity doesnt have effect hold comp ', entity_component)
-	entity_component.effect_hold_component.add_effect(effect_copy)
+	entity_component.effect_hold_component.add_effect(effect_copy,modulated_modifier)
 	effect_copy.owner = entity_component
 	effect_copy.get_node('StateMachine').transition_to('Start')
 	if not effect_copy.get_parent() is EffectHoldComponent:
 		printerr("parent isnt effect hold comp, ", get_parent())
 	print("added duplicate ", self.duplicate, " into ", entity_component)
 		
+func _ready():
+	if not owner is EffectHoldComponent:
+		printerr('owner isnt effect hold comp ', owner)
+ 

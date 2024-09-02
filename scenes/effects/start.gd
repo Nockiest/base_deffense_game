@@ -4,7 +4,7 @@ extends State
 func enter(_msg := {}):
 	cause_start_effect()
 	if owner.effect_type == EffectTypes.EFFECT_TYPE.ONE_SHOT:
-		owner.get_parent().remove_effect(owner)
+		owner.get_parent().remove_effect(owner,owner.modulated_modifier)
 		return
 	state_machine.transition_to('Active') 
 	

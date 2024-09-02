@@ -22,10 +22,11 @@ func _process(delta: float) -> void:
 func _on_effect_hold_component_child_entered_tree(node: Node) -> void:
 	print_debug("child entered")
 	
-func update_modifier(modifier=speed_modifier ,effect_variable_name:String ='speed_decimal_change' ) -> void:
-	if not effect_hold_component:
-		printerr("EffectHoldComponent is not set on MovementComponent")
-		return
-	var unique_modifiers =  Utils.parse_effect_modifiers_from_children(effect_hold_component,effect_variable_name )
-	# Calculate the total modifier percentage	
-	speed_modifier = Utils.calculate_modifier_from_dict(unique_modifiers) 
+func update_modifier(modifier: String, new_value: float) -> void:
+	# Check if the modifier exists in the object
+	#if not has_property(modifier):
+		#printerr("EffectHoldComponent wants to update a variable I don't have:", modifier)
+		#return
+	
+	# Set the new value for the modifier, ensuring it's not negative
+	set(modifier, max(new_value, 0))

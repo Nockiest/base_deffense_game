@@ -58,9 +58,7 @@ duration_sec = 3.0
 [node name="SingleDamage" parent="." instance=ExtResource("6_eifrs")]
 
 [node name="FreezeEffect" parent="." instance=ExtResource("8_y3iw8")]
-speed_modifier_change = 1.0
 
 [node name="GlueEffect" parent="." instance=ExtResource("9_3vtoa")]
-speed_modifier_change = 1.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -26,6 +26,6 @@ shape = SubResource("CircleShape2D_qr2uk")
 [node name="SelfDestructionComponent" parent="." instance=ExtResource("4_qr2ws")]
 
 [node name="GlueEffect" parent="." instance=ExtResource("5_7swva")]
-speed_modifier_change = -0.75
+speed_modifier = 1.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

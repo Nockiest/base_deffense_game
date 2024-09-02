@@ -231,7 +231,7 @@ func parse_effect_modifiers_from_children(node: EffectHoldComponent, value_prope
 		
 		var modifier_type = child.effect_name  # Assuming unique modifier types are identified by name
 		var new_value = child.get(value_property)  # Use get() to retrieve the value dynamically
-		
+		print(child.speed_modifier)
 		# Check if the modifier type already exists in the dictionary
 		if allow_duplicates:
 			# Handle duplicates by appending a numeric suffix
