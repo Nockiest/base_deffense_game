@@ -10,11 +10,11 @@ var movement_component:MovementComponent
 
 func before_each() -> void:
 	# Initialize the effect and set allowed classes
-	effect = Test.instantiate_freeze() 
+	effect = FreezeEffect.new()
 	effect.duration_sec = 0.3
-	enemy = Test.instantiate_enemy()
-	movement_component =  preload("res://scripts/components/movement/movement-component.tscn").instantiate()
-	movement_component.speed_px_sec = 10
+	enemy = Enemy.new()
+	movement_component =  MovementComponent.new()
+	movement_component.base_speed_px_sec = 10
 	enemy.movement_component = movement_component 
 	# Add entities to the scene for testing
 	add_child(enemy)
@@ -35,8 +35,8 @@ func test_freeze_applied():
 	# Check if any child of the effect holder is of the same type as the effect
 	var effect_type_match_found = Test.has_copy( effect,movement_component.effect_hold_component)
 	# Assert that an effect of the correct type was added
-	print(enemy.movement_component.speed_px_sec)
-	assert_true(enemy.movement_component.speed_px_sec == 0, "enemy should be stopped.")
+	print(enemy.movement_component.base_speed_px_sec)
+	assert_true(enemy.movement_component.base_speed_px_sec == 0, "enemy should be stopped.")
 
 func test_freeze_unmount():
 	# Process a frame to ensure the effect application is handled
@@ -44,6 +44,6 @@ func test_freeze_unmount():
 	# Check if any child of the effect holder is of the same type as the effect
 	var effect_type_match_found = Test.has_copy( effect,movement_component.effect_hold_component)
 	# Assert that an effect of the correct type was added
-	print(enemy.movement_component.speed_px_sec)
-	assert_true(enemy.movement_component.speed_px_sec != 0, "enemy should resume movement")
+	print(enemy.movement_component.base_speed_px_sec)
+	assert_true(enemy.movement_component.base_speed_px_sec != 0, "enemy should resume movement")
 	assert_false(Test.has_copy( effect,movement_component.effect_hold_component), "effect should be unmounted from enemy")

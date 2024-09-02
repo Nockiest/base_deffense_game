@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwyjhtwut1t30"]
+[gd_scene load_steps=7 format=3 uid="uid://dwyjhtwut1t30"]
 
 [ext_resource type="PackedScene" uid="uid://burqtism06kl2" path="res://scenes/obstacles/mine/mine.tscn" id="1_0mfcq"]
 [ext_resource type="PackedScene" uid="uid://t6n6ewambkd0" path="res://scenes/enemies/basic_enemy.tscn" id="1_67okx"]
+[ext_resource type="Script" path="res://scripts/battlerground.gd" id="1_llwsg"]
 [ext_resource type="PackedScene" uid="uid://7i2s2qp0nlea" path="res://scripts/debug-window/debug-window.tscn" id="1_s2ndp"]
 [ext_resource type="PackedScene" uid="uid://2icamt22lsy2" path="res://scenes/turret/turret.tscn" id="4_hk75r"]
 [ext_resource type="PackedScene" uid="uid://cvshclvyanljm" path="res://scenes/player/player.tscn" id="5_0g1fa"]
 
 [node name="Battleground" type="Node2D"]
+script = ExtResource("1_llwsg")
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -21,7 +23,6 @@ position = Vector2(205, 164)
 [node name="Mine" parent="Obstacles" instance=ExtResource("1_0mfcq")]
 position = Vector2(353, 237)
 scale = Vector2(2.81397, 2.8741)
-target_groups = Array[String](["enemies"])
 
 [node name="DebugWindow" parent="." instance=ExtResource("1_s2ndp")]
 

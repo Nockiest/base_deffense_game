@@ -208,6 +208,15 @@ func find_ancestor_by_factor(x: int, node: Node) -> Node:
 	
 func direction_from_rotation(rotation:float)->Vector2:
 	return Vector2(cos(rotation - deg_to_rad(90)), sin(rotation - deg_to_rad(90)))
+	
+func calculate_modifier_from_dict(dictionary:Dictionary ) -> float:
+	var current_modifier = 1
+	# Apply only unique modifiers once
+	for modifier in dictionary.values():
+		print_debug(modifier)
+		current_modifier += modifier
+	return current_modifier
+
 # sadly not working
 #func find_ancestor_by_class(name_of_class: String, node: Node) -> Node:
 #	var current_node = node

@@ -43,12 +43,10 @@ func update_modifier() -> void:
 			unique_modifiers[modifier_type] = new_value
 
 
-	# Calculate the total modifier percentage
-
+	# Calculate the total modifier percentage	
+	speed_modifier = Utils.calculate_modifier_from_dict(unique_modifiers) 
 	# Apply only unique modifiers once
-	for modifier in unique_modifiers.values():
-		print_debug(modifier)
-		speed_modifier += modifier
+ 
 
 	
 

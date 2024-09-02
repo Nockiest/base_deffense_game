@@ -40,12 +40,23 @@ func instantiate_single_damage()-> SingleDamage:
 	#return freeze  	
 	
 func has_copy( eff:BaseEffect,node:Node)->bool:
+	if not node:
+		printerr(node, ' doesnt exist at Utils.has_copy')
+		return false
 	var   effect_type_match_found = false
 	for child in node.get_children():
 		if child.name == eff.name:
 			effect_type_match_found = true
 			break
 	return effect_type_match_found
+	
+func mock_properties(node:Node):
+	print('test')
+	var instance = node.new() # Replace with your class
+	var properties = instance.get_property_list()
+	
+	for property in properties:
+		print("Name: ", property.name, ", Type: ", property.type)
 # Utility function to instantiate a node from a scene and set its script
 #func instantiate_node(scene_path: String, script_path: String) -> Node:
 	#var scene = load(scene_path)

@@ -8,14 +8,14 @@ func _process(delta: float) -> void:
 	pass
 	#if owner:
 		## Calculate the distance to move this frame
-		#var movement = direction.normalized() * speed_px_sec * delta
+		#var movement = direction.normalized() * base_speed_px_sec * delta
  
 		
 func _physics_process(delta: float) -> void:
 	if not owner:
 		printerr('owner not set ',self) 
 		return
-	velocity = direction.normalized() * speed_px_sec
+	velocity = direction.normalized() * base_speed_px_sec * speed_modifier 
 	prints(velocity, direction)
 	
 	if owner is CharacterBody2D   :

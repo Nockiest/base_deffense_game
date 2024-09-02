@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://7i4m7k7bd4un"]
+[gd_scene load_steps=7 format=3 uid="uid://7i4m7k7bd4un"]
 
 [ext_resource type="Script" path="res://scripts/effects/base_effect.gd" id="1_nhglm"]
+[ext_resource type="Script" path="res://utils/state-machine/state-machine.gd" id="2_5qbej"]
+[ext_resource type="Script" path="res://scenes/effects/inactive.gd" id="3_pjir8"]
+[ext_resource type="Script" path="res://scenes/effects/start.gd" id="4_v27k5"]
+[ext_resource type="Script" path="res://scenes/effects/active.gd" id="5_ygxb8"]
+[ext_resource type="Script" path="res://scenes/effects/end.gd" id="6_a8lsw"]
 
 [node name="BaseEffect" type="Node2D" node_paths=PackedStringArray("effect_timer")]
 script = ExtResource("1_nhglm")
@@ -9,4 +14,20 @@ effect_timer = NodePath("Timer")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_5qbej")
+initial_state = NodePath("Inactive")
+
+[node name="Inactive" type="Node" parent="StateMachine"]
+script = ExtResource("3_pjir8")
+
+[node name="Start" type="Node" parent="StateMachine"]
+script = ExtResource("4_v27k5")
+
+[node name="Active" type="Node" parent="StateMachine"]
+script = ExtResource("5_ygxb8")
+
+[node name="End" type="Node" parent="StateMachine"]
+script = ExtResource("6_a8lsw")
+
+[connection signal="timeout" from="Timer" to="StateMachine/Active" method="_on_timer_timeout"]
