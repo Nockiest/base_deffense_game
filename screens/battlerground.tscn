@@ -6,11 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://7i2s2qp0nlea" path="res://scripts/debug-window/debug-window.tscn" id="1_s2ndp"]
 [ext_resource type="Texture2D" uid="uid://bnshrwixgafwm" path="res://assets/MiniWorldSprites/Ground/TexturedGrass.png" id="2_rskvq"]
 [ext_resource type="Texture2D" uid="uid://ba6tsg2gpoxge" path="res://assets/MiniWorldSprites/Ground/Grass.png" id="3_v4g6n"]
-[ext_resource type="PackedScene" uid="uid://2icamt22lsy2" path="res://scenes/turret/turret.tscn" id="4_hk75r"]
+[ext_resource type="PackedScene" uid="uid://2icamt22lsy2" path="res://scenes/buildings/turret/turret.tscn" id="4_hk75r"]
 [ext_resource type="Texture2D" uid="uid://d4lry88kt4cp3" path="res://assets/MiniWorldSprites/Ground/DeadGrass.png" id="4_ugqp4"]
 [ext_resource type="PackedScene" uid="uid://cvshclvyanljm" path="res://scenes/player/player.tscn" id="5_0g1fa"]
-[ext_resource type="Script" path="res://scripts/player/player.gd" id="9_rmnbw"]
-[ext_resource type="PackedScene" uid="uid://1xktymax5f3" path="res://scenes/mine/gold_mine.tscn" id="11_8c337"]
+[ext_resource type="PackedScene" uid="uid://1xktymax5f3" path="res://scenes/buildings/gold_mine/gold_mine.tscn" id="11_8c337"]
+[ext_resource type="PackedScene" uid="uid://cc1l52ras1u3p" path="res://scenes/treasury/treasury.tscn" id="11_lghve"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6o3kq"]
 resource_name = "Grass"
@@ -73,7 +73,6 @@ scale = Vector2(2.81397, 2.8741)
 
 [node name="Player" parent="." instance=ExtResource("5_0g1fa")]
 position = Vector2(572, 296)
-script = ExtResource("9_rmnbw")
 
 [node name="Buildings" type="Node" parent="."]
 
@@ -86,3 +85,5 @@ position = Vector2(893, 375)
 
 [node name="GoldMine" parent="Buildings/Mines" instance=ExtResource("11_8c337")]
 position = Vector2(772, 219)
+
+[node name="Treasury" parent="." instance=ExtResource("11_lghve")]

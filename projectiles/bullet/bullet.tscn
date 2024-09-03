@@ -56,7 +56,6 @@ damage_radius_px = 1000.0
 duration_sec = 3.0
 
 [node name="SingleDamage" parent="." instance=ExtResource("6_eifrs")]
-damage_modifier = 1.0
 
 [node name="FreezeEffect" parent="." instance=ExtResource("8_y3iw8")]
 

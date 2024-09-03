@@ -31,6 +31,7 @@ enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
 folder_colors={
 "res://assets/": "yellow",
+"res://scenes/buildings/": "gray",
 "res://screens/": "gray",
 "res://scripts/": "purple",
 "res://scripts/__ignore_tests/": "red",
@@ -46,6 +47,7 @@ projectiles=""
 turrets=""
 enemies="everything that attacks the base"
 base_objects="all the buildings enemies can attack"
+treasury="The players treasury containing all the gold science and other recources he has available"
 
 [input]
 

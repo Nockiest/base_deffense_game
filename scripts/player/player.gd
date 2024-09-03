@@ -2,7 +2,7 @@ class_name Player
 extends Node2D
 
 var gold: int
-var click_power: int = 1
+var click_power: float = 1
 
 func _input(event: InputEvent) -> void:
 	# Check if the input event is a mouse button press and if it's the left button
@@ -36,5 +36,9 @@ func _input(event: InputEvent) -> void:
 # Handle the clicked node
 func _on_node_clicked(node: Node) -> void:
 	# Example action when a node is clicked
+	if node is GoldMine:
+		var recource = node. provide_recource()
+		var treasury = get_tree().get_first_node_in_group("treasury")
+		treasury.gold += round(recource*click_power)
 	print("Node clicked:", node.name)
 	# Add logic here for what should happen when the node is clicked
