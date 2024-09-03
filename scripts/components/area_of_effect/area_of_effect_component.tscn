@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b33lspjglp7x6"]
+[gd_scene load_steps=4 format=3 uid="uid://b33lspjglp7x6"]
 
 [ext_resource type="Script" path="res://scripts/components/area_of_effect/area_of_effect_component.gd" id="1_757at"]
 [ext_resource type="PackedScene" uid="uid://bli7k15t8yntj" path="res://scripts/components/effect_holder_component/effect_hold_component.tscn" id="2_yvnpe"]
+[ext_resource type="PackedScene" uid="uid://cnma6ncksqni4" path="res://scripts/components/radius_visualiser/radius_visualizer.tscn" id="3_retu7"]
 
-[node name="AreaOfEffectComponent" type="Node2D"]
+[node name="AreaOfEffectComponent" type="Node2D" node_paths=PackedStringArray("radius_visualizer")]
 script = ExtResource("1_757at")
+radius_visualizer = NodePath("RadiusVisualizer")
 
 [node name="EffectHoldComponent" parent="." instance=ExtResource("2_yvnpe")]
+
+[node name="RadiusVisualizer" parent="." instance=ExtResource("3_retu7")]

@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://burqtism06kl2"]
+[gd_scene load_steps=10 format=3 uid="uid://burqtism06kl2"]
 
 [ext_resource type="Script" path="res://scripts/obstacles/mine.gd" id="1_iaf5u"]
 [ext_resource type="PackedScene" uid="uid://b33lspjglp7x6" path="res://scripts/components/area_of_effect/area_of_effect_component.tscn" id="2_wyffc"]
 [ext_resource type="PackedScene" uid="uid://mg22vpcew01o" path="res://scenes/effects/single_damage/single_damage.tscn" id="3_41a3x"]
 [ext_resource type="Texture2D" uid="uid://cwchngyv02nu5" path="res://assets/img/Trap and Weapon/Bomb.png" id="4_5r4ff"]
-[ext_resource type="PackedScene" uid="uid://cnma6ncksqni4" path="res://scripts/components/radius_visualiser/radius_visualizer.tscn" id="5_etqcd"]
 [ext_resource type="PackedScene" uid="uid://cumblegcognst" path="res://scripts/components/damage_deal/single_entity_damage/single_damage_component.tscn" id="6_417c3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2ahr"]
@@ -47,13 +46,12 @@ _data = {
 "explosion": SubResource("Animation_uhrw0")
 }
 
-[node name="Mine" type="Area2D" node_paths=PackedStringArray("area_of_effect_component", "single_damage_component", "radius_visualizer")]
+[node name="Mine" type="Area2D" node_paths=PackedStringArray("area_of_effect_component", "single_damage_component")]
 collision_layer = 4
 collision_mask = 14
 script = ExtResource("1_iaf5u")
 area_of_effect_component = NodePath("AreaOfEffectComponent")
 single_damage_component = NodePath("SingleDamageDealComponent")
-radius_visualizer = NodePath("RadiusVisualizer")
 
 [node name="AreaOfEffectComponent" parent="." instance=ExtResource("2_wyffc")]
 effect_radius_px = 100.0
@@ -75,9 +73,6 @@ hframes = 5
 libraries = {
 "": SubResource("AnimationLibrary_g1apf")
 }
-
-[node name="RadiusVisualizer" parent="." instance=ExtResource("5_etqcd")]
-opacity = 0.5
 
 [node name="SingleDamageDealComponent" parent="." instance=ExtResource("6_417c3")]
 

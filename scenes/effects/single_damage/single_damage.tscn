@@ -6,4 +6,5 @@
 [node name="SingleDamage" instance=ExtResource("1_8ss2g")]
 script = ExtResource("1_yldxf")
 damage = 1
+damage_modifier = 1.0
 applicable_components = Array[String](["HealthComponent"])

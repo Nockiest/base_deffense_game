@@ -3,6 +3,7 @@ extends BaseEffect
 ## DEPRECATED use singledamagedealcomponent instead 
 
 @export var damage:int= 1
+@export var damage_modifier: float = 1
 #effect_type = EffectTypes.EFFECT_TYPE.ONE_SHOT
 # Called when the node enters the scene tree for the first time.
 func _deal_damage(dmg:float= damage):
