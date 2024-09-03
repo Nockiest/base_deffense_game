@@ -6,39 +6,6 @@ extends Component
 
 # Function to apply an effect to nearby entities
 func apply_area_effect(effect_function: Callable, target_groups: Array[String], radius_px: float = effect_radius_px, center_position: Vector2 = self.global_position) -> void:
-	prints('called', effect_function, target_groups, radius_px)
-	if len(target_groups) == 0:
-		printerr('Target groups set badly', owner)
-		return
-
-	for group_name in target_groups:
-		# Check if the scene tree has the target group
-		if not get_tree():
-			printerr("tree not set")
-			return
-		if not get_tree().has_group(group_name):
-			printerr('Group does not exist in the scene tree:', group_name)
-			continue
-		var entities = get_tree().get_nodes_in_group(group_name)
-		if len(entities) == 0:
-			printerr('No entities in group', group_name, owner)
-			continue
-		
-		for entity in entities:
-			if entity is Node2D and is_instance_valid(entity):
-				var distance_to_entity = center_position.distance_to(entity.global_position)
-				# Check if the entity is within the effect radius
-				if distance_to_entity <= radius_px:
-					# Apply the effect using the provided callback function
-					effect_function.callv([entity])
-				else:
-					print("Entity out of effect range:", entity)
-	
-	# Check for collision shapes within the radius
-	_check_collision_shapes_within_radius(center_position, radius_px, effect_function)
-
-# Function to check collision shapes within the effect radius
-func _check_collision_shapes_within_radius(center_position: Vector2, radius_px: float, effect_function: Callable) -> void:
 	var space_state = get_world_2d().direct_space_state
 
 	# Define the query shape as a circle with the effect radius
@@ -54,10 +21,14 @@ func _check_collision_shapes_within_radius(center_position: Vector2, radius_px: 
 
 	# Perform the query
 	var results = space_state.intersect_shape(query, 32)  # Maximum of 32 results
-	
+
 	for result in results:
 		var body = result.collider
+		# Check if the collider is a Node2D and belongs to any of the target groups
 		if body is Node2D:
-			print("Body within effect range:", body.name, " at position:", body.global_position)
-			# Optionally apply the effect to the body
-			effect_function.callv([body])
+			for group in target_groups:
+				if body.is_in_group(group):
+					print("Body within effect range:", body.name, " at position:", body.global_position)
+					# Call the effect function on the body
+					effect_function.callv([body])
+					break  # Stop checking other groups once a match is found

@@ -55,7 +55,7 @@ single_damage_component = NodePath("SingleDamage")
 radius_visualizer = NodePath("RadiusVisualizer")
 
 [node name="AreaOfEffectComponent" parent="." instance=ExtResource("2_wyffc")]
-effect_radius_px = 50.0
+effect_radius_px = 100.0
 
 [node name="SingleDamage" parent="." instance=ExtResource("3_41a3x")]
 damage = 5

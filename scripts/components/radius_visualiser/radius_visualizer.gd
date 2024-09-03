@@ -34,10 +34,10 @@ func _draw() -> void:
 	if time_left > 0:
 		if filled:
 			# Draw a filled circle
-			draw_circle(Vector2.ZERO, radius_px, ring_color)
+			draw_circle(Vector2.ZERO, radius_px, ring_color,filled)
 		else:
 			# Draw a ring outline (adjust thickness as needed)
-			draw_circle(Vector2.ZERO, radius_px, ring_color, 2)
+			draw_circle(Vector2.ZERO, radius_px, ring_color, false, 2)
 
 # Example function to trigger the ring display (you can connect this to a signal or call it directly)
 func start_display() -> void:
