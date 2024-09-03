@@ -2,7 +2,7 @@ class_name Mine
 extends Area2D
 
 @export var area_of_effect_component: AreaOfEffectComponent
-@export var single_damage_component: SingleDamage
+@export var single_damage_component: SingleDamageDealComponent
 @export var radius_visualizer: RadiusVisualizer
 @export var target_groups: Array[String] = ['enemies']
 
@@ -17,7 +17,7 @@ func _on_area_entered(_area: Area2D) -> void:
 func _on_explosion_finished(anim_name: String) -> void:
 	if anim_name == "explosion":
 		# Apply the effect after the animation finishes
-		area_of_effect_component.apply_area_effect(single_damage_component.apply_to_entity, target_groups)
+		area_of_effect_component.apply_area_effect(single_damage_component.deal_damage , target_groups)
 		queue_free()
 	else:
 		printerr('the explosion animation has a different name ', anim_name)

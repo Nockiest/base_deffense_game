@@ -1,34 +1,62 @@
-# AreaEffectComponent.gd
 class_name AreaOfEffectComponent
-extends Component 
+extends Component
 
 @export var effect_radius_px: float = 400.0  # Radius within which to apply the effect
 
-# Function to apply an effect to nearby entities
+# Function to apply an effect to nearby entities using Geometry calculations
 func apply_area_effect(effect_function: Callable, target_groups: Array[String], radius_px: float = effect_radius_px, center_position: Vector2 = self.global_position) -> void:
-	var space_state = get_world_2d().direct_space_state
+	var affected_bodies = []
 
-	# Define the query shape as a circle with the effect radius
-	var circle_shape = CircleShape2D.new()
-	circle_shape.radius = radius_px
+	# Loop through each target group
+	for group in target_groups:
+		# Get all nodes in the specified group
+		var nodes_in_group = get_tree().get_nodes_in_group(group)
 
-	# Setup the query parameters
-	var query = PhysicsShapeQueryParameters2D.new()
-	query.shape = circle_shape
-	query.transform = Transform2D(0, center_position)  # Position the circle at the center
-	query.collide_with_areas = true
-	query.collide_with_bodies = true
-
-	# Perform the query
-	var results = space_state.intersect_shape(query, 32)  # Maximum of 32 results
-
-	for result in results:
-		var body = result.collider
-		# Check if the collider is a Node2D and belongs to any of the target groups
-		if body is Node2D:
-			for group in target_groups:
-				if body.is_in_group(group):
+		# Check each node in the group
+		for body in nodes_in_group:
+			# Ensure the node is a Node2D
+			if not body is Node2D:
+				printerr(body, ' isnt node2d, found in: ', self)
+				# Retrieve collision shapes and relevant points
+			var collision_points = _get_collision_points(body)
+		
+			# Check if any collision points are inside the effect circle
+			for point in collision_points:
+				if Geometry2D.is_point_in_circle(point, center_position, radius_px):
+					affected_bodies.append(body)
 					print("Body within effect range:", body.name, " at position:", body.global_position)
-					# Call the effect function on the body
-					effect_function.callv([body])
-					break  # Stop checking other groups once a match is found
+					break  # No need to check other points if one is inside
+
+	# Apply the effect to all affected bodies
+	for body in affected_bodies:
+		effect_function.call(body)
+
+# Helper function to get points from a body's collision shape
+func _get_collision_points(body: Node2D) -> Array:
+	var points = []
+
+	# Loop through all collision shapes in the body
+	for child in body.get_children():
+		if child is CollisionShape2D:
+			var shape = child.shape
+
+			# Check the type of shape and extract relevant points
+			if shape is CircleShape2D:
+					print(1)
+					points.append(child.to_global(Vector2.ZERO))  # Center of the circle
+			elif shape is	RectangleShape2D:
+				print(2)
+				var extents = shape.extents
+				points.append(child.to_global(Vector2(-extents.x, -extents.y)))
+				points.append(child.to_global(Vector2(extents.x, -extents.y)))
+				points.append(child.to_global(Vector2(extents.x, extents.y)))
+				points.append(child.to_global(Vector2(-extents.x, extents.y)))
+			elif shape is CapsuleShape2D or   shape is ConvexPolygonShape2D or   shape is ConcavePolygonShape2D:
+				print(3)
+				# Additional logic for other shapes can be added here
+				# Since we're printing, let's ensure we handle unsupported shapes gracefully
+				printerr('Haven’t written a function to find points of this collision shape:', child,shape,shape is RectangleShape2D, self)
+			else:  # Default case for any other shapes not explicitly handled
+				printerr('xHaven’t written a function to find points of this collision shape:', child, shape, shape is RectangleShape2D, self)
+
+	return points

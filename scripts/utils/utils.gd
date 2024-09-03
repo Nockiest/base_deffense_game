@@ -209,48 +209,6 @@ func find_ancestor_by_factor(x: int, node: Node) -> Node:
 func direction_from_rotation(rotation:float)->Vector2:
 	return Vector2(cos(rotation - deg_to_rad(90)), sin(rotation - deg_to_rad(90)))
 	
-func calculate_modifier_from_dict(dictionary:Dictionary ) -> float:
-	var current_modifier = 1
-	# Apply only unique modifiers once
-	for modifier in dictionary.values():
-		print_debug(modifier)
-		current_modifier += modifier
-	return current_modifier
-
-func parse_effect_modifiers_from_children(node: EffectHoldComponent, value_property: String,allow_duplicates: bool = false) -> Dictionary:
-	var unique_modifiers: Dictionary = {}
-	var modifier_counts: Dictionary = {}  # To track counts of each modifier type
-	for child in node.get_children():
-		if not value_property in child:
-			printerr(child, " doesn't contain the property ", value_property, ", occurred in ", owner)
-			continue
-		
-		if not child.effect_name:
-			printerr(child, " doesn't contain an effect name, occurred in ", owner)
-			continue
-		
-		var modifier_type = child.effect_name  # Assuming unique modifier types are identified by name
-		var new_value = child.get(value_property)  # Use get() to retrieve the value dynamically
-		print(child.speed_modifier)
-		# Check if the modifier type already exists in the dictionary
-		if allow_duplicates:
-			# Handle duplicates by appending a numeric suffix
-			if modifier_counts.has(modifier_type):
-				modifier_counts[modifier_type] += 1
-			else:
-				modifier_counts[modifier_type] = 1
-			
-			var unique_key = modifier_type + str(modifier_counts[modifier_type])
-			unique_modifiers[unique_key] = new_value
-		else:
-			# Handle without duplicates, updating only if the new value is higher
-			if unique_modifiers.has(modifier_type):
-				if unique_modifiers[modifier_type] < new_value:
-					unique_modifiers[modifier_type] = new_value
-			else:
-				unique_modifiers[modifier_type] = new_value
-			
-	return unique_modifiers
 
 	
 # sadly not working

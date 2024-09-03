@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://picey4hytpaq"]
+
+[ext_resource type="Script" path="res://scripts/effects/damage_modifier_effect/damage_modifier_effect.gd" id="1_p275o"]
+
+[node name="DamageModifierEffect" type="Node2D"]
+script = ExtResource("1_p275o")
