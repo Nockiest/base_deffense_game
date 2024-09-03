@@ -11,6 +11,7 @@ func _on_PauseButton_pressed():
 	else:
 		text = "Pause"
 
+# Consume left-click events to prevent them from affecting other inputs
 # Connect the button's pressed signal in the editor or using code
 func _ready():
-	connect("pressed", _on_PauseButton_pressed )
+	connect("pressed",  _on_PauseButton_pressed )

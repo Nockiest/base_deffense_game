@@ -31,7 +31,7 @@ func _draw() -> void:
 		draw_circle(Vector2.ZERO, radius_px, ring_color)  # Correct radius, not half
 
 # Function to start the display of the ring
-func start_display(radius: float, duration: float, parent_scale: Vector2) -> void:
+func start_display(radius: float, duration: float, parent_scale: Vector2=Vector2(1,1)) -> void:
 	# Adjust the radius based on the average scale of the parent
 	var average_scale = (parent_scale.x + parent_scale.y) / 2
 	radius_px = radius / average_scale  # Scale the radius inversely to the parent's scale
