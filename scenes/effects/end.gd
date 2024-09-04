@@ -1,7 +1,7 @@
 class_name BaseEffectStateEnd
 extends State
 
-func enter(msg:Dictionary = {}):
+func enter(_msg:Dictionary = {}):
 	cause_exit_effect()
 	
 func cause_exit_effect(callback: Callable = owner.exit_effect  ) -> void:

@@ -3,7 +3,7 @@ class_name Component
 
 @export var effect_hold_component:EffectHoldComponent
 
-func update_modifier(modifier  ,new_value:float ):
+func update_modifier(_modifier  ,_new_value:float ):
 	printerr('havent written a fce to update modifier', self)
 	pass
 

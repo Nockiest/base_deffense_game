@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvshclvyanljm"]
+[gd_scene load_steps=6 format=3 uid="uid://cvshclvyanljm"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_eje8k"]
 [ext_resource type="Script" path="res://scripts/components/camera/camera.gd" id="1_ox0hi"]
-[ext_resource type="PackedScene" uid="uid://dwjx8ngai4jgo" path="res://scenes/ui/battle_ground_ui/ui.tscn" id="3_ppf4h"]
+[ext_resource type="Script" path="res://utils/state-machine/state-machine.gd" id="4_u2b1f"]
+[ext_resource type="Script" path="res://scenes/player/state_basic.gd" id="5_8gvhd"]
+[ext_resource type="Script" path="res://scenes/player/state_building.gd" id="6_08g6x"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_eje8k")
@@ -10,4 +12,12 @@ script = ExtResource("1_eje8k")
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_ox0hi")
 
-[node name="Ui" parent="Camera2D" instance=ExtResource("3_ppf4h")]
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_u2b1f")
+initial_state = NodePath("Basic")
+
+[node name="Basic" type="Node" parent="StateMachine"]
+script = ExtResource("5_8gvhd")
+
+[node name="Building" type="Node" parent="StateMachine"]
+script = ExtResource("6_08g6x")

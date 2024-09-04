@@ -209,6 +209,21 @@ func find_ancestor_by_factor(x: int, node: Node) -> Node:
 func direction_from_rotation(rotation:float)->Vector2:
 	return Vector2(cos(rotation - deg_to_rad(90)), sin(rotation - deg_to_rad(90)))
 	
+# Function to check if any of the node's parents are of a specific class
+func has_parent_of_class(node: Node, target_class: String) -> bool:
+	# Start with the parent of the current node
+	var parent = node.get_parent()
+	var instance =  ClassDB.instantiate(target_class)
+	# Traverse up the hierarchy
+	while parent:
+		# Check if the current parent is of the specified class
+		if  parent.is_instance_of(instance):
+			return true
+		# Move up to the next parent
+		parent = parent.get_parent()
+	
+	# If no matching parent is found
+	return false
 
 	
 # sadly not working

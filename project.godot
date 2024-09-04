@@ -48,6 +48,7 @@ turrets=""
 enemies="everything that attacks the base"
 base_objects="all the buildings enemies can attack"
 treasury="The players treasury containing all the gold science and other recources he has available"
+ConstructionButtons="Buttons used to construct new buildings"
 
 [input]
 

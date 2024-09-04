@@ -4,6 +4,10 @@ extends Node2D
 var gold: int
 var click_power: float = 1
 
+func _ready() -> void:
+	# Connect to the group "ConstructionButtons" to listen for button press signals
+	for button in get_tree().get_nodes_in_group("ConstructionButtons"):
+		button.connect("pressedConstructionButton", _on_construction_button_pressed )
 func _input(event: InputEvent) -> void:
 	# Check if the input event is a mouse button press and if it's the left button
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -31,14 +35,9 @@ func _input(event: InputEvent) -> void:
 			print("Clicked node:", clicked_node.name)
 
 			# Perform actions based on the clicked node
-			_on_node_clicked(clicked_node)
-
-# Handle the clicked node
-func _on_node_clicked(node: Node) -> void:
-	# Example action when a node is clicked
-	if node is GoldMine:
-		var recource = node. provide_recource()
-		var treasury = get_tree().get_first_node_in_group("treasury")
-		treasury.gold += round(recource*click_power)
-	print("Node clicked:", node.name)
-	# Add logic here for what should happen when the node is clicked
+			$StateMachine.state._on_node_clicked(clicked_node)
+		 
+func _on_construction_button_pressed(constructed_entity: PackedScene) -> void:
+	print("Construction Button pressed, constructing entity:", constructed_entity)
+	$StateMachine.state.on_construction_bar_clicked(constructed_entity)
+	# Handle construction logic here (e.g., placing a turret or mine)

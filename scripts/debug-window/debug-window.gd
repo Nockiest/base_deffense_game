@@ -14,5 +14,5 @@ func set_labels_to_black(node):
 
 func _process(_delta: float) -> void:
 	$VBoxContainer/MousePosition.text = 'X:' + str( get_parent().get_global_mouse_position().x ) + ' Y:' + str(  get_parent().get_global_mouse_position().y ) 
- 
+	$VBoxContainer/PlayerState.text = 'Player State:' + str($"../Player/StateMachine".state )
 		

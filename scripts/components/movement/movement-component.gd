@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 
 
 func _on_effect_hold_component_child_entered_tree(node: Node) -> void:
-	print_debug("child entered")
+	print_debug("child entered", node)
 	
 func update_modifier(modifier: String, new_value: float) -> void:
 	# Check if the modifier exists in the object
