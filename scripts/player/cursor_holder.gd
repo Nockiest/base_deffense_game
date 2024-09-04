@@ -21,10 +21,12 @@ func insert_scene(packed_scene: PackedScene) -> void:
 	else:
 		printerr("Packed scene does not contain a Sprite2D node.")
 
+func _ready() -> void:
+	sprite.position = Vector2.ZERO
 # Function to update the cursor holder's position to follow the mouse cursor
 func _process(delta: float) -> void:
 	# Update the position to follow the global mouse position
-	position = get_global_mouse_position()
+	global_position = get_global_mouse_position()
 
 
  

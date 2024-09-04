@@ -7,7 +7,7 @@ extends  BaseEffect
  
 func _deal_damage(dmg:float= fire_damage_sec):
 	if owner == null or !owner.has_method("take_hit"):
-		printerr("cant deal dmg to owner", self, owner)
+		oneErr.print_once("cant deal dmg to owner",["cant deal dmg to owner", self, owner])
 		return
 	owner.take_hit(dmg)
 
