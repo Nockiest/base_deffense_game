@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvshclvyanljm"]
+[gd_scene load_steps=4 format=3 uid="uid://cvshclvyanljm"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_eje8k"]
 [ext_resource type="Script" path="res://scripts/components/camera/camera.gd" id="1_ox0hi"]
+[ext_resource type="PackedScene" uid="uid://dwjx8ngai4jgo" path="res://scenes/ui/battle_ground_ui/ui.tscn" id="3_ppf4h"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_eje8k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_ox0hi")
+
+[node name="Ui" parent="Camera2D" instance=ExtResource("3_ppf4h")]

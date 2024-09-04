@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwjx8ngai4jgo"]
+
+[ext_resource type="Script" path="res://scenes/ui/battle_ground_ui/construction_bar.gd" id="1_2yw1w"]
+[ext_resource type="PackedScene" uid="uid://2icamt22lsy2" path="res://scenes/buildings/turret/turret.tscn" id="2_7lcei"]
+[ext_resource type="Texture2D" uid="uid://ch4xo76r5jmrx" path="res://assets/icon.svg" id="2_620fp"]
+[ext_resource type="PackedScene" uid="uid://1xktymax5f3" path="res://scenes/buildings/gold_mine/gold_mine.tscn" id="3_3137f"]
+
+[node name="Ui" type="Control"]
+custom_minimum_size = Vector2(1147, 646)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ConstructionBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_2yw1w")
+turret_scene = ExtResource("2_7lcei")
+mine_scene = ExtResource("3_3137f")
+
+[node name="TurretButton" type="TextureButton" parent="ConstructionBar"]
+layout_mode = 2
+texture_normal = ExtResource("2_620fp")
+
+[node name="GoldMineButton" type="TextureButton" parent="ConstructionBar"]
+layout_mode = 2
+texture_normal = ExtResource("2_620fp")
