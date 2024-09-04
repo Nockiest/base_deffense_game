@@ -18,13 +18,12 @@ func apply_area_effect(effect_function: Callable, target_groups: Array[String], 
 		for body in nodes_in_group:
 			# Ensure the node is a Node2D
 			if not body is Node2D:
-				printerr(body, ' isnt node2d, found in: ', self)
+				oneErr.printerr_once('not found body in self' ,[body, ' isnt node2d, found in: ', self])
 				# Retrieve collision shapes and relevant points
 			var collision_points = _get_collision_points(body)
 		
 			# Check if any collision points are inside the effect circle
 			for point in collision_points:
-				prints(Geometry2D.is_point_in_circle(point, center_position, radius_px),center_position, point, center_position.distance_to(point))
 				if Geometry2D.is_point_in_circle(point, center_position, radius_px):
 					affected_bodies.append(body)
 					print("Body within effect range:", body.name, " at position:", body.global_position)

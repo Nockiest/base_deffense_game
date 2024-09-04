@@ -27,7 +27,7 @@ func update_target_position() -> void:
 func get_nearest_enemy(enemy_group: String) -> Node2D:
 	# Check if the enemy group is set and not null
 	if enemy_group == "" or enemy_group == null:
-		printerr("Error: Enemy group not set or is null")
+		oneErr.printerr_once('enemy_group_null', ["Error: Enemy group not set or is null"])
 		return null  # Return null explicitly in error cases
 
 	var nearest_enemy: Node2D = null

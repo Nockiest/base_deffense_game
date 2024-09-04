@@ -14,7 +14,7 @@ signal transitioned(state_name)
 
 
 func _ready() -> void:
-	print_debug( get_children())
+	#print_debug( get_children())
 	for child in get_children():
 		child.state_machine = self
 		child.owner = get_parent()

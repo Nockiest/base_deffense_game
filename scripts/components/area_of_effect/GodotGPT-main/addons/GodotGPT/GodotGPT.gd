@@ -247,4 +247,3 @@ func _traverse_tree(prefix, node, tree_structure):
 		# Recursively traverse the tree
 		_traverse_tree(node_path + "/", child, tree_structure)
 	
-
