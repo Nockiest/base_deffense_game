@@ -13,6 +13,7 @@ func insert_scene(packed_scene: PackedScene) -> void:
 	var scene_sprite: Sprite2D = instance.get_node_or_null("Sprite2D")
 	
 	if scene_sprite:
+
 		# Assign the sprite texture from the scene to the cursor holder's sprite
 		sprite.texture = scene_sprite.texture
 		# Optionally, copy other sprite properties (like modulate, scale, etc.)
@@ -20,6 +21,9 @@ func insert_scene(packed_scene: PackedScene) -> void:
 		sprite.scale = scene_sprite.scale
 	else:
 		printerr("Packed scene does not contain a Sprite2D node.")
+
+func remove_scene():
+	sprite.texture = null
 
 func _ready() -> void:
 	sprite.position = Vector2.ZERO

@@ -12,7 +12,6 @@ var current_target: Node2D = null:
 			current_target = value
 			target_changed.emit(value)
 
-
 # Override to update the target position to the nearest enemy's position
 
 func update_target_position() -> void:
@@ -24,7 +23,7 @@ func update_target_position() -> void:
 	else:
 		printerr("owner not set")
 # Get the nearest enemy and store it
-func get_nearest_enemy(enemy_group: String) -> Node2D:
+func get_nearest_enemy(enemy_group: String, includeOwner:= false) -> Node2D:
 	# Check if the enemy group is set and not null
 	if enemy_group == "" or enemy_group == null:
 		oneErr.printerr_once('enemy_group_null', ["Error: Enemy group not set or is null"])
@@ -43,6 +42,8 @@ func get_nearest_enemy(enemy_group: String) -> Node2D:
 
 	# Iterate through the enemies and find the nearest one
 	for enemy in enemies:
+		if not includeOwner and enemy == owner:
+			continue 
 		if enemy is Node2D:
 			var distance = global_position.distance_to(enemy.global_position)
 			if distance < nearest_distance:

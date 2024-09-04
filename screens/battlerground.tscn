@@ -66,7 +66,7 @@ tile_set = SubResource("TileSet_uppic")
 position = Vector2(100, 119)
 
 [node name="BasicEnemy2" parent="Enemies" instance=ExtResource("1_67okx")]
-position = Vector2(205, 164)
+position = Vector2(118, 415)
 
 [node name="Obstacles" type="Node" parent="."]
 

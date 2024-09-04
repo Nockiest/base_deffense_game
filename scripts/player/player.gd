@@ -28,16 +28,15 @@ func _input(event: InputEvent) -> void:
 		# Perform the shape intersection query
 		var space_state = get_world_2d().direct_space_state
 		var results = space_state.intersect_shape(query, 1)  # Maximum 1 result
-		
+		var clicked_node:Node2D
 		# Check if a node was found
 		if results.size() > 0:
-			var clicked_node = results[0].collider  # Get the node (collider) that was clicked
+			clicked_node = results[0].collider  # Get the node (collider) that was clicked
 			print("Clicked node:", clicked_node.name)
 
 			# Perform actions based on the clicked node
-			$StateMachine.state._on_node_clicked(clicked_node)
+		$StateMachine.state._on_node_clicked(clicked_node)
 		 
 func _on_construction_button_pressed(constructed_entity: PackedScene) -> void:
-	print("Construction Button pressed, constructing entity:", constructed_entity)
 	$StateMachine.state.on_construction_bar_clicked(constructed_entity)
 	# Handle construction logic here (e.g., placing a turret or mine)

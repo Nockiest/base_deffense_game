@@ -10,7 +10,11 @@ func _on_node_clicked(node: Node) -> void:
 	# Add logic here for what should happen when the node is clicked
 	# Handle other nodes
 	else:
-		print("Node clicked:", node.name)
+		if node:
+			print("Node clicked:",node.name)
+		else:
+			print("Node clicked:", node )
+			
 
 # Helper function to determine if the node is the ConstructionBar or a child of it
 func  on_construction_bar_clicked(node: PackedScene) :
