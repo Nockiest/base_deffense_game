@@ -22,7 +22,7 @@ damage_deal_component = NodePath("AreaDamageComponent")
 max_pierced_entities = 2
 movement_component = NodePath("MovementComponent")
 self_destruction_component = NodePath("SelfDestructionComponent")
-effects = [NodePath("GlueEffect")]
+effects = [NodePath("FreezeEffect")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
@@ -45,6 +45,7 @@ grow_vertical = 2
 script = ExtResource("1_5iuyv")
 
 [node name="MovementComponent" parent="." instance=ExtResource("4_8qh8m")]
+base_speed_per_frame = 160.0
 
 [node name="SelfDestructionComponent" parent="." instance=ExtResource("5_q365e")]
 
@@ -61,3 +62,5 @@ duration_sec = 3.0
 [node name="GlueEffect" parent="." instance=ExtResource("9_3vtoa")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

@@ -18,7 +18,7 @@ func move_owner( delta:float, direction:Vector2 ) -> void:
 		printerr('owner not set ',self) 
 		return
 	owner.velocity = owner_direction.normalized() * base_speed_per_frame * speed_modifier * delta 
-	print(owner.velocity)
+	#print(speed_modifier)
 	owner.move_and_slide( )
 	#if owner is CharacterBody2D   :
 		#owner.move_and_slide( )

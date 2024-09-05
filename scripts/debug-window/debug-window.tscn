@@ -36,6 +36,9 @@ layout_mode = 2
 [node name="PlayerState" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 
+[node name="TreasuryState" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
 [node name="PauseGameBtn" type="CheckButton" parent="."]
 process_mode = 3
 anchors_preset = 2

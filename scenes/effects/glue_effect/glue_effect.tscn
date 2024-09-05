@@ -9,4 +9,4 @@ speed_modifier = -0.75
 modulated_modifier = "speed_modifier"
 effect_name = "glue"
 effect_type = 2
-applicable_components = Array[String](["MovementComponent"])
+applicable_components = Array[String](["MovementComponent", "KinematicComponent"])

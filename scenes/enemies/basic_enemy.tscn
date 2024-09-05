@@ -1,40 +1,42 @@
-[gd_scene load_steps=13 format=3 uid="uid://t6n6ewambkd0"]
+[gd_scene load_steps=14 format=3 uid="uid://t6n6ewambkd0"]
 
 [ext_resource type="Script" path="res://scripts/enemies/basic_enemy.gd" id="1_6v72k"]
 [ext_resource type="Shader" path="res://scenes/enemies/basic_enemy.gdshader" id="2_55cb4"]
-[ext_resource type="Texture2D" uid="uid://dm4o26ffnkchn" path="res://assets/red_box.jpeg" id="2_lga5a"]
 [ext_resource type="PackedScene" uid="uid://bdcu3imq3e6t1" path="res://scripts/components/health_component/health_component.tscn" id="2_olrbd"]
 [ext_resource type="PackedScene" uid="uid://c3rhqdncy7nkq" path="res://scripts/components/flicker_component/flicker_component.tscn" id="3_mfxui"]
 [ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://scripts/components/self_destruction_component/self_destruction_component.tscn" id="5_y3vvn"]
 [ext_resource type="PackedScene" uid="uid://n4jgo8ducj5y" path="res://scripts/components/melee_attack/melee_attack_component.tscn" id="7_8bsyt"]
 [ext_resource type="PackedScene" uid="uid://dkq7f5mbkd78b" path="res://scripts/components/aiming/entity_aiming_component/entity_aiming_component.tscn" id="7_flvws"]
 [ext_resource type="PackedScene" uid="uid://b6qml8jc7uq1v" path="res://scripts/components/movement_collision_handler/movement_collision_handler_comp.tscn" id="10_ar15a"]
+[ext_resource type="Texture2D" uid="uid://0dgi7kskaolj" path="res://assets/MiniWorldSprites/Characters/Champions/Grum.png" id="10_fow36"]
 [ext_resource type="PackedScene" uid="uid://csvcv8ymxryhh" path="res://scripts/components/movement/kinematic_movement/kinematic_movement.tscn" id="10_idrqm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xy4k4"]
 shader = ExtResource("2_55cb4")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ygw7b"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxigd"]
-size = Vector2(97, 99)
+size = Vector2(15, 13)
 
 [node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "movement_component", "self_destruction_component", "aiming_component", "melee_attack_component") groups=["BattlegroundObjects", "enemies"]]
 collision_layer = 2
-collision_mask = 14
+collision_mask = 15
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_6v72k")
 health_component = NodePath("HealthComponent")
-movement_component = NodePath("KinematicMovement")
+movement_component = NodePath("KinematicComponent")
 self_destruction_component = NodePath("DeathComponent")
 aiming_component = NodePath("EntityAimingComponent")
 melee_attack_component = NodePath("MeleeAttackComponent")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 2
 material = SubResource("ShaderMaterial_xy4k4")
 position = Vector2(-0.999993, -1.00001)
 scale = Vector2(0.326667, 0.583333)
-texture = ExtResource("2_lga5a")
+sprite_frames = SubResource("SpriteFrames_ygw7b")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_olrbd")]
 position = Vector2(0, 40)
@@ -42,7 +44,7 @@ scale = Vector2(1, 0.457207)
 max_hp = 5.0
 start_hp = 5.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_xxigd")
 
@@ -75,8 +77,13 @@ debug_path_custom_color = Color(1, 0.409168, 0.234167, 1)
 wait_time = 0.5
 autostart = true
 
-[node name="KinematicMovement" parent="." instance=ExtResource("10_idrqm")]
+[node name="KinematicComponent" parent="." instance=ExtResource("10_idrqm")]
 base_speed_per_frame = 2000.0
+
+[node name="Grum" type="Sprite2D" parent="."]
+texture = ExtResource("10_fow36")
+hframes = 5
+vframes = 9
 
 [connection signal="hp_ran_out" from="HealthComponent" to="." method="_on_health_component_hp_ran_out"]
 [connection signal="timeout" from="Timer" to="." method="_on_navigation_update_timeout"]

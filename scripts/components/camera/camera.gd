@@ -1,10 +1,10 @@
 class_name MovableCamera
 extends Camera2D
 
-@export var speed = 200
-@export var zoom_speed = 0.3
-@export var min_zoom = 0.5  # Minimum zoom level
-@export var max_zoom = 2    # Maximum zoom level
+@export var speed := 200
+@export var zoom_speed := 0.3
+@export var min_zoom :float= 1  # Minimum zoom level
+@export var max_zoom :float = 4    # Maximum zoom level
 
 func _process(_delta):
 	var movement = Vector2()

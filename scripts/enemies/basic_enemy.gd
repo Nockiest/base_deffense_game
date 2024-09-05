@@ -1,8 +1,6 @@
 class_name Enemy
 extends CharacterBody2D
 
-var speed_px_sec = 20
-
 @export var health_component: HealthComponent
 @export var movement_component: MovementComponent
 @export var self_destruction_component: SelfDestructionComponent
@@ -22,9 +20,6 @@ func _process(_delta: float) -> void:
 		# Set the direction of the MovementComponent
 		movement_component.direction = direction
 
- 
-
-
 func _on_health_component_hp_ran_out() -> void:
 	if self_destruction_component:
 		self_destruction_component.kill_owner() 
@@ -36,7 +31,6 @@ func _physics_process(delta: float) -> void:
 	#move_and_slide()
 
 func make_path():
-	print('making path',aiming_component.target_position, to_local(navigation_agent_2d.get_next_path_position()))
 	navigation_agent_2d.target_position = aiming_component.target_position
 
 

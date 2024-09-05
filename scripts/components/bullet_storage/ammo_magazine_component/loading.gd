@@ -10,6 +10,6 @@ func enter(_msg := {}) -> void:
 	owner.current_ammo  =  owner.capacity
 	state_machine.transition_to('Loaded')
 
-func fire_bullet():
+func fire_bullet(_initial_rotation:float):
 	print('i am currently reloading:', owner.current_ammo)
 	return null

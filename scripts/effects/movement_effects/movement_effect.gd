@@ -2,9 +2,6 @@ class_name MovementEffect
 extends BaseEffect
 
 @export var speed_modifier:float = 1
- #
-#func _ready():
-	#modulated_modifier  = "speed_modifier"  
  
 func start_effect():
 	if  not owner is MovementComponent:

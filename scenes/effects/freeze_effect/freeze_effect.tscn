@@ -9,7 +9,7 @@ speed_modifier = -1.0
 modulated_modifier = "speed_modifier"
 effect_name = "freeze"
 effect_type = 2
-applicable_components = Array[String](["MovementComponent"])
+applicable_components = Array[String](["MovementComponent", "KinematicComponent"])
 
 [node name="Timer" parent="." index="0"]
 wait_time = 5.0
