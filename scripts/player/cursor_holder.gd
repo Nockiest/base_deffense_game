@@ -5,8 +5,11 @@ var placable_instance: Placable:
 	set(value):
 		print(placable_instance, ' changing to ', value)
 		placable_instance = value
+		placable_instance_changed.emit(value)
+		
 var preview_instance: PlacablePreview
 
+signal placable_instance_changed(placable_instance:Placable)
 # Function to insert a packed scene and display its sprite
 func insert_scene(packed_scene: PackedScene) -> void:
 	print('Inserting scene:', packed_scene)

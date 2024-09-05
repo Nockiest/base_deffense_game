@@ -63,3 +63,8 @@ func  on_construction_bar_clicked(node_packed: PackedScene) :
 				#return true
 	#
 	#return false
+
+
+func _on_item_placer_placable_instance_changed(placable_instance: Placable) -> void:
+	if not placable_instance and state_machine.state == self:
+		state_machine.transition_to('Basic')
