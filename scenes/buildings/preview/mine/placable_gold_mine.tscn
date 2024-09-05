@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://coavgvhkuapbu"]
+
+[ext_resource type="PackedScene" uid="uid://vs4x5r3jjq8" path="res://scenes/buildings/preview/preview.tscn" id="1_q3bul"]
+
+[node name="PlacableGoldMine" instance=ExtResource("1_q3bul")]

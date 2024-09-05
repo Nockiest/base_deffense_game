@@ -16,21 +16,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		# Get the global mouse position
 		var mouse_position = get_global_mouse_position()
-		
-		# Define a small circle shape at the mouse position
-		var circle_shape = CircleShape2D.new()
-		circle_shape.radius = 1.0  # Very small radius to simulate a point
-
-		# Setup the query parameters with the circle shape
-		var query = PhysicsShapeQueryParameters2D.new()
-		query.shape = circle_shape
-		query.transform = Transform2D(0, mouse_position)  # Place the circle at the mouse position
-		query.collide_with_areas = true
-		query.collide_with_bodies = true
-
-		# Perform the shape intersection query
-		var space_state = get_world_2d().direct_space_state
-		var results = space_state.intersect_shape(query, 1)  # Maximum 1 result
+		var results = get_bodies_on_position(mouse_position)
 		var clicked_node:Node2D
 		# Check if a node was found
 		if results.size() > 0:
@@ -43,3 +29,20 @@ func _input(event: InputEvent) -> void:
 func _on_construction_button_pressed(constructed_entity: PackedScene) -> void:
 	$StateMachine.state.on_construction_bar_clicked(constructed_entity)
 	# Handle construction logic here (e.g., placing a turret or mine)
+
+func get_bodies_on_position(target:Vector2)->Array[Dictionary]:
+		# Define a small circle shape at the mouse position
+		var circle_shape = CircleShape2D.new()
+		circle_shape.radius = 1.0  # Very small radius to simulate a point
+
+		# Setup the query parameters with the circle shape
+		var query = PhysicsShapeQueryParameters2D.new()
+		query.shape = circle_shape
+		query.transform = Transform2D(0, target)  # Place the circle at the mouse position
+		query.collide_with_areas = true
+		query.collide_with_bodies = true
+
+		# Perform the shape intersection query
+		var space_state = get_world_2d().direct_space_state
+		var results = space_state.intersect_shape(query, 1)  # Maximum 1 result
+		return results

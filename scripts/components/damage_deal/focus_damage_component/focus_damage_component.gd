@@ -18,9 +18,9 @@ func _process(delta: float) -> void:
 	last_delta = delta
 	if damaged_entity:
 		if    is_instance_valid(damaged_entity) :
-			deal_damage(damaged_entity, [], owner.global_position  )
+			deal_damage(damaged_entity,   owner.global_position  )
 # Update the focus time
-func deal_damage(_reciever: Node, _damagable_object_groups: Array[String] = [], _center_position: Vector2 = self.global_position) -> void:
+func deal_damage(_reciever: Node,   _center_position: Vector2 = self.global_position) -> void:
 	# Ensure the entity hasn't been queued for deletion
 	if damaged_entity == null or damaged_entity.is_queued_for_deletion():
 		printerr("Damaged entity is null or has been queued for deletion. Skipping damage.")

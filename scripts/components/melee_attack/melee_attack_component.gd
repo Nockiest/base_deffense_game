@@ -32,7 +32,8 @@ func _process(_delta: float) -> void:
 		# If the enemy is within range and the timer is stopped, attack the enemy
 		if distance_to_enemy <= attack_range_px and attack_timer.is_stopped():
 			attack_timer.start()  # Start the timer for the next attack
-			damage_deal_component.deal_damage(enemy, ['enemies'])  # Deal damage to the enemy
+			## TO DO remove the need to define groups to deal dmg to here
+			damage_deal_component.deal_damage(enemy,  )  # Deal damage to the enemy
 	#else:
 		#print("No enemy assigned or enemy not in range!", enemy)
 

@@ -9,9 +9,9 @@ var can_place:bool:
 signal can_place_changed(placable:bool)
 
 func check_can_place():
-	can_place = not check_terrain_collision() and check_not_colliding()
+	can_place = check_no_terrain_collision() and check_not_colliding()
 	
-func check_terrain_collision()->bool:
+func check_no_terrain_collision()->bool:
 	return false
 
 func check_not_colliding()->bool:

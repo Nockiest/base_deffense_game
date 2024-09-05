@@ -18,7 +18,6 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 Utils="*res://scripts/utils/utils.gd"
-GridUtils="*res://scripts/utils/grid-utils.gd"
 Globals="*res://scripts/globals/globals.gd"
 Test="*res://utils/test_utils/test.gd"
 oneErr="*res://scripts/utils/oneTimeErrorLogger.gd"
@@ -48,9 +47,9 @@ projectiles=""
 turrets=""
 enemies="everything that attacks the base"
 base_objects="all the buildings enemies can attack"
-treasury="The players treasury containing all the gold science and other recources he has available"
 ConstructionButtons="Buttons used to construct new buildings"
 BattlegroundObjects=""
+buildings=""
 
 [input]
 

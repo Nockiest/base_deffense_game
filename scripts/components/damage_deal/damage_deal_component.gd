@@ -12,5 +12,5 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func deal_damage(reciever, damagable_object_groups: Array[String],center_position: Vector2 = self.global_position):
-	printerr('didnt configure fce for dealdmg', reciever, damagable_object_groups ,center_position )
+func deal_damage(reciever,  center_position: Vector2 = self.global_position):
+	printerr('didnt configure fce for dealdmg', reciever, center_position )

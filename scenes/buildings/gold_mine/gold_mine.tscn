@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdl5r"]
 size = Vector2(92, 100)
 
-[node name="GoldMine" type="Area2D" groups=["BattlegroundObjects"]]
+[node name="GoldMine" type="Area2D" groups=["BattlegroundObjects", "buildings"]]
 script = ExtResource("1_v1fn6")
 placable_scene_to_load_path = "res://scenes/buildings/preview/mine/placable_mine.tscn"
 
