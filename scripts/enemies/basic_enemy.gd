@@ -31,8 +31,9 @@ func _on_health_component_hp_ran_out() -> void:
 
 func _physics_process(delta: float) -> void:
 	var dir = to_local(navigation_agent_2d.get_next_path_position())
-	velocity = dir * speed_px_sec
-	move_and_slide()
+	#velocity = dir * speed_px_sec
+	movement_component.move_owner(delta, dir)
+	#move_and_slide()
 
 func make_path():
 	print('making path',aiming_component.target_position, to_local(navigation_agent_2d.get_next_path_position()))

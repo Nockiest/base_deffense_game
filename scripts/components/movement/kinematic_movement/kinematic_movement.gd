@@ -1,26 +1,28 @@
 class_name KinematicComponent
 extends MovementComponent
-
+## used for physicss bodies
  
-var velocity: Vector2 = Vector2.ZERO    # To hold the velocity
+var owner_direction:Vector2 
+
 
 func _process(delta: float) -> void:
 	pass
 	#if owner:
 		## Calculate the distance to move this frame
-		#var movement = direction.normalized() * base_speed_px_sec * delta
+		#var movement = direction.normalized() * base_speed_per_frame * delta
  
 		
-func _physics_process(delta: float) -> void:
+func move_owner( delta:float, direction:Vector2 ) -> void:
+	owner_direction = direction
 	if not owner:
 		printerr('owner not set ',self) 
 		return
-	velocity = direction.normalized() * base_speed_px_sec * speed_modifier 
-	prints(velocity, direction)
-	
-	if owner is CharacterBody2D   :
-		owner.move_and_slide(velocity)
-	elif owner is RigidBody2D:
-		owner.linear_velocity = velocity
-	else:
-		printerr('owner is not rigidbody or kinematiic body ', owner)
+	owner.velocity = owner_direction.normalized() * base_speed_per_frame * speed_modifier * delta 
+	print(owner.velocity)
+	owner.move_and_slide( )
+	#if owner is CharacterBody2D   :
+		#owner.move_and_slide( )
+	#elif owner is RigidBody2D:
+		#owner.linear_velocity = owner.velocity
+	#else:
+		#printerr('owner is not rigidbody or kinematiic body ', owner)

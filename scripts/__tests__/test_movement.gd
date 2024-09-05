@@ -15,7 +15,7 @@ func before_each():
 
 	# Create the MovementComponent and add it as a child to the parent node
 	movement_component = MovementComponent.new()
-	movement_component.base_speed_px_sec = 100.0  # Set speed to 100 pixels per second
+	movement_component.base_speed_per_frame = 100.0  # Set speed to 100 pixels per second
 	movement_component.direction = Vector2(1, 0)  # Set direction to the right
 	
 	# Add the component to the parent node

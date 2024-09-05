@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://t6n6ewambkd0"]
+[gd_scene load_steps=13 format=3 uid="uid://t6n6ewambkd0"]
 
 [ext_resource type="Script" path="res://scripts/enemies/basic_enemy.gd" id="1_6v72k"]
 [ext_resource type="Shader" path="res://scenes/enemies/basic_enemy.gdshader" id="2_55cb4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://n4jgo8ducj5y" path="res://scripts/components/melee_attack/melee_attack_component.tscn" id="7_8bsyt"]
 [ext_resource type="PackedScene" uid="uid://dkq7f5mbkd78b" path="res://scripts/components/aiming/entity_aiming_component/entity_aiming_component.tscn" id="7_flvws"]
 [ext_resource type="PackedScene" uid="uid://b6qml8jc7uq1v" path="res://scripts/components/movement_collision_handler/movement_collision_handler_comp.tscn" id="10_ar15a"]
+[ext_resource type="PackedScene" uid="uid://csvcv8ymxryhh" path="res://scripts/components/movement/kinematic_movement/kinematic_movement.tscn" id="10_idrqm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xy4k4"]
 shader = ExtResource("2_55cb4")
@@ -16,13 +17,14 @@ shader = ExtResource("2_55cb4")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxigd"]
 size = Vector2(97, 99)
 
-[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "self_destruction_component", "aiming_component", "melee_attack_component") groups=["BattlegroundObjects", "enemies"]]
+[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "movement_component", "self_destruction_component", "aiming_component", "melee_attack_component") groups=["BattlegroundObjects", "enemies"]]
 collision_layer = 2
 collision_mask = 14
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_6v72k")
 health_component = NodePath("HealthComponent")
+movement_component = NodePath("KinematicMovement")
 self_destruction_component = NodePath("DeathComponent")
 aiming_component = NodePath("EntityAimingComponent")
 melee_attack_component = NodePath("MeleeAttackComponent")
@@ -72,6 +74,9 @@ debug_path_custom_color = Color(1, 0.409168, 0.234167, 1)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="KinematicMovement" parent="." instance=ExtResource("10_idrqm")]
+base_speed_per_frame = 2000.0
 
 [connection signal="hp_ran_out" from="HealthComponent" to="." method="_on_health_component_hp_ran_out"]
 [connection signal="timeout" from="Timer" to="." method="_on_navigation_update_timeout"]
