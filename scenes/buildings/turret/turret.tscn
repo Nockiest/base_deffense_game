@@ -16,7 +16,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bmjxb"]
 size = Vector2(126, 129)
 
-[node name="Turret" type="Area2D" node_paths=PackedStringArray("aiming_component", "ammo_magazine_component", "health_component", "self_destruction_component") groups=["turrets"]]
+[node name="Turret" type="Area2D" node_paths=PackedStringArray("aiming_component", "ammo_magazine_component", "health_component", "self_destruction_component") groups=["BattlegroundObjects", "turrets"]]
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_xdj7m")
@@ -24,6 +24,7 @@ aiming_component = NodePath("EntityAimingComponent")
 ammo_magazine_component = NodePath("AmmoMagazine")
 health_component = NodePath("HealthComponent")
 self_destruction_component = NodePath("SelfDestructionComponent")
+placable_scene_to_load_path = "res://scenes/buildings/preview/turret/turret_placable.tscn"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_uy220")

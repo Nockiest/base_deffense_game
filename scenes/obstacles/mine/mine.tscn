@@ -46,7 +46,7 @@ _data = {
 "explosion": SubResource("Animation_uhrw0")
 }
 
-[node name="Mine" type="Area2D" node_paths=PackedStringArray("area_of_effect_component", "single_damage_component")]
+[node name="Mine" type="Area2D" node_paths=PackedStringArray("area_of_effect_component", "single_damage_component") groups=["BattlegroundObjects"]]
 collision_layer = 4
 collision_mask = 14
 script = ExtResource("1_iaf5u")

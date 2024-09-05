@@ -3,11 +3,14 @@ extends Node2D
 
 var gold: int
 var click_power: float = 1
+signal building_to_place_changed(building:PackedScene)
 
+@export var item_placer:ItemPlacer
 func _ready() -> void:
 	# Connect to the group "ConstructionButtons" to listen for button press signals
 	for button in get_tree().get_nodes_in_group("ConstructionButtons"):
 		button.connect("pressedConstructionButton", _on_construction_button_pressed )
+		
 func _input(event: InputEvent) -> void:
 	# Check if the input event is a mouse button press and if it's the left button
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

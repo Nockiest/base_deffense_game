@@ -9,7 +9,7 @@ func add_effect(effect: BaseEffect, variable_to_update:String='') -> void:
 		add_child(effect)
 		print("Effect added:", owner, effect.name)
 	else:
-		oneErr.printerr_once('invalid effect', ["Effect already exists or is invalid:", effect, owner])
+		oneErr.print_once('invalid effect', ["Effect already exists or is invalid:", effect, owner])
 	if variable_to_update != '':
 		cause_update(variable_to_update)
 	else:
@@ -20,7 +20,7 @@ func remove_effect(effect: BaseEffect,variable_to_update:String='') -> void:
 		remove_child(effect)
 		print("Effect removed:", effect.name)
 	else:
-		oneErr.printerr_once( 'effect holder without effect',["Effect holder doesn't have the effect:", effect, owner])
+		oneErr.print_once( 'effect holder without effect',["Effect holder doesn't have the effect:", effect, owner])
 	if variable_to_update != '':
 		cause_update(variable_to_update)
 	else:

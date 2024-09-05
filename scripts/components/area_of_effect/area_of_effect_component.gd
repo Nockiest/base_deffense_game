@@ -18,7 +18,7 @@ func apply_area_effect(effect_function: Callable, target_groups: Array[String], 
 		for body in nodes_in_group:
 			# Ensure the node is a Node2D
 			if not body is Node2D:
-				oneErr.printerr_once('not found body in self' ,[body, ' isnt node2d, found in: ', self])
+				oneErr.print_once('not found body in self' ,[body, ' isnt node2d, found in: ', self])
 				# Retrieve collision shapes and relevant points
 			var collision_points = _get_collision_points(body)
 		

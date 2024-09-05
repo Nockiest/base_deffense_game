@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://vs4x5r3jjq8"]
+
+[ext_resource type="Script" path="res://scripts/placables/placable_preview.gd" id="1_yxcqd"]
+
+[node name="PlacableFootPrint" type="Area2D"]
+script = ExtResource("1_yxcqd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

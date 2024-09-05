@@ -1,36 +1,64 @@
-class_name CursorHolder
+class_name ItemPlacer
 extends Node2D
 
-# Sprite2D node to display the current sprite of the packed scene
-@onready var sprite: Sprite2D = $Sprite2D  # Make sure to add a Sprite2D as a child node in the scene
+var placable_instance: Placable:
+	set(value):
+		print(placable_instance, ' changing to ', value)
+		placable_instance = value
+var preview_instance: PlacablePreview
 
 # Function to insert a packed scene and display its sprite
 func insert_scene(packed_scene: PackedScene) -> void:
-	print('inserting scene:', packed_scene)
-	# Instance the packed scene
-	var instance = packed_scene.instantiate()
-	# Ensure the scene has a Sprite2D as a child
-	var scene_sprite: Sprite2D = instance.get_node_or_null("Sprite2D")
-	
-	if scene_sprite:
+	print('Inserting scene:', packed_scene)
+	_create_placement_preview(packed_scene)
 
-		# Assign the sprite texture from the scene to the cursor holder's sprite
-		sprite.texture = scene_sprite.texture
-		# Optionally, copy other sprite properties (like modulate, scale, etc.)
-		sprite.modulate = scene_sprite.modulate
-		sprite.scale = scene_sprite.scale
-	else:
-		printerr("Packed scene does not contain a Sprite2D node.")
-
+# Function to remove the scene and clear the preview
 func remove_scene():
-	sprite.texture = null
+	placable_instance = null
+	if preview_instance:
+		remove_child(preview_instance)
+		preview_instance = null
 
-func _ready() -> void:
-	sprite.position = Vector2.ZERO
 # Function to update the cursor holder's position to follow the mouse cursor
 func _process(delta: float) -> void:
 	# Update the position to follow the global mouse position
 	global_position = get_global_mouse_position()
 
+# Function to create a placement preview of the packed scene
+func _create_placement_preview(packed_scene: PackedScene):
+	placable_instance = packed_scene.instantiate() as Placable
+	var preview = load(placable_instance.placable_scene_to_load_path)
+	if not preview:
+		printerr('preview not defined ', preview, placable_instance)
+		return
+	preview_instance = preview.instantiate()
+	add_child(preview_instance)
+
+# Function to handle input events
+func _input(event: InputEvent) -> void:
+	# Check if the left mouse button was pressed
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		# Check if the preview instance can be placed
+			if preview_instance and preview_instance.can_place:
+				place_scene()
+			else:
+				print("Cannot place the scene here.")
+
+# Function to place the scene into the world
+func place_scene():
+	if not placable_instance:
+		return
+
+	# Instantiate the placable scene and set its position
+	var new_instance = placable_instance 
+	new_instance.global_position = get_global_mouse_position()
+
+	# Add the new instance to the world (adjust this to fit your scene hierarchy)
+	#get_parent().add_child(new_instance)
+	Utils.add_child_to_battleground(new_instance, 'Buildings')
+	# Clear the current placement
+	remove_scene()
+	print("Scene placed into the world.")
 
  

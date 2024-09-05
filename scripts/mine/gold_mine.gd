@@ -1,5 +1,5 @@
 class_name GoldMine
-extends Node2D
+extends Placable
 
 @export var gold_per_click = 1
 

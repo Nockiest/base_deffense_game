@@ -19,6 +19,7 @@ func _on_node_clicked(node: Node) -> void:
 # Helper function to determine if the node is the ConstructionBar or a child of it
 func  on_construction_bar_clicked(node: PackedScene) :
 	var msg:Dictionary = { 'selectedBuilding': node}
+	owner.building_to_place_changed.emit(node)
 	state_machine.transition_to('Building', msg  ) 
 
 # Function to switch to the Building state

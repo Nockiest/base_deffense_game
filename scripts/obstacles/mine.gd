@@ -1,5 +1,5 @@
 class_name Mine
-extends Area2D
+extends Placable
 
 @export var area_of_effect_component: AreaOfEffectComponent
 @export var single_damage_component: SingleDamageDealComponent

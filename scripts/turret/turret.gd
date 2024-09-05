@@ -1,4 +1,4 @@
-extends Area2D
+extends Placable
 class_name Turret
 
  

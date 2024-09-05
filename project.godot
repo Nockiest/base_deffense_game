@@ -32,6 +32,7 @@ enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 folder_colors={
 "res://assets/": "yellow",
 "res://scenes/buildings/": "gray",
+"res://scenes/buildings/preview/": "orange",
 "res://screens/": "gray",
 "res://scripts/": "purple",
 "res://scripts/__ignore_tests/": "red",
@@ -49,6 +50,7 @@ enemies="everything that attacks the base"
 base_objects="all the buildings enemies can attack"
 treasury="The players treasury containing all the gold science and other recources he has available"
 ConstructionButtons="Buttons used to construct new buildings"
+BattlegroundObjects=""
 
 [input]
 
@@ -101,6 +103,7 @@ zoom_out={
 2d_render/layer_2="enemies"
 2d_render/layer_3="buildings"
 2d_render/layer_4="nature"
+2d_render/layer_5="placable"
 2d_physics/layer_1="projectiles"
 2d_navigation/layer_1="projectiles"
 2d_physics/layer_2="enemies"
@@ -109,6 +112,7 @@ zoom_out={
 2d_navigation/layer_3="buildings"
 2d_physics/layer_4="nature"
 2d_navigation/layer_4="nature"
+2d_physics/layer_5="placable"
 
 [physics]
 
