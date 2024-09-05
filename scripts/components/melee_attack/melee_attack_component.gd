@@ -3,7 +3,6 @@ extends Component
 
 @export var attack_range_px: float = 50.0  # Range within which the attack can happen
 @export var attack_delay_sec: float = 1.0  # Delay between detecting and attacking
-@export var damage_amount: int = 10  # Amount of damage to apply
 
 @export var damage_deal_component: DamageDealComponent
 @export var aiming_component: AimingComponent
@@ -19,7 +18,6 @@ func _ready() -> void:
 	attack_timer.wait_time = attack_delay_sec
 	attack_timer.one_shot = true
 	add_child(attack_timer)
-	
 	# Ensure that an enemy is assigned
 	if not enemy:
 		print("No enemy assigned to MeleeAttackComponent!")

@@ -1,5 +1,5 @@
 class_name Placable
-extends Area2D
+extends Building
 
  
 @export var placable_scene_to_load_path: String

@@ -7,10 +7,10 @@ extends Component
 @export var max_shields: float = 1
 @export var start_shields: float = 1
 @export var regeneration_per_call: float = 1
-
-@export var health_bar: ProgressBar  # Reference to the health ProgressBar
-@export var shield_bar: ProgressBar   # Reference to the shield ProgressBar
+ 
 #@export var effect_hold_component: EffectHoldComponent  
+@onready var health_bar: ProgressBar = $HealthBar
+@onready var shield_bar: ProgressBar = $ShieldBar
 
 
 signal hp_ran_out()

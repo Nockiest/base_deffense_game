@@ -6,10 +6,8 @@
 [ext_resource type="StyleBox" uid="uid://dnxor443pq7tr" path="res://assets/textures/shield_bar_fill.tres" id="4_a7jbo"]
 [ext_resource type="PackedScene" uid="uid://bli7k15t8yntj" path="res://scripts/components/effect_holder_component/effect_hold_component.tscn" id="5_qy8xb"]
 
-[node name="HealthComponent" type="Node2D" node_paths=PackedStringArray("health_bar", "shield_bar", "effect_hold_component")]
+[node name="HealthComponent" type="Node2D" node_paths=PackedStringArray("effect_hold_component")]
 script = ExtResource("1_3nccn")
-health_bar = NodePath("HealthBar")
-shield_bar = NodePath("ShieldBar")
 effect_hold_component = NodePath("EffectHoldComponent")
 
 [node name="HealthBar" type="ProgressBar" parent="."]

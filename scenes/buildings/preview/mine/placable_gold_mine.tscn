@@ -1,5 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://coavgvhkuapbu"]
+[gd_scene load_steps=3 format=3 uid="uid://coavgvhkuapbu"]
 
 [ext_resource type="PackedScene" uid="uid://vs4x5r3jjq8" path="res://scenes/buildings/preview/preview.tscn" id="1_q3bul"]
+[ext_resource type="Texture2D" uid="uid://lapkg10yrip6" path="res://assets/buildings/gold_mine/CyanResources.png" id="2_omunn"]
 
 [node name="PlacableGoldMine" instance=ExtResource("1_q3bul")]
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+polygon = PackedVector2Array(-8, 7, 8, 8, 8, -8, -8, -8)
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_omunn")
+hframes = 3
+vframes = 5
+frame = 10

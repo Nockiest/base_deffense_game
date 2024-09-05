@@ -1,0 +1,49 @@
+[gd_scene load_steps=11 format=3 uid="uid://do683g874q4is"]
+
+[ext_resource type="PackedScene" uid="uid://bs1isnrs23b2d" path="res://scenes/buildings/building.tscn" id="1_ikpoq"]
+[ext_resource type="Script" path="res://scripts/turret/turret.gd" id="2_cm2gi"]
+[ext_resource type="Script" path="res://utils/state-machine/state-machine.gd" id="3_r2kv2"]
+[ext_resource type="Texture2D" uid="uid://bfqk567fbhg8l" path="res://assets/buildings/tower/CyanTower.png" id="3_s1lqq"]
+[ext_resource type="Script" path="res://scripts/turret/idle.gd" id="4_mnmnt"]
+[ext_resource type="Script" path="res://scripts/turret/aiming.gd" id="5_pwsfh"]
+[ext_resource type="PackedScene" uid="uid://dkq7f5mbkd78b" path="res://scripts/components/aiming/entity_aiming_component/entity_aiming_component.tscn" id="6_oc56f"]
+[ext_resource type="PackedScene" uid="uid://p5of0eh7hp6m" path="res://scripts/components/bullet_storage/ammo_magazine_component/ammo_magazine.tscn" id="7_1mtn1"]
+[ext_resource type="PackedScene" uid="uid://bjvr1segvh8bd" path="res://projectiles/bullet/bullet.tscn" id="8_hkdem"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edhb5"]
+size = Vector2(15, 15)
+
+[node name="Turret" node_paths=PackedStringArray("aiming_component", "ammo_magazine_component") instance=ExtResource("1_ikpoq")]
+script = ExtResource("2_cm2gi")
+aiming_component = NodePath("EntityAimingComponent")
+ammo_magazine_component = NodePath("AmmoMagazine")
+placable_scene_to_load_path = ""
+gold_cost = 10
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_edhb5")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_s1lqq")
+hframes = 3
+vframes = 6
+
+[node name="StateMachine" type="Node" parent="." index="3"]
+script = ExtResource("3_r2kv2")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" index="0"]
+script = ExtResource("4_mnmnt")
+
+[node name="Aiming" type="Node" parent="StateMachine" index="1"]
+script = ExtResource("5_pwsfh")
+
+[node name="EntityAimingComponent" parent="." index="4" instance=ExtResource("6_oc56f")]
+enemy_group = "enemies"
+
+[node name="AmmoMagazine" parent="." index="5" instance=ExtResource("7_1mtn1")]
+stored_bullet = ExtResource("8_hkdem")
+
+[node name="HealthComponent" parent="." index="6"]
+max_hp = 3.0

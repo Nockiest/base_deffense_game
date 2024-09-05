@@ -8,7 +8,6 @@
 [node name="MeleeAttackComponent" type="Node2D" node_paths=PackedStringArray("damage_deal_component", "aiming_component")]
 script = ExtResource("1_sxpxg")
 attack_range_px = 200.0
-damage_amount = 1
 damage_deal_component = NodePath("DamageDealComponent")
 aiming_component = NodePath("EntityAimingComponent")
 

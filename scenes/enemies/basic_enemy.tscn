@@ -51,7 +51,6 @@ shape = SubResource("RectangleShape2D_xxigd")
 [node name="DeathComponent" parent="." instance=ExtResource("5_y3vvn")]
 
 [node name="MeleeAttackComponent" parent="." instance=ExtResource("7_8bsyt")]
-damage_amount = 0
 
 [node name="EntityAimingComponent" parent="." instance=ExtResource("7_flvws")]
 enemy_group = "buildings"

@@ -1,20 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://1xktymax5f3"]
+[gd_scene load_steps=5 format=3 uid="uid://cbdtbgejpnn82"]
 
-[ext_resource type="Script" path="res://scripts/mine/gold_mine.gd" id="1_v1fn6"]
-[ext_resource type="Texture2D" uid="uid://cm4ytda7uqi3y" path="res://assets/img/node_2D/icon_color_correction.png" id="2_qs18w"]
+[ext_resource type="PackedScene" uid="uid://bs1isnrs23b2d" path="res://scenes/buildings/building.tscn" id="1_mscqr"]
+[ext_resource type="Texture2D" uid="uid://lapkg10yrip6" path="res://assets/buildings/gold_mine/CyanResources.png" id="2_07m37"]
+[ext_resource type="Script" path="res://scripts/mine/gold_mine.gd" id="2_pu3a4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdl5r"]
-size = Vector2(92, 100)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dm6f2"]
+size = Vector2(16, 16)
 
-[node name="GoldMine" type="Area2D" groups=["BattlegroundObjects", "buildings"]]
-script = ExtResource("1_v1fn6")
-placable_scene_to_load_path = "res://scenes/buildings/preview/mine/placable_mine.tscn"
+[node name="GoldMine" instance=ExtResource("1_mscqr")]
+script = ExtResource("2_pu3a4")
+gold_per_click = 1
+placable_scene_to_load_path = ""
+gold_cost = 10
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, 0.999996)
-scale = Vector2(5.6875, 6.125)
-texture = ExtResource("2_qs18w")
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_dm6f2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 1)
-shape = SubResource("RectangleShape2D_pdl5r")
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_07m37")
+hframes = 3
+vframes = 5
+frame = 10

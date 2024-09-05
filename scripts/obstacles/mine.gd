@@ -1,5 +1,5 @@
-class_name Mine
-extends Placable
+class_name ExplodingMine
+extends Area2D
 
 @export var area_of_effect_component: AreaOfEffectComponent
 @export var single_damage_component: SingleDamageDealComponent
