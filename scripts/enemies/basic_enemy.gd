@@ -36,3 +36,7 @@ func make_path():
 
 func _on_navigation_update_timeout() -> void:
 	make_path()
+
+func respond_to_click(click_power):
+	health_component.take_hit(click_power)
+	

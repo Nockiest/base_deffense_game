@@ -1,3 +1,4 @@
+class_name PlayerBuildinngState
 extends State
 
 
@@ -5,8 +6,7 @@ extends State
  
 func exit():
 	$"../../ItemPlacer".remove_scene()
-func _on_node_clicked(_node: Node) -> void:
-	pass
+ 
  
 func  on_construction_bar_clicked(node_packed: PackedScene) :
 	owner.building_to_place_changed.emit(node_packed)

@@ -5,3 +5,7 @@ extends Placable
  
 func provide_recource()->int:
 	return gold_per_click
+
+
+func respond_to_click(click_power):
+	Globals.gold += click_power * provide_recource()
