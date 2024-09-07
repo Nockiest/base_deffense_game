@@ -6,7 +6,7 @@ func enter(msg:={} ):
 	print('msg',msg)
  
 	
-func _on_node_clicked(node: Node) -> void:
+func _on_node_clicked(_node: Node) -> void:
 	pass
 	#if not node:
 		## Instantiate the building from the selectedBuilding PackedScene

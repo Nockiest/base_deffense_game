@@ -12,7 +12,6 @@ func _deal_damage(dmg:float= fire_damage_sec):
 	owner.take_hit(dmg)
 
 func per_second_effect():
-	print('per sec eff')
 	_deal_damage(fire_damage_sec)
 	
 #func end_effect():

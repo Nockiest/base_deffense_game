@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dlihmw4fjxqsw"]
 
-[ext_resource type="Texture2D" uid="uid://duc0rto1hv63" path="res://assets/Complete_UI_Essential_Pack_Free/01_Flat_Theme/Spritesheets/Spritesheet_UI_Flat.png" id="1_x16ns"]
+[ext_resource type="Texture2D" uid="uid://duc0rto1hv63" path="res://assets/Spritesheets/Spritesheet_UI_Flat.png" id="1_x16ns"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4127v"]
 texture = ExtResource("1_x16ns")

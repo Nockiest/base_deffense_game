@@ -1,7 +1,7 @@
 class_name BaseEffectStateActive
 extends State
 
-func enter(msg:Dictionary ={}):
+func enter(_msg:Dictionary ={}):
 	owner.effect_timer.start()
 	owner.effect_timer.wait_time = owner.duration_sec
 	if owner.effect_timer == null:

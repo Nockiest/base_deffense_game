@@ -23,7 +23,7 @@ func remove_scene():
 		preview_instance = null
 
 # Function to update the cursor holder's position to follow the mouse cursor
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Update the position to follow the global mouse position
 	global_position = get_global_mouse_position()
 

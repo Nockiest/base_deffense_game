@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://t6n6ewambkd0"]
+[gd_scene load_steps=15 format=3 uid="uid://t6n6ewambkd0"]
 
 [ext_resource type="Script" path="res://scripts/enemies/basic_enemy.gd" id="1_6v72k"]
 [ext_resource type="Shader" path="res://scenes/enemies/basic_enemy.gdshader" id="2_55cb4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://scripts/components/self_destruction_component/self_destruction_component.tscn" id="5_y3vvn"]
 [ext_resource type="PackedScene" uid="uid://n4jgo8ducj5y" path="res://scripts/components/melee_attack/melee_attack_component.tscn" id="7_8bsyt"]
 [ext_resource type="PackedScene" uid="uid://dkq7f5mbkd78b" path="res://scripts/components/aiming/entity_aiming_component/entity_aiming_component.tscn" id="7_flvws"]
+[ext_resource type="Script" path="res://scripts/random_timer.gd" id="9_m5ngs"]
 [ext_resource type="PackedScene" uid="uid://b6qml8jc7uq1v" path="res://scripts/components/movement_collision_handler/movement_collision_handler_comp.tscn" id="10_ar15a"]
 [ext_resource type="Texture2D" uid="uid://0dgi7kskaolj" path="res://assets/MiniWorldSprites/Characters/Champions/Grum.png" id="10_fow36"]
 [ext_resource type="PackedScene" uid="uid://csvcv8ymxryhh" path="res://scripts/components/movement/kinematic_movement/kinematic_movement.tscn" id="10_idrqm"]
@@ -51,6 +52,7 @@ shape = SubResource("RectangleShape2D_xxigd")
 [node name="DeathComponent" parent="." instance=ExtResource("5_y3vvn")]
 
 [node name="MeleeAttackComponent" parent="." instance=ExtResource("7_8bsyt")]
+attack_range_px = 50.0
 
 [node name="EntityAimingComponent" parent="." instance=ExtResource("7_flvws")]
 enemy_group = "buildings"
@@ -64,10 +66,10 @@ flash_duration_sec = 2.0
 impassable_object_groups = Array[String](["turrets"])
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_max_distance = 200.0
+path_max_distance = 400.0
 navigation_layers = 12
 simplify_path = true
-simplify_epsilon = 2.955
+simplify_epsilon = 5.0
 avoidance_layers = 12
 avoidance_mask = 0
 debug_enabled = true
@@ -75,7 +77,9 @@ debug_use_custom = true
 debug_path_custom_color = Color(1, 0.409168, 0.234167, 1)
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
+script = ExtResource("9_m5ngs")
 
 [node name="KinematicComponent" parent="." instance=ExtResource("10_idrqm")]
 base_speed_per_frame = 2000.0

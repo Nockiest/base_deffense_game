@@ -5,15 +5,15 @@ extends MovementComponent
 var owner_direction:Vector2 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	#if owner:
 		## Calculate the distance to move this frame
 		#var movement = direction.normalized() * base_speed_per_frame * delta
  
 		
-func move_owner( delta:float, direction:Vector2 ) -> void:
-	owner_direction = direction
+func move_owner( delta:float, dir:Vector2 ) -> void:
+	owner_direction = dir
 	if not owner:
 		printerr('owner not set ',self) 
 		return

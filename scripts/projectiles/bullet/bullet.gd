@@ -9,13 +9,7 @@ func _on_area_entered(area  ) -> void:
 	print(area)
 	print_debug('ef1',area, effects)
 	attack_node(area)
-	#damage_deal_component.deal_damage(area, ['enemies', "turrets"])
 	 
-
-
-#func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	#print(1)
-
 
 func _on_body_entered(body: Node2D) -> void:
 	attack_node(body)

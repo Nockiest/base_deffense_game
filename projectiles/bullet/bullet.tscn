@@ -22,7 +22,7 @@ damage_deal_component = NodePath("AreaDamageComponent")
 max_pierced_entities = 2
 movement_component = NodePath("MovementComponent")
 self_destruction_component = NodePath("SelfDestructionComponent")
-effects = [NodePath("FreezeEffect")]
+effects = [NodePath("FreezeEffect"), NodePath("SingleDamage"), NodePath("FireEffect")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
@@ -56,6 +56,7 @@ damage_radius_px = 1000.0
 duration_sec = 3.0
 
 [node name="SingleDamage" parent="." instance=ExtResource("6_eifrs")]
+damage = 5
 
 [node name="FreezeEffect" parent="." instance=ExtResource("8_y3iw8")]
 

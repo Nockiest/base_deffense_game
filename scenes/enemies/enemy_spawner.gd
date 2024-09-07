@@ -37,8 +37,8 @@ func spawn_enemy_at_random_edge() -> void:
 	var enemy_instance = random_enemy_scene.instantiate()
 
 	# Determine a random position on the map edge
-	var position = get_random_edge_position(map_bounds)
-	enemy_instance.global_position = position
+	var newpos = get_random_edge_position(map_bounds)
+	enemy_instance.global_position = newpos
 	# Add the enemy to the scene (assumes you have a parent node like "Battleground" to organize your enemies)
 	Utils.add_child_to_battleground(enemy_instance, 'Enemies')  # Adjust to your scene hierarchy
 

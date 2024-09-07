@@ -7,6 +7,6 @@ extends Component
 
 var enabled := true
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if enabled and aiming_component.target_position:
 		magazine_component.fire_bullet(owner.rotation)

@@ -10,5 +10,5 @@ func _ready() -> void:
 
 # Function to handle turret button press
 func _on_button_pressed() -> void:
-	emit_signal('pressedConstructionButton', constructed_entity)
+	pressedConstructionButton.emit(constructed_entity)
  

@@ -3,13 +3,11 @@ extends Node2D
 ## Holds and rewuests value updates for a component it resides in 
 
 @export var modulated_modifier:String ## name of the modifier it changes
-@export var effect_name:String
+@export var effect_name:String  ## to avoid duplication of some effects
 @export var effect_type: EffectTypes.EFFECT_TYPE = EffectTypes.EFFECT_TYPE.ONE_SHOT
 @export var effect_interval: float = 1.0  # Interval in seconds for per-second effect
 @export var duration_sec: float = 5.0  # Total duration for non one time the effect
 @export var effect_timer: Timer  
-
- 
 @export var applicable_components: Array[String] = [ ]  # List of script class names this effect can be applied to
 
 var elapsed_time: float = 0.0

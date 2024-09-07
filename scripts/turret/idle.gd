@@ -1,7 +1,7 @@
 extends State
 
 
-func enter(msg := {}):
+func enter(_msg := {}):
 	owner.auto_shoot_component.enabled = false
 
 
