@@ -2,7 +2,7 @@ class_name AmmoMagazine
 extends ProjectileStorage
 
 
-# Load a single ammo after the load time has passed
+# Load a single ammo after the load time has passed x
 func load_ammo() -> void:
 	if $StateMachine.state == $StateMachine/Loaded:
 		$StateMachine.transition_to('Loading')
