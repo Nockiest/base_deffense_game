@@ -1,5 +1,5 @@
 class_name ConstructionButton
-extends TextureButton
+extends Button
 
 @export var constructed_entity:PackedScene
 signal pressedConstructionButton(constructed_entity:PackedScene)

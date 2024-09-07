@@ -13,6 +13,7 @@ item_placer = NodePath("ItemPlacer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_ox0hi")
+zoom_speed = 1.0
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_u2b1f")

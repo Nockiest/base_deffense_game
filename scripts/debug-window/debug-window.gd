@@ -16,3 +16,4 @@ func _process(_delta: float) -> void:
 	$VBoxContainer/MousePosition.text = 'X:' + str( get_parent().get_global_mouse_position().x ) + ' Y:' + str(  get_parent().get_global_mouse_position().y ) 
 	$VBoxContainer/PlayerState.text = 'Player State:' + str($"../Player/StateMachine".state )
 	$VBoxContainer/TreasuryState.text = 'Gold: ' + str(Globals.gold)
+	$VBoxContainer/FpsTracker.text   = 'fps'+str(Engine.get_frames_per_second()    )

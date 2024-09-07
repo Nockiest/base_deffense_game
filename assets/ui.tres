@@ -1,0 +1,56 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://db10h5ld3amb0"]
+
+[ext_resource type="FontFile" uid="uid://c8axnpxc0nrk4" path="res://addons/gut/fonts/AnonymousPro-Bold.ttf" id="1_nuw2y"]
+[ext_resource type="Texture2D" uid="uid://duc0rto1hv63" path="res://assets/Complete_UI_Essential_Pack_Free/01_Flat_Theme/Spritesheets/Spritesheet_UI_Flat.png" id="2_hdw0t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hm62k"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_color = Color(0, 0, 0, 0.364706)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d4i2i"]
+texture = ExtResource("2_hdw0t")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+region_rect = Rect2(32, 128, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gtn7u"]
+texture = ExtResource("2_hdw0t")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+region_rect = Rect2(32, 192, 32, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qoynp"]
+bg_color = Color(0, 0.68183, 0.719301, 1)
+
+[resource]
+default_font = ExtResource("1_nuw2y")
+default_font_size = 18
+Button/colors/font_color = Color(0.286965, 0.28752, 0.299433, 1)
+Button/fonts/font = ExtResource("1_nuw2y")
+Button/styles/disabled = SubResource("StyleBoxFlat_hm62k")
+Button/styles/normal = SubResource("StyleBoxTexture_d4i2i")
+Button/styles/pressed = SubResource("StyleBoxTexture_gtn7u")
+Panel/styles/panel = SubResource("StyleBoxFlat_qoynp")
+VBoxContainer/constants/separation = 8

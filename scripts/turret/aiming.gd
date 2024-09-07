@@ -2,6 +2,9 @@ extends State
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
+func enter(msg := {}):
+	owner.auto_shoot_component.enabled = true
+
 func _process(_delta: float) -> void:
 	if owner.aiming_component:
 		# Get the position of the turret
@@ -13,16 +16,8 @@ func _process(_delta: float) -> void:
 		# Calculate the angle from the direction vector and set the rotation of the turret
 		owner.rotation = direction.angle() + deg_to_rad(90)  # Fixed the use of direction
 	
-func _input(event: InputEvent) -> void:
-	 
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			owner.ammo_magazine_component.fire_bullet(owner.rotation)
-		 
-	#if event is InputEventMouseButton:  # Check if the event is a mouse button event
-		#print( event.button_index == MOUSE_BUTTON_LEFT, event.pressed)
-		 #is_action_pressed
-		#if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			##if owner.bullet_scene:
-			#fire_bullet()
-	
+
+func _on_entity_aiming_component_target_changed(target: Node2D) -> void:
+	print('target_changed', target, owner)
+	if not target:
+		state_machine.transition_to('Idle')

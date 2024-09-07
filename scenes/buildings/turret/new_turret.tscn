@@ -1,22 +1,24 @@
-[gd_scene load_steps=11 format=3 uid="uid://do683g874q4is"]
+[gd_scene load_steps=12 format=3 uid="uid://do683g874q4is"]
 
 [ext_resource type="PackedScene" uid="uid://bs1isnrs23b2d" path="res://scenes/buildings/building.tscn" id="1_ikpoq"]
 [ext_resource type="Script" path="res://scripts/turret/turret.gd" id="2_cm2gi"]
 [ext_resource type="Script" path="res://utils/state-machine/state-machine.gd" id="3_r2kv2"]
-[ext_resource type="Texture2D" uid="uid://bfqk567fbhg8l" path="res://assets/buildings/tower/CyanTower.png" id="3_s1lqq"]
+[ext_resource type="Texture2D" uid="uid://bfqk567fbhg8l" path="res://assets/buildings/turret/CyanTower.png" id="3_s1lqq"]
 [ext_resource type="Script" path="res://scripts/turret/idle.gd" id="4_mnmnt"]
 [ext_resource type="Script" path="res://scripts/turret/aiming.gd" id="5_pwsfh"]
 [ext_resource type="PackedScene" uid="uid://dkq7f5mbkd78b" path="res://scripts/components/aiming/entity_aiming_component/entity_aiming_component.tscn" id="6_oc56f"]
 [ext_resource type="PackedScene" uid="uid://p5of0eh7hp6m" path="res://scripts/components/bullet_storage/ammo_magazine_component/ammo_magazine.tscn" id="7_1mtn1"]
 [ext_resource type="PackedScene" uid="uid://bjvr1segvh8bd" path="res://projectiles/bullet/bullet.tscn" id="8_hkdem"]
+[ext_resource type="PackedScene" uid="uid://ce412aqvmtt88" path="res://scripts/components/auto_shoot/auto_shoot.tscn" id="10_nswpc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edhb5"]
 size = Vector2(15, 15)
 
-[node name="Turret" node_paths=PackedStringArray("aiming_component", "ammo_magazine_component") instance=ExtResource("1_ikpoq")]
+[node name="Turret" node_paths=PackedStringArray("aiming_component", "magazine_component", "auto_shoot_component") instance=ExtResource("1_ikpoq")]
 script = ExtResource("2_cm2gi")
 aiming_component = NodePath("EntityAimingComponent")
-ammo_magazine_component = NodePath("AmmoMagazine")
+magazine_component = NodePath("AmmoMagazine")
+auto_shoot_component = NodePath("AutoShootComponent")
 placable_scene_to_load_path = ""
 gold_cost = 10
 
@@ -47,3 +49,10 @@ stored_bullet = ExtResource("8_hkdem")
 
 [node name="HealthComponent" parent="." index="6"]
 max_hp = 3.0
+
+[node name="AutoShootComponent" parent="." index="7" node_paths=PackedStringArray("aiming_component", "magazine_component") instance=ExtResource("10_nswpc")]
+aiming_component = NodePath("../EntityAimingComponent")
+magazine_component = NodePath("../AmmoMagazine")
+
+[connection signal="target_changed" from="EntityAimingComponent" to="StateMachine/Idle" method="_on_entity_aiming_component_target_changed"]
+[connection signal="target_changed" from="EntityAimingComponent" to="StateMachine/Aiming" method="_on_entity_aiming_component_target_changed"]

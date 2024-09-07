@@ -64,7 +64,10 @@ flash_duration_sec = 2.0
 impassable_object_groups = Array[String](["turrets"])
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_max_distance = 200.0
 navigation_layers = 12
+simplify_path = true
+simplify_epsilon = 2.955
 avoidance_layers = 12
 avoidance_mask = 0
 debug_enabled = true
@@ -72,7 +75,6 @@ debug_use_custom = true
 debug_path_custom_color = Color(1, 0.409168, 0.234167, 1)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
 autostart = true
 
 [node name="KinematicComponent" parent="." instance=ExtResource("10_idrqm")]

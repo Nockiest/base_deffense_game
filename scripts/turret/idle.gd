@@ -1,11 +1,12 @@
 extends State
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func enter(msg := {}):
+	owner.auto_shoot_component.enabled = false
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+
+func _on_entity_aiming_component_target_changed(target: Node2D) -> void:
+	print('target_changed', target, owner)
+	if   target:
+		state_machine.transition_to('Aiming')

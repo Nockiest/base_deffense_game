@@ -1,7 +1,7 @@
 extends Control
 
 func _on_start_game_btn_pressed():
-		get_tree().change_scene_to_file("res://screens/battlerground.tscn") 
+		get_tree().change_scene_to_file("res://screens/battleground/battlerground.tscn") 
 
 
 func _on_settings_btn_pressed():
@@ -19,6 +19,6 @@ func _on_back_to_start_screen_btn_button_up():
 func _on_exit_btn_button_up():
 	get_tree().quit()
 	
-func _ready() -> void:
-	$AudioStreamPlayer.play()
- 
+#func _ready() -> void:
+	#%AudioStreamPlayer.play()
+ #

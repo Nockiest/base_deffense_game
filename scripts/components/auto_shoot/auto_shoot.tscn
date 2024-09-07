@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce412aqvmtt88"]
+
+[ext_resource type="Script" path="res://scripts/components/auto_shoot/auto_shoot.gd" id="1_m14cm"]
+
+[node name="AutoShootComponent" type="Node2D"]
+script = ExtResource("1_m14cm")
