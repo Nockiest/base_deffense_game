@@ -18,8 +18,7 @@ func _on_explosion_finished(anim_name: String) -> void:
 		push_error('the explosion animation has a different name ', anim_name)
 
 
-func _on_radius_area_entered(area ) -> void:
-	print('something entered')
+func _on_radius_area_entered(_node ) -> void:
 	$Sprite2D/ExplosionAnimation.play("explosion")
 
 

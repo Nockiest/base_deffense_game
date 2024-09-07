@@ -10,7 +10,6 @@ var placable_instance: Placable:
 var preview_instance: PlacablePreview
 
 signal placable_instance_changed(placable_instance:Placable)
-signal invalid_placement(placable_instance:Placable)
 # Function to insert a packed scene and display its sprite
 func insert_scene(packed_scene: PackedScene) -> void:
 	print('Inserting scene:', packed_scene)
@@ -70,9 +69,6 @@ func place_scene():
 	# Clear the current placement
 	remove_scene()
 	print("Scene placed into the world.")
-
- 
-
 
 func _on_player_building_to_place_changed(building: PackedScene) -> void:
 	insert_scene(building)
