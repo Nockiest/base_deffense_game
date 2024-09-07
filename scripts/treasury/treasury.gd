@@ -4,7 +4,7 @@ extends Node2D
 @export var gold:int = 0:
 	set(value):
 		if value <= 0:
-			printerr('attempting to set gold bellow 0:', value)
+			push_error('attempting to set gold bellow 0:', value)
 		gold = max(0, value)
 		print( 'gold changed to value:', gold)
 #@export var science:int = 0
@@ -13,5 +13,5 @@ extends Node2D
 func _ready():
 	var num_tresuries = get_tree().get_nodes_in_group('treasury')
 	if len(num_tresuries) != 1:
-		printerr('num treasuries is not 1:', num_tresuries)
+		push_error('num treasuries is not 1:', num_tresuries)
 	

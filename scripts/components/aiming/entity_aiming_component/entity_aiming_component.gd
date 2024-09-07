@@ -21,7 +21,7 @@ func update_target_position() -> void:
 	elif owner != null:
 		target_position = owner.global_position
 	else:
-		printerr("owner not set")
+		push_error("owner not set")
 # Get the nearest enemy and store it
 func get_nearest_enemy(group_of_enemies: String, includeOwner:= false) -> Node2D:
 	# Check if the enemy group is set and not null
@@ -37,7 +37,7 @@ func get_nearest_enemy(group_of_enemies: String, includeOwner:= false) -> Node2D
 	if get_tree() != null:
 		enemies = get_tree().get_nodes_in_group(group_of_enemies)
 	else:
-		printerr("Error: Unable to access the scene tree.")
+		push_error("Error: Unable to access the scene tree.")
 		return null  # Return early if the scene tree is not accessible
 
 	# Iterate through the enemies and find the nearest one

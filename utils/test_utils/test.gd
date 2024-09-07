@@ -41,7 +41,7 @@ func instantiate_single_damage()-> SingleDamage:
 	
 func has_copy( eff:BaseEffect,node:Node)->bool:
 	if not node:
-		printerr(node, ' doesnt exist at Utils.has_copy')
+		push_error(node, ' doesnt exist at Utils.has_copy')
 		return false
 	var   effect_type_match_found = false
 	for child in node.get_children():
@@ -61,17 +61,17 @@ func mock_properties(node:Node):
 #func instantiate_node(scene_path: String, script_path: String) -> Node:
 	#var scene = load(scene_path)
 	#if scene == null:
-		#printerr("Failed to load scene from path: ", scene_path)
+		#push_error("Failed to load scene from path: ", scene_path)
 		#return null
 	#
 	#var node = scene.instantiate()
 	#if node == null:
-		#printerr("Failed to instantiate node from scene: ", scene_path)
+		#push_error("Failed to instantiate node from scene: ", scene_path)
 		#return null
 	#
 	#var script = load(script_path)
 	#if script == null:
-		#printerr("Failed to load script from path: ", script_path)
+		#push_error("Failed to load script from path: ", script_path)
 		#return null
 #
 	#node.set_script(script)

@@ -28,4 +28,5 @@ script = ExtResource("6_08g6x")
 [node name="ItemPlacer" type="Node2D" parent="."]
 script = ExtResource("6_mfbky")
 
+[connection signal="building_to_place_changed" from="." to="ItemPlacer" method="_on_player_building_to_place_changed"]
 [connection signal="placable_instance_changed" from="ItemPlacer" to="StateMachine/Building" method="_on_item_placer_placable_instance_changed"]

@@ -10,7 +10,7 @@ func load_ammo() -> void:
 		$StateMachine.transition_to('Loading')
  
 
-func fire_bullet(initial_rotation:float) -> Variant:
+func fire_bullet(initial_rotation:float=  owner.rotation) -> Variant:
 	return $StateMachine.state.fire_bullet(initial_rotation)
 
 	# i should try to get rid of this if check

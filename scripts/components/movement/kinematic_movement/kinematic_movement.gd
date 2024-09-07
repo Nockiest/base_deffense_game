@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 func move_owner( delta:float, dir:Vector2 ) -> void:
 	owner_direction = dir
 	if not owner:
-		printerr('owner not set ',self) 
+		push_error('owner not set ',self) 
 		return
 	owner.velocity = owner_direction.normalized() * base_speed_per_frame * speed_modifier * delta 
 	#print(speed_modifier)
@@ -25,4 +25,4 @@ func move_owner( delta:float, dir:Vector2 ) -> void:
 	#elif owner is RigidBody2D:
 		#owner.linear_velocity = owner.velocity
 	#else:
-		#printerr('owner is not rigidbody or kinematiic body ', owner)
+		#push_error('owner is not rigidbody or kinematiic body ', owner)

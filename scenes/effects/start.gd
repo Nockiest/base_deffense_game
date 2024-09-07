@@ -15,4 +15,4 @@ func cause_start_effect(start_fce: Callable = owner.start_effect ) -> void:
 	elif owner.has_method('start_effect'):
 		owner.start_effect()
 	else: 
-		printerr('owner doesnt have a start effect ', owner)
+		push_error('owner doesnt have a start effect ', owner)

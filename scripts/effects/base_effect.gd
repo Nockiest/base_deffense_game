@@ -15,17 +15,17 @@ var interval_timer: float = 0.0
 # Called when the node enters the scene tree for the first time.
 			
 func start_effect():
-	printerr('effect doesn\'t have a start function')
+	push_error('effect doesn\'t have a start function')
 
 func per_second_effect():
-	printerr('effect doesn\'t do anything')
+	push_error('effect doesn\'t do anything')
 
 func exit_effect():
-	printerr('doesnt have exit effect')
+	push_error('doesnt have exit effect')
 
 func can_apply_on_node(node: Node) -> bool:
 	if node == null or !node.has_node("EffectHoldComponent"):
-		printerr('Entity does not have EffectHoldComponent:', node)
+		push_error('Entity does not have EffectHoldComponent:', node)
 		return false
 
 	if node.name:
@@ -33,22 +33,20 @@ func can_apply_on_node(node: Node) -> bool:
 		if node.name in applicable_components:
 			return true
 	else:
-		printerr(node, 'isn\'t inheriting from modclass')
+		push_error(node, 'isn\'t inheriting from modclass')
 
-	printerr('Cannot apply effect to node', node, node.get_class(), 'Allowed classes:', applicable_components)
+	push_error('Cannot apply effect to node', node, node.get_class(), 'Allowed classes:', applicable_components)
 	return false
 
 func apply_to_entity(entity: Node) -> void:
 	# Check if the entity is valid and has an EffectHoldComponent
 	if can_apply_on_node(entity):
 		create_copy(entity)
-	print("allowed ", applicable_components)
 	for type in applicable_components:
-		print( "entiity has?", type, entity.has_node(type))
 		if entity.has_node(type):
 			var entity_component = entity.get_node(type)  
 			if not entity_component is Component:
-				printerr("Failed to cast node to Component:", entity_component)
+				push_error("Failed to cast node to Component:", entity_component)
 			# Ensure the entity module is valid and has an EffectHoldComponent
 			prints( entity, type, entity_component )
 			if can_apply_on_node(entity_component):
@@ -58,15 +56,14 @@ func apply_to_entity(entity: Node) -> void:
 func create_copy(entity_component:Component):
 	var effect_copy = self.duplicate()
 	if not entity_component.effect_hold_component:
-		printerr('entity doesnt have effect hold comp ', entity_component)
+		push_error('entity doesnt have effect hold comp ', entity_component)
 	entity_component.effect_hold_component.add_effect(effect_copy,modulated_modifier)
 	effect_copy.owner = entity_component
 	effect_copy.get_node('StateMachine').transition_to('Start')
 	if not effect_copy.get_parent() is EffectHoldComponent:
-		printerr("parent isnt effect hold comp, ", get_parent())
-	print("added duplicate ", self.duplicate, " into ", entity_component)
+		push_error("parent isnt effect hold comp, ", get_parent())
 		
 func _ready():
 	if not owner is EffectHoldComponent:
-		printerr('owner isnt effect hold comp ', owner)
+		push_error('owner isnt effect hold comp ', owner)
  

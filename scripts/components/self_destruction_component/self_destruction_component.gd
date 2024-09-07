@@ -6,7 +6,7 @@ func kill_owner() -> void:
 		print_debug("killing owner ", owner)
 		owner.queue_free()
 	else:
-		printerr("Cannot kill owner: owner is null or already freed.")
+		push_error("Cannot kill owner: owner is null or already freed.")
 
  
 

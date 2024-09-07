@@ -5,6 +5,7 @@ extends Node2D
 @export var movement_component: MovementComponent 
 @export var self_destruction_component: SelfDestructionComponent
 @export var effects: Array[BaseEffect]
+@export var range_px := 250 
 
 @onready var valid_effects = effects.filter(func(effect):
 		return effect != null and is_instance_valid(effect)
@@ -18,7 +19,11 @@ func set_direction(new_direction: Vector2) -> void:
 		movement_component.direction = new_direction.normalized()
 
 func _on_area_entered(_area: Area2D) -> void:
-	printerr('doesnt have on area entered')
+	push_error('doesnt have on area entered')
+	
+func _process(_delta: float) -> void:
+	if movement_component.distance_traveled > range_px :
+		self_destruction_component.kill_owner()
 	#print(area)
 	#print_debug('ef1',area, effects)
 	#var valid_effects = effects.filter(func(effect):
@@ -30,7 +35,7 @@ func _on_area_entered(_area: Area2D) -> void:
 		#effect.apply_to_entity(area)
 	#max_pierced_entities -= 1
 	#if self_destruction_component == null:
-		#printerr(self_destruction_component, ' is null')
+		#push_error(self_destruction_component, ' is null')
 		#return
 	#if max_pierced_entities <= 0:
 		#self_destruction_component.kill_owner()

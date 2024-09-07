@@ -5,7 +5,7 @@ extends BaseEffect
  
 func start_effect():
 	if  not owner is MovementComponent:
-		printerr("wrong owner ", owner, " ", self)
+		push_error("wrong owner ", owner, " ", self)
 	#owner.update_speed()
 
 #func exit_effect():

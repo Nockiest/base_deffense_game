@@ -8,6 +8,6 @@ var game_lost := false:
 @export var gold:int = 0:
 	set(value):
 		if value <= 0:
-			printerr('attempting to set gold bellow 0:', value)
+			push_error('attempting to set gold bellow 0:', value)
 		gold = max(0, value)
 		print( 'gold changed to value:', gold)

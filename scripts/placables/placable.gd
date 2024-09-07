@@ -7,7 +7,7 @@ extends Building
 
 func _ready() -> void:
 	if not can_afford_build:
-		printerr('cant afford to build placable:', self)
+		push_error('cant afford to build placable:', self)
 	else:
 		purchase()
 	

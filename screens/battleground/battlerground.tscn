@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://ba6tsg2gpoxge" path="res://assets/MiniWorldSprites/Ground/Grass.png" id="5_1366f"]
 [ext_resource type="Texture2D" uid="uid://d4lry88kt4cp3" path="res://assets/MiniWorldSprites/Ground/DeadGrass.png" id="6_hfkqt"]
 [ext_resource type="PackedScene" uid="uid://t6n6ewambkd0" path="res://scenes/enemies/basic_enemy.tscn" id="7_uvkyx"]
-[ext_resource type="PackedScene" uid="uid://burqtism06kl2" path="res://scenes/obstacles/mine/mine.tscn" id="8_ai3uo"]
+[ext_resource type="PackedScene" uid="uid://burqtism06kl2" path="res://scenes/obstacles/explosive/explosive.tscn" id="8_ai3uo"]
 [ext_resource type="PackedScene" uid="uid://cvshclvyanljm" path="res://scenes/player/player.tscn" id="9_g0po4"]
-[ext_resource type="PackedScene" uid="uid://do683g874q4is" path="res://scenes/buildings/turret/new_turret.tscn" id="10_ekufx"]
+[ext_resource type="PackedScene" uid="uid://do683g874q4is" path="res://scenes/buildings/turret/turret.tscn" id="10_ekufx"]
 [ext_resource type="PackedScene" uid="uid://cbdtbgejpnn82" path="res://scenes/buildings/gold_mine/gold_mine.tscn" id="11_gt67p"]
 [ext_resource type="PackedScene" uid="uid://c0g8ofdb0pyl2" path="res://scenes/buildings/town_hall/town_hall.tscn" id="12_lvbje"]
 [ext_resource type="PackedScene" uid="uid://cy8r0umxl7vx8" path="res://assets/MiniWorldSprites/Buildings/Enemy/enemy_spawner.tscn" id="13_j0uu6"]
@@ -126,15 +126,18 @@ position = Vector2(572, 296)
 [node name="Turrets" type="Node" parent="Buildings"]
 
 [node name="Turret" parent="Buildings/Turrets" instance=ExtResource("10_ekufx")]
-position = Vector2(453, 335)
+position = Vector2(488, 330)
 
 [node name="Mines" type="Node" parent="Buildings"]
 
 [node name="GoldMine" parent="Buildings/Mines" instance=ExtResource("11_gt67p")]
+position = Vector2(571, 292)
 
 [node name="TownHall" parent="Buildings" instance=ExtResource("12_lvbje")]
-position = Vector2(126, 268)
+position = Vector2(537, 284)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("13_j0uu6")]
 enemy_scenes = Array[PackedScene]([ExtResource("7_uvkyx")])
+wave_interval = 30.0
 map_bounds = Rect2(-554, -660, 2000, 1150)
+wave_sizes = [1, 2, 3, 4]

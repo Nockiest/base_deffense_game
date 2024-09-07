@@ -26,7 +26,6 @@ func apply_area_effect(effect_function: Callable, target_groups: Array[String], 
 			for point in collision_points:
 				if Geometry2D.is_point_in_circle(point, center_position, radius_px):
 					affected_bodies.append(body)
-					print("Body within effect range:", body.name, " at position:", body.global_position)
 					break  # No need to check other points if one is inside
 
 	# Apply the effect to all affected bodies
@@ -53,8 +52,8 @@ func _get_collision_points(body: Node2D) -> Array:
 			elif shape is CapsuleShape2D or   shape is ConvexPolygonShape2D or   shape is ConcavePolygonShape2D:
 				# Additional logic for other shapes can be added here
 				# Since we're printing, let's ensure we handle unsupported shapes gracefully
-				printerr('Haven’t written a function to find points of this collision shape:', child,shape,shape is RectangleShape2D, self)
+				push_error('Haven’t written a function to find points of this collision shape:', child,shape,shape is RectangleShape2D, self)
 			else:  # Default case for any other shapes not explicitly handled
-				printerr('xHaven’t written a function to find points of this collision shape:', child, shape, shape is RectangleShape2D, self)
+				push_error('xHaven’t written a function to find points of this collision shape:', child, shape, shape is RectangleShape2D, self)
 
 	return points

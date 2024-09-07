@@ -10,6 +10,7 @@ var placable_instance: Placable:
 var preview_instance: PlacablePreview
 
 signal placable_instance_changed(placable_instance:Placable)
+signal invalid_placement(placable_instance:Placable)
 # Function to insert a packed scene and display its sprite
 func insert_scene(packed_scene: PackedScene) -> void:
 	print('Inserting scene:', packed_scene)
@@ -31,8 +32,9 @@ func _process(_delta: float) -> void:
 func _create_placement_preview(packed_scene: PackedScene):
 	placable_instance = packed_scene.instantiate() as Placable
 	var preview = load(placable_instance.placable_scene_to_load_path)
+	print(placable_instance.placable_scene_to_load_path)
 	if not preview:
-		printerr('preview not defined ', preview, placable_instance)
+		push_error('preview not defined ', preview, placable_instance)
 		return
 	preview_instance = preview.instantiate()
 	add_child(preview_instance)
@@ -43,10 +45,15 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		# Check if the preview instance can be placed
-			if preview_instance and preview_instance.can_place:
-				place_scene()
+			if preview_instance :
+				print(preview_instance , preview_instance.can_place)
+			
+				if preview_instance.can_place:
+					place_scene()
 			else:
-				print("Cannot place the scene here.")
+				print("Cannot place the scene here.", preview_instance , )
+				if preview_instance:
+					print(preview_instance.get('can_place'))
 
 # Function to place the scene into the world
 func place_scene():
@@ -65,3 +72,7 @@ func place_scene():
 	print("Scene placed into the world.")
 
  
+
+
+func _on_player_building_to_place_changed(building: PackedScene) -> void:
+	insert_scene(building)

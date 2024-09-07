@@ -2,7 +2,7 @@ extends State
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
-func enter(msg := {}):
+func enter(_msg := {}):
 	owner.auto_shoot_component.enabled = true
 
 func _process(_delta: float) -> void:

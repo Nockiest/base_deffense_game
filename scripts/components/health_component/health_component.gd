@@ -41,7 +41,7 @@ var current_shields: float = 0.0:
 # Called every frame. '_delta' is the elapsed time since the previous frame.
 func take_hit(dmg: float) -> void:
 	if dmg <= 0:
-		printerr(dmg, ' is wierdly small to be a hit')
+		push_error(dmg, ' is wierdly small to be a hit')
 	if current_shields > 0:
 		current_shields -= dmg
 	else:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://coavgvhkuapbu"]
 
-[ext_resource type="PackedScene" uid="uid://vs4x5r3jjq8" path="res://scenes/buildings/preview/preview.tscn" id="1_q3bul"]
+[ext_resource type="PackedScene" uid="uid://vs4x5r3jjq8" path="res://scenes/buildings/preview/placable_preview.tscn" id="1_q3bul"]
 [ext_resource type="Texture2D" uid="uid://lapkg10yrip6" path="res://assets/buildings/gold_mine/CyanResources.png" id="2_omunn"]
 
 [node name="PlacableGoldMine" instance=ExtResource("1_q3bul")]

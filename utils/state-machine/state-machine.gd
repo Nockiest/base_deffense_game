@@ -42,7 +42,7 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	# We don't use an assert here to help with code reuse. If you reuse a state in different state machines
 	# but you don't want them all, they won't be able to transition to states that aren't in the scene tree.
 	if not has_node(target_state_name):
-		printerr('invalid state name ', target_state_name )
+		push_error('invalid state name ', target_state_name )
 		return
 	print("entereing state ", target_state_name)
 	state.exit()

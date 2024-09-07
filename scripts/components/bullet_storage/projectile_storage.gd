@@ -18,7 +18,7 @@ func _ready() -> void:
 	current_ammo = start_ammo
 	
  
-func fire_bullet(_initial_rotation:float):
+func fire_bullet(_initial_rotation:float = owner.rotation):
 	pass
 ## Current ammo count
 #var current_ammo: int: 

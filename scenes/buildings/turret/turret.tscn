@@ -19,8 +19,8 @@ script = ExtResource("2_cm2gi")
 aiming_component = NodePath("EntityAimingComponent")
 magazine_component = NodePath("AmmoMagazine")
 auto_shoot_component = NodePath("AutoShootComponent")
-placable_scene_to_load_path = ""
-gold_cost = 10
+placable_scene_to_load_path = "res://scenes/buildings/preview/turret/turret_placable.tscn"
+gold_cost = 1
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(-0.5, 0.5)

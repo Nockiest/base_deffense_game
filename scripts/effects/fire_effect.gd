@@ -20,5 +20,5 @@ func per_second_effect():
 	#if entity.effect_hold_component:
 		#true
 	#else:
-		#printerr('cant apply effect to entity', entity)
+		#push_error('cant apply effect to entity', entity)
 		#false

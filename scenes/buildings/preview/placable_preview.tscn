@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://scripts/placables/placable_preview.gd" id="1_yxcqd"]
 
 [node name="PlacableFootPrint" type="Area2D"]
+collision_layer = 4
+collision_mask = 14
 script = ExtResource("1_yxcqd")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

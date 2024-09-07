@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://dwjx8ngai4jgo"]
 
 [ext_resource type="Script" path="res://scenes/ui/battle_ground_ui/construction_bar.gd" id="1_2yw1w"]
-[ext_resource type="PackedScene" uid="uid://2icamt22lsy2" path="res://scripts/turret.tscn" id="2_7lcei"]
 [ext_resource type="Theme" uid="uid://db10h5ld3amb0" path="res://assets/ui.tres" id="2_8abfy"]
 [ext_resource type="Texture2D" uid="uid://bvppio0wqfphf" path="res://assets/buildings/turret/turret.tres" id="3_1btif"]
 [ext_resource type="Script" path="res://scripts/ui/construction_button.gd" id="3_a2xcb"]
+[ext_resource type="PackedScene" uid="uid://do683g874q4is" path="res://scenes/buildings/turret/turret.tscn" id="5_d8pi5"]
 [ext_resource type="PackedScene" uid="uid://cbdtbgejpnn82" path="res://scenes/buildings/gold_mine/gold_mine.tscn" id="6_fybrs"]
 [ext_resource type="Texture2D" uid="uid://dpv7mjhq8mijf" path="res://assets/buildings/gold_mine/gold_mine.tres" id="6_jm6s1"]
 [ext_resource type="Texture2D" uid="uid://dybfujopnw1u1" path="res://assets/img/control/icon_coin.png" id="6_nrklo"]
@@ -58,7 +58,7 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 script = ExtResource("3_a2xcb")
-constructed_entity = ExtResource("2_7lcei")
+constructed_entity = ExtResource("5_d8pi5")
 
 [node name="GoldMineButton" type="Button" parent="Control/MarginContainer/ConstructionBar2"]
 layout_mode = 2
@@ -171,5 +171,3 @@ theme = ExtResource("2_8abfy")
 shortcut = SubResource("Shortcut_xlprd")
 text = "Pause Game"
 script = ExtResource("12_sg428")
-
-[connection signal="pressed" from="PauseGameBtn" to="PauseGameBtn" method="_on_pressed"]

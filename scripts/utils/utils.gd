@@ -219,9 +219,9 @@ func add_child_to_battleground(child:Node, battleground_node_to_place:String):
 			# Add the new building to the Buildings node
 			buildings_node.add_child(child)
 		else:
-			printerr(battleground_node_to_place, 'not found in Battleground')
+			push_error(battleground_node_to_place, 'not found in Battleground')
 	else:
-		printerr("Battleground node not found in the scene")
+		push_error("Battleground node not found in the scene")
 
 	
 # sadly not working

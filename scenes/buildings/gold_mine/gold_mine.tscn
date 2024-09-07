@@ -10,8 +10,8 @@ size = Vector2(16, 16)
 [node name="GoldMine" instance=ExtResource("1_mscqr")]
 script = ExtResource("2_pu3a4")
 gold_per_click = 1
-placable_scene_to_load_path = ""
-gold_cost = 10
+placable_scene_to_load_path = "res://scenes/buildings/preview/gold_mine/placable_gold_mine.tscn_mine.tscn"
+gold_cost = 2
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_dm6f2")

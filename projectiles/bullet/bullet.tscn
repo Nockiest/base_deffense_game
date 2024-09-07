@@ -15,7 +15,7 @@ size = Vector2(40, 40)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_80uuc"]
 
-[node name="TurretBullet" type="Area2D" node_paths=PackedStringArray("damage_deal_component", "movement_component", "self_destruction_component", "effects")]
+[node name="Bullet" type="Area2D" node_paths=PackedStringArray("damage_deal_component", "movement_component", "self_destruction_component", "effects")]
 collision_mask = 2
 script = ExtResource("1_2qxcl")
 damage_deal_component = NodePath("AreaDamageComponent")

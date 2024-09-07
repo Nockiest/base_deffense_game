@@ -3,7 +3,7 @@ extends Node2D
 
 var gold: int
 var click_power: float = 1
-#signal building_to_place_changed(building:PackedScene)
+signal building_to_place_changed(building:PackedScene)
 
 @export var item_placer:ItemPlacer
 func _ready() -> void:

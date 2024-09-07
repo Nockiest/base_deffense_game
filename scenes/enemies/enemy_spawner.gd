@@ -29,7 +29,7 @@ func spawn_wave():
 func spawn_enemy_at_random_edge() -> void:
 	# Ensure there are enemy scenes to spawn
 	if len(enemy_scenes) == 0:
-		printerr("No enemy scenes set to spawn.")
+		push_error("No enemy scenes set to spawn.")
 		return
 
 	# Pick a random enemy scene from the list

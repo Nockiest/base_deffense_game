@@ -20,7 +20,7 @@ func _ready() -> void:
 	add_child(attack_timer)
 	# Ensure that an enemy is assigned
 	if not enemy:
-		print("No enemy assigned to MeleeAttackComponent!")
+		push_warning("No enemy assigned to MeleeAttackComponent!")
 
 func _process(_delta: float) -> void:
 	if enemy and is_instance_valid(enemy):

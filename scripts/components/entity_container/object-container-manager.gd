@@ -33,10 +33,10 @@ func select_container_from_string(word:String) -> ObjectContainer:
 		#"Entity":
 			#return entity_container
 		#"Structure":
-			#printerr("Currently not supporting structures")
+			#push_error("Currently not supporting structures")
 			#return structure_container
 		#"Projectile":
 			#return projectile_container
 		#_:
-			#printerr("Unknown container type")
+			#push_error("Unknown container type")
 			#return entity_container

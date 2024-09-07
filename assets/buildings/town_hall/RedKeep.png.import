@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://doy1g5isridhu"
-path="res://.godot/imported/RedKeep.png-8ddc7de9be5d5bfd2b77c17e93c202e9.ctex"
+path="res://.godot/imported/RedKeep.png-94040ffe87320bb297b192183b1cb258.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/MiniWorldSprites/Buildings/Red/RedKeep.png"
-dest_files=["res://.godot/imported/RedKeep.png-8ddc7de9be5d5bfd2b77c17e93c202e9.ctex"]
+source_file="res://assets/buildings/town_hall/RedKeep.png"
+dest_files=["res://.godot/imported/RedKeep.png-94040ffe87320bb297b192183b1cb258.ctex"]
 
 [params]
 

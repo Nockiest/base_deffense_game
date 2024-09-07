@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 func deal_damage(_reciever: Node,   _center_position: Vector2 = self.global_position) -> void:
 	# Ensure the entity hasn't been queued for deletion
 	if damaged_entity == null or damaged_entity.is_queued_for_deletion():
-		printerr("Damaged entity is null or has been queued for deletion. Skipping damage.")
+		push_error("Damaged entity is null or has been queued for deletion. Skipping damage.")
 		return
 	
 	# Update focus time
@@ -37,4 +37,4 @@ func deal_damage(_reciever: Node,   _center_position: Vector2 = self.global_posi
 		damaged_entity.health_component.take_hit(total_damage)
 		print_debug("Dealing", total_damage, "damage to", damaged_entity)
 	else:
-		printerr("Damaged entity doesn't have 'take_hit' method or health_component. Skipping:", damaged_entity)
+		push_error("Damaged entity doesn't have 'take_hit' method or health_component. Skipping:", damaged_entity)

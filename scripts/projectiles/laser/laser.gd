@@ -2,9 +2,6 @@ class_name Laser
 extends Projectile
 
 @export var damage_deal_component: FocusDamageDealComponent
-@export var range_px: int = 100:
-	set(value):
-		range_px = value
 		
 @onready var raycast: RayCast2D = $"." 
 	 

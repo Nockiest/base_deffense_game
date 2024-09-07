@@ -19,11 +19,10 @@ func _on_timeout() -> void:
 func _set_random_wait_time() -> void:
 	# Ensure min_time is less than max_time
 	if min_time >= max_time:
-		printerr("min_time should be less than max_time")
+		push_error("min_time should be less than max_time")
 		return
 	
 	# Set the wait time to a random value between min_time and max_time
 	wait_time = randf_range(min_time, max_time)
-	print('new wait time is ', wait_time)
 	# Restart the timer with the new wait time
 	start()

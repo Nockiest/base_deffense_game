@@ -37,6 +37,6 @@ func stop_on_collision(area: Node2D) -> void:
 			# Remove the -100% modifier to restore base speed
 			owner_movement_comp.effect_hold_component.remove_child(collision_instance)
 		else:
-			printerr('Area ', blockingObjects[0], ' still blocks', owner)
+			push_error('Area ', blockingObjects[0], ' still blocks', owner)
 	else:
-		printerr('Area ', area, ' not found in blockingObjects', owner)
+		push_error('Area ', area, ' not found in blockingObjects', owner)

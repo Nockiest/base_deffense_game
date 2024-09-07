@@ -24,7 +24,7 @@ func print_once(prin_id: String, messages: Array, print_sign: String="error" ) -
 		"print":
 			print(combined_message)  # Normal print
 		"error":
-			printerr(combined_message)  # Print error
+			push_error(combined_message)  # Print error
 		
 		"info":
 			print(combined_message)  # Info - same as print but can be used for additional context

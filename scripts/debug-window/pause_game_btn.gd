@@ -1,8 +1,7 @@
+class_name PauseButton
 extends CheckButton
 
  
-	# Toggle the paused state of the game
-	
 # Consume left-click events to prevent them from affecting other inputs
 # Connect the button's pressed signal in the editor or using code
 func _ready():

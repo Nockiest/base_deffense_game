@@ -22,19 +22,16 @@ func fire_bullet(initial_rotation:float):
 		print('No ammo left')
 		return null
 	else:
-		print('cant shoot yet')
 		return null
  
 func create_bullet(initial_rotation:float):
 	owner.current_ammo -= 1
 	# Instantiate the bullet scene
-	print(owner.stored_bullet,  owner.stored_bullet  == null)
 	var new_bullet_instance = owner.stored_bullet.instantiate()
 	new_bullet_instance.global_position = owner.global_position
 	
 	# Calculate the bullet's direction based on the turret's rotation
 	var bullet_direction = Utils.direction_from_rotation(initial_rotation)#Vector2(cos(initial_rotation - deg_to_rad(90)), sin(initial_rotation - deg_to_rad(90)))
-	print(bullet_direction)
 	
 	# Set the direction for the bullet's movement
 	new_bullet_instance.set_direction(bullet_direction)

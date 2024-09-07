@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://burqtism06kl2"]
 
-[ext_resource type="Script" path="res://scripts/obstacles/mine.gd" id="1_iaf5u"]
-[ext_resource type="PackedScene" uid="uid://b33lspjglp7x6" path="res://scripts/components/area_of_effect/area_of_effect_component.tscn" id="2_wyffc"]
-[ext_resource type="PackedScene" uid="uid://mg22vpcew01o" path="res://scenes/effects/single_damage/single_damage.tscn" id="3_41a3x"]
-[ext_resource type="Texture2D" uid="uid://cwchngyv02nu5" path="res://assets/img/Trap and Weapon/Bomb.png" id="4_5r4ff"]
-[ext_resource type="PackedScene" uid="uid://cumblegcognst" path="res://scripts/components/damage_deal/single_entity_damage/single_damage_component.tscn" id="6_417c3"]
+[ext_resource type="Script" path="res://scripts/obstacles/explosive/explosive.gd" id="1_xkex1"]
+[ext_resource type="PackedScene" uid="uid://b33lspjglp7x6" path="res://scripts/components/area_of_effect/area_of_effect_component.tscn" id="2_f4scm"]
+[ext_resource type="PackedScene" uid="uid://mg22vpcew01o" path="res://scenes/effects/single_damage/single_damage.tscn" id="3_40o6o"]
+[ext_resource type="Texture2D" uid="uid://cwchngyv02nu5" path="res://assets/img/Trap and Weapon/Bomb.png" id="4_54p7e"]
+[ext_resource type="PackedScene" uid="uid://cumblegcognst" path="res://scripts/components/damage_deal/single_entity_damage/single_damage_component.tscn" id="5_3dk63"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2ahr"]
 radius = 8.0
@@ -46,17 +46,17 @@ _data = {
 "explosion": SubResource("Animation_uhrw0")
 }
 
-[node name="Mine" type="Area2D" node_paths=PackedStringArray("area_of_effect_component", "single_damage_component") groups=["BattlegroundObjects"]]
+[node name="Explosive" type="StaticBody2D" node_paths=PackedStringArray("area_of_effect_component", "single_damage_component") groups=["BattlegroundObjects"]]
 collision_layer = 4
 collision_mask = 14
-script = ExtResource("1_iaf5u")
+script = ExtResource("1_xkex1")
 area_of_effect_component = NodePath("AreaOfEffectComponent")
 single_damage_component = NodePath("SingleDamageDealComponent")
 
-[node name="AreaOfEffectComponent" parent="." instance=ExtResource("2_wyffc")]
+[node name="AreaOfEffectComponent" parent="." instance=ExtResource("2_f4scm")]
 effect_radius_px = 100.0
 
-[node name="SingleDamage" parent="." instance=ExtResource("3_41a3x")]
+[node name="SingleDamage" parent="." instance=ExtResource("3_40o6o")]
 damage = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -66,7 +66,7 @@ shape = SubResource("CircleShape2D_u2ahr")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -8)
-texture = ExtResource("4_5r4ff")
+texture = ExtResource("4_54p7e")
 hframes = 5
 
 [node name="ExplosionAnimation" type="AnimationPlayer" parent="Sprite2D"]
@@ -74,7 +74,6 @@ libraries = {
 "": SubResource("AnimationLibrary_g1apf")
 }
 
-[node name="SingleDamageDealComponent" parent="." instance=ExtResource("6_417c3")]
+[node name="SingleDamageDealComponent" parent="." instance=ExtResource("5_3dk63")]
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="animation_finished" from="Sprite2D/ExplosionAnimation" to="." method="_on_explosion_finished"]

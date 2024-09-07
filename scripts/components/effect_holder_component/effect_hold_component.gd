@@ -10,7 +10,6 @@ func fire_bullet(_initial_rotation:Vector2):
 func add_effect(effect: BaseEffect, variable_to_update:String='') -> void:
 	if effect and effect not in get_children():
 		add_child(effect)
-		print("Effect added:", owner, effect.name)
 	else:
 		oneErr.print_once('invalid effect', ["Effect already exists or is invalid:", effect, owner])
 	if variable_to_update != '':
@@ -21,18 +20,16 @@ func add_effect(effect: BaseEffect, variable_to_update:String='') -> void:
 func remove_effect(effect: BaseEffect,variable_to_update:String='') -> void:
 	if effect in get_children():
 		remove_child(effect)
-		print("Effect removed:", effect.name)
 	else:
 		oneErr.print_once( 'effect holder without effect',["Effect holder doesn't have the effect:", effect, owner])
 	if variable_to_update != '':
 		cause_update(variable_to_update)
 	else:
-		printerr(variable_to_update, ' variable to update not defined')
+		push_error(variable_to_update, ' variable to update not defined')
 
 func cause_update(variable_to_update):
- 
 	if not owner is Component or not variable_to_update in owner:
-		printerr('Owner does not have the variable:', variable_to_update, owner)
+		push_error('Owner does not have the variable:', variable_to_update, ' x ', owner)
 		return
 		# Get the value of the owner's base variable
 
@@ -55,11 +52,11 @@ func parse_effect_modifiers_from_children(node: EffectHoldComponent, value_prope
 	var modifier_counts: Dictionary = {}  # To track counts of each modifier type
 	for child in node.get_children():
 		if not value_property in child:
-			printerr(child, " doesn't contain the property ", value_property, ", occurred in ", owner)
+			push_error(child, " doesn't contain the property ", value_property, ", occurred in ", owner)
 			continue
 		
 		if not child.modulated_modifier:
-			printerr(child, " doesn't contain an effect name, occurred in ", owner)
+			push_error(child, " doesn't contain an effect name, occurred in ", owner)
 			continue
 		
 		var modulated_modifier = child.modulated_modifier  # Assuming unique modifier types are identified by name
