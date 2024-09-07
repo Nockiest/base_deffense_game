@@ -2,7 +2,7 @@ extends State
 
 
 func enter(_msg := {}):
-	print('enntering indle')
+	print('enntering indle', owner)
 	owner.auto_shoot_component.enabled = false
 
 

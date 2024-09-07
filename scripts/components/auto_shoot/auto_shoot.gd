@@ -8,31 +8,32 @@ extends Component
 
 var enabled := true:
 	set(value):
-		if enabled:
-			start_auto_shooting()
-		else:
-			stop_auto_shooting()
 		enabled = not enabled
+		
+		if enabled:
+			_start_auto_shooting()
+		else:
+			_stop_auto_shooting()
 
 func _ready() -> void:
 	if enabled:
-		start_auto_shooting()
+		_start_auto_shooting()
 
-func _process(_delta: float) -> void:
-	if enabled and aiming_component.target_position:
-		magazine_component.fire_bullet(owner.rotation)
+#func _process(_delta: float) -> void:
+	#if enabled and aiming_component.target_position:
+		#magazine_component.fire_bullet(owner.rotation)
 
 
 func _on_timer_timeout() -> void:
 	if enabled and magazine_component != null and magazine_component.has_method("fire_bullet"):
-		magazine_component.fire_bullet()
+		magazine_component.fire_bullet(owner.rotation)
 		
-func start_auto_shooting() -> void:
+func _start_auto_shooting() -> void:
 	if shoot_timer:
 		shoot_timer.wait_time = magazine_component.shoot_interval_sec  # Update timer wait time
 		shoot_timer.start()  # Start the timer
 
 # Function to stop the auto-shooting process
-func stop_auto_shooting() -> void:
+func _stop_auto_shooting() -> void:
 	if shoot_timer:
 		shoot_timer.stop()

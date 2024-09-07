@@ -4,7 +4,8 @@ extends State
 
 func enter(_msg := {}):
 	owner.auto_shoot_component.enabled = true
-
+	
+	
 func _process(_delta: float) -> void:
 	if owner.aiming_component:
 		# Get the position of the turret
@@ -15,9 +16,10 @@ func _process(_delta: float) -> void:
 		var direction = (mouse_position - turret_position).normalized()
 		# Calculate the angle from the direction vector and set the rotation of the turret
 		owner.rotation = direction.angle() + deg_to_rad(90)  # Fixed the use of direction
-	
-
-func _on_entity_aiming_component_target_changed(target: Node2D) -> void:
-	print('target_changed', target, owner)
-	if not target:
+	if not owner.aiming_component.current_target:
 		state_machine.transition_to('Idle')
+
+#func _on_entity_aiming_component_target_changed(target: Node2D) -> void:
+	#print('target_changed', target, owner)
+	#if not target:
+		#state_machine.transition_to('Idle')

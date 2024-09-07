@@ -139,4 +139,4 @@ position = Vector2(537, 284)
 enemy_scenes = Array[PackedScene]([ExtResource("7_uvkyx")])
 wave_interval = 30.0
 map_bounds = Rect2(-554, -660, 2000, 1150)
-wave_sizes = [1, 2, 3, 4]
+wave_sizes = [4, 6, 8, 4]

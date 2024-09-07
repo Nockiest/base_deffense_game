@@ -43,6 +43,7 @@ script = ExtResource("5_pwsfh")
 
 [node name="EntityAimingComponent" parent="." index="4" instance=ExtResource("6_oc56f")]
 enemy_group = "enemies"
+range_px = 1000.0
 
 [node name="AmmoMagazine" parent="." index="5" instance=ExtResource("7_1mtn1")]
 stored_bullet = ExtResource("8_hkdem")
