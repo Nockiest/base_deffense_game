@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0inqlm7kwlpg"]
+
+[ext_resource type="PackedScene" uid="uid://vs4x5r3jjq8" path="res://scenes/buildings/preview/placable_preview.tscn" id="1_1ece6"]
+[ext_resource type="Texture2D" uid="uid://c435xxrhc07f1" path="res://assets/buildings/explosive/bomb_idle.tres" id="2_lgv2o"]
+
+[node name="PlacableFootPrint" instance=ExtResource("1_1ece6")]
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+polygon = PackedVector2Array(-6, 9, -3, 12, 3, 12, 6, 9, 6, 3, 3, -2, -2, -2, -6, 3)
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_lgv2o")

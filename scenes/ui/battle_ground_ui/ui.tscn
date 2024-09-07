@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwjx8ngai4jgo"]
+[gd_scene load_steps=17 format=3 uid="uid://dwjx8ngai4jgo"]
 
 [ext_resource type="Script" path="res://scenes/ui/battle_ground_ui/construction_bar.gd" id="1_2yw1w"]
 [ext_resource type="Theme" uid="uid://db10h5ld3amb0" path="res://assets/ui.tres" id="2_8abfy"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://dybfujopnw1u1" path="res://assets/img/control/icon_coin.png" id="6_nrklo"]
 [ext_resource type="Texture2D" uid="uid://kbugqe2fayg5" path="res://assets/img/control/icon_skull.png" id="7_gpeug"]
 [ext_resource type="Texture2D" uid="uid://dpgwswco202k1" path="res://assets/img/control/icon_hand.png" id="8_4p5og"]
+[ext_resource type="Texture2D" uid="uid://c36l5vhd3lsps" path="res://assets/buildings/explosive/bomb_atlas.tres" id="8_mmpdl"]
 [ext_resource type="Texture2D" uid="uid://cy757md7q5x80" path="res://assets/img/control/icon_liquid.png" id="9_axd8u"]
+[ext_resource type="PackedScene" uid="uid://burqtism06kl2" path="res://scenes/obstacles/explosive/explosive.tscn" id="9_jb17p"]
 [ext_resource type="Script" path="res://scripts/debug-window/pause_game_btn.gd" id="12_sg428"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vonor"]
@@ -70,6 +72,17 @@ vertical_icon_alignment = 0
 expand_icon = true
 script = ExtResource("3_a2xcb")
 constructed_entity = ExtResource("6_fybrs")
+
+[node name="ExplosiveButton2" type="Button" parent="Control/MarginContainer/ConstructionBar2"]
+layout_mode = 2
+theme = ExtResource("2_8abfy")
+text = "Explosive"
+icon = ExtResource("8_mmpdl")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("3_a2xcb")
+constructed_entity = ExtResource("9_jb17p")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 1

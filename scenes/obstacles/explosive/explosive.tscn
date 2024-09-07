@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/obstacles/explosive/explosive.gd" id="1_xkex1"]
 [ext_resource type="PackedScene" uid="uid://b33lspjglp7x6" path="res://scripts/components/area_of_effect/area_of_effect_component.tscn" id="2_f4scm"]
 [ext_resource type="PackedScene" uid="uid://mg22vpcew01o" path="res://scenes/effects/single_damage/single_damage.tscn" id="3_40o6o"]
-[ext_resource type="Texture2D" uid="uid://cwchngyv02nu5" path="res://assets/img/Trap and Weapon/Bomb.png" id="4_54p7e"]
+[ext_resource type="Texture2D" uid="uid://cwchngyv02nu5" path="res://assets/buildings/explosive/Bomb.png" id="4_54p7e"]
 [ext_resource type="PackedScene" uid="uid://cumblegcognst" path="res://scripts/components/damage_deal/single_entity_damage/single_damage_component.tscn" id="5_3dk63"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2ahr"]
@@ -55,6 +55,8 @@ collision_mask = 14
 script = ExtResource("1_xkex1")
 area_of_effect_component = NodePath("AreaOfEffectComponent")
 single_damage_component = NodePath("SingleDamageDealComponent")
+placable_scene_to_load_path = "res://scenes/buildings/preview/placable_explosive.tscn"
+gold_cost = 15
 
 [node name="AreaOfEffectComponent" parent="." instance=ExtResource("2_f4scm")]
 effect_radius_px = 100.0

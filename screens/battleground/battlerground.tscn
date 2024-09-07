@@ -114,9 +114,8 @@ position = Vector2(118, 415)
 
 [node name="Obstacles" type="Node" parent="."]
 
-[node name="Mine" parent="Obstacles" instance=ExtResource("8_ai3uo")]
-position = Vector2(353, 237)
-scale = Vector2(2.81397, 2.8741)
+[node name="Explosive" parent="Obstacles" instance=ExtResource("8_ai3uo")]
+position = Vector2(387, 272)
 
 [node name="Player" parent="." instance=ExtResource("9_g0po4")]
 position = Vector2(572, 296)

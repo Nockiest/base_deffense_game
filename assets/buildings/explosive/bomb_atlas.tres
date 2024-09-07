@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://c36l5vhd3lsps"]
+
+[ext_resource type="Texture2D" uid="uid://cwchngyv02nu5" path="res://assets/buildings/explosive/Bomb.png" id="1_m2bgx"]
+
+[resource]
+atlas = ExtResource("1_m2bgx")
+region = Rect2(104, 8, 16, 24)
