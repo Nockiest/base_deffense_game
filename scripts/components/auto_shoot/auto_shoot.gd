@@ -8,7 +8,8 @@ extends Component
 
 var enabled := true:
 	set(value):
-		enabled = not enabled
+		print('is enabled, ', enabled,value)
+		enabled = value
 		
 		if enabled:
 			_start_auto_shooting()
@@ -19,13 +20,11 @@ func _ready() -> void:
 	if enabled:
 		_start_auto_shooting()
 
-#func _process(_delta: float) -> void:
-	#if enabled and aiming_component.target_position:
-		#magazine_component.fire_bullet(owner.rotation)
-
-
+ 
 func _on_timer_timeout() -> void:
+	print_debug('firing',enabled , magazine_component != null , magazine_component.has_method("fire_bullet") ) 
 	if enabled and magazine_component != null and magazine_component.has_method("fire_bullet"):
+		print_debug('firing,', owner.rotation,$"../Sprite2D".rotation )
 		magazine_component.fire_bullet(owner.rotation)
 		
 func _start_auto_shooting() -> void:

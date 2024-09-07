@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bs1isnrs23b2d"]
 
 [ext_resource type="Script" path="res://scripts/buildings/building.gd" id="1_6c7wd"]
-[ext_resource type="Script" path="res://scripts/components/health_component/health_component.gd" id="2_ghodh"]
+[ext_resource type="PackedScene" uid="uid://bdcu3imq3e6t1" path="res://scripts/components/health_component/health_component.tscn" id="3_dfv21"]
 [ext_resource type="Script" path="res://scripts/components/self_destruction_component/self_destruction_component.gd" id="3_yvly5"]
 
 [node name="Building" type="StaticBody2D" groups=["BattlegroundObjects", "buildings"]]
@@ -16,7 +16,8 @@ script = ExtResource("1_6c7wd")
 [node name="SelfDestructionComponent" type="Node2D" parent="."]
 script = ExtResource("3_yvly5")
 
-[node name="HealthComponent" type="Node2D" parent="."]
-script = ExtResource("2_ghodh")
+[node name="HealthComponent" parent="." instance=ExtResource("3_dfv21")]
+position = Vector2(0, 29)
+scale = Vector2(0.3, 0.3)
 
 [connection signal="hp_ran_out" from="HealthComponent" to="." method="_on_health_component_hp_ran_out"]

@@ -21,7 +21,7 @@ func _on_explosion_finished(anim_name: String) -> void:
 func _on_radius_area_entered(_node ) -> void:
 	$Sprite2D/ExplosionAnimation.play("explosion")
 
-func respond_to_click(click_power:float):
+func respond_to_click(_click_power:float):
 	$Sprite2D/ExplosionAnimation.play("explosion")
 
  

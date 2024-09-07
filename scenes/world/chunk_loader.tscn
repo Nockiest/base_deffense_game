@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqcvhlkmi2wtf"]
+
+[ext_resource type="Script" path="res://scripts/world/chunk_loader.gd" id="1_d8dpl"]
+[ext_resource type="Texture2D" uid="uid://bnshrwixgafwm" path="res://assets/MiniWorldSprites/Ground/TexturedGrass.png" id="2_q6rj6"]
+[ext_resource type="PackedScene" uid="uid://by81or21a36os" path="res://scenes/world/chunk.tscn" id="3_eq2uf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_22r1t"]
+texture = ExtResource("2_q6rj6")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_yg0pm"]
+sources/0 = SubResource("TileSetAtlasSource_22r1t")
+
+[node name="ChunkLoader" type="Node2D" node_paths=PackedStringArray("tile_map")]
+script = ExtResource("1_d8dpl")
+tile_map = NodePath("Chunk")
+tile_set = SubResource("TileSet_yg0pm")
+
+[node name="Chunk" parent="." instance=ExtResource("3_eq2uf")]

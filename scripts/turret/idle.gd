@@ -1,8 +1,9 @@
+class_name CannonIdleState
 extends State
 
 
 func enter(_msg := {}):
-	print('enntering indle', owner)
+	print('enntering indle', owner, $"../../EntityAimingComponent".current_target)
 	owner.auto_shoot_component.enabled = false
 
 

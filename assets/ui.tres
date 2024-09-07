@@ -53,4 +53,5 @@ Button/styles/disabled = SubResource("StyleBoxFlat_hm62k")
 Button/styles/normal = SubResource("StyleBoxTexture_d4i2i")
 Button/styles/pressed = SubResource("StyleBoxTexture_gtn7u")
 Panel/styles/panel = SubResource("StyleBoxFlat_qoynp")
+ProgressBar/constants/outline_size = 4
 VBoxContainer/constants/separation = 8

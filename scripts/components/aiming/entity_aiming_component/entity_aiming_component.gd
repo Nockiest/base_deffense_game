@@ -8,6 +8,10 @@ signal target_changed(target: Node2D)
 # Variable to store the currently aimed-at enemy
 var current_target: Node2D = null:
 	set(value):
+		if not is_instance_valid(value):
+			current_target = null
+			target_changed.emit(value)
+			return
 		if current_target != value:
 			print_rich('[b]current target is[/b]', current_target)
 			current_target = value
@@ -23,7 +27,6 @@ func update_target_position() -> void:
 	else:
 		push_error("owner not set")
 
-# Get the nearest enemy within the specified range and store it
 func get_nearest_enemy(group_of_enemies: String, includeOwner: bool = false) -> Node2D:
 	# Check if the enemy group is set and not null
 	if group_of_enemies == "" or group_of_enemies == null:
@@ -43,17 +46,22 @@ func get_nearest_enemy(group_of_enemies: String, includeOwner: bool = false) -> 
 
 	# Iterate through the enemies and find the nearest one within the specified range
 	for enemy in enemies:
+		# Check if the enemy is still valid and is a Node2D
+		if not is_instance_valid(enemy) or not (enemy is Node2D):
+			continue
+		
+		# Skip the owner if not including it in the search
 		if not includeOwner and enemy == owner:
 			continue
-		if enemy is Node2D:
-			var distance = global_position.distance_to(enemy.global_position)
-			# Check if the enemy is within the specified range
-			if distance < nearest_distance and distance <= range_px:
-				nearest_distance = distance
-				nearest_enemy = enemy
+
+		var distance = global_position.distance_to(enemy.global_position)
+		# Check if the enemy is within the specified range
+		if distance < nearest_distance and distance <= range_px:
+			nearest_distance = distance
+			nearest_enemy = enemy
 
 	# If no enemies were found or the group was empty, log an error
 	if nearest_enemy == null:
 		oneErr.print_once('targets not found', ["Warning: No enemies found in the group: ", group_of_enemies])
-
+	
 	return nearest_enemy

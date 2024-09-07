@@ -3,9 +3,7 @@ extends Component
 
 # Holds effects like fire damage, freeze, etc.
 #@export var effect_variable_names:Array[String] = ['speed_modifier_change']
-# Adds an effect to the component as a child node
-func fire_bullet(_initial_rotation:Vector2):
-	return
+  
 
 func add_effect(effect: BaseEffect, variable_to_update:String='') -> void:
 	if effect and effect not in get_children():

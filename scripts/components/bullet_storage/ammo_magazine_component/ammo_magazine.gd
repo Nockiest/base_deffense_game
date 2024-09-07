@@ -1,7 +1,5 @@
 class_name AmmoMagazine
 extends ProjectileStorage
-#
-
 
 
 # Load a single ammo after the load time has passed

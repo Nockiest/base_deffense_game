@@ -11,6 +11,7 @@ script = ExtResource("1_3nccn")
 effect_hold_component = NodePath("EffectHoldComponent")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -23,6 +24,7 @@ theme_override_styles/fill = ExtResource("3_qamvd")
 show_percentage = false
 
 [node name="ShieldBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

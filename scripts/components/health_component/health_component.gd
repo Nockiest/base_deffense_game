@@ -26,7 +26,6 @@ var current_hp: float = 0.0:
 			hp_ran_out.emit()
 		health_stat_changed.emit(current_hp, current_shields)
 		#emit_signal("health_stat_changed", current_hp, current_shields)
-		print("Current health is", current_hp)
 
 var current_shields: float = 0.0:
 	set(new_shields):
@@ -36,7 +35,6 @@ var current_shields: float = 0.0:
 			shields_ran_out.emit() 
 		health_stat_changed.emit(current_hp, current_shields)
 		#emit_signal("health_stat_changed", current_hp, current_shields)
-		print("Current shields are", current_shields)
 
 # Called every frame. '_delta' is the elapsed time since the previous frame.
 func take_hit(dmg: float) -> void:
@@ -46,7 +44,6 @@ func take_hit(dmg: float) -> void:
 		current_shields -= dmg
 	else:
 		current_hp -= dmg
-	print(owner, " took hit:", dmg, " HP:", current_hp, " Shields:", current_shields)
 		
 
 func take_armor_piercing_damage(dmg: float) -> void:

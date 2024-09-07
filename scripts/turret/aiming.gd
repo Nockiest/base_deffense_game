@@ -1,8 +1,9 @@
+class_name CannonAimingState
 extends State
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func enter(_msg := {}):
+	print('entering aiming')
 	owner.auto_shoot_component.enabled = true
 	
 	
@@ -16,6 +17,7 @@ func _process(_delta: float) -> void:
 		var direction = (mouse_position - turret_position).normalized()
 		# Calculate the angle from the direction vector and set the rotation of the turret
 		owner.rotation = direction.angle() + deg_to_rad(90)  # Fixed the use of direction
+		
 	if not owner.aiming_component.current_target:
 		state_machine.transition_to('Idle')
 

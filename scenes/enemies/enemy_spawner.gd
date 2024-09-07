@@ -23,8 +23,15 @@ func _on_spawn_timer_timeout() -> void:
 	spawn_wave()
 	
 func spawn_wave():
-	for wave in range(0, wave_sizes[0]):
-		spawn_enemy_at_random_edge()
+	if wave_sizes.size() > 0:  # Check if there are any waves left to spawn
+		for i in range(wave_sizes[0]):  # Spawn the number of enemies specified by the first wave size
+			spawn_enemy_at_random_edge()
+		
+		# Remove the wave at index 0 after spawning
+		wave_sizes.remove_at(0)
+	else:
+		print("No more waves to spawn")
+		
 # Function to spawn an enemy at a random position along the map edges
 func spawn_enemy_at_random_edge() -> void:
 	# Ensure there are enemy scenes to spawn

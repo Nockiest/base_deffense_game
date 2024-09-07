@@ -12,8 +12,8 @@ func _prepare_next_shot():
 	bullet_prepared = true
 	
 func fire_bullet(initial_rotation:float):
+	print_debug('initial rotation', initial_rotation)
 	if owner.current_ammo > 0 and bullet_prepared:
-		print('Expended ammo, current ammo:', owner.current_ammo)
 		_prepare_next_shot()
 		create_bullet(initial_rotation )
 		return owner.stored_bullet
