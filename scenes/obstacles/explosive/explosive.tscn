@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://burqtism06kl2"]
+[gd_scene load_steps=11 format=3 uid="uid://burqtism06kl2"]
 
 [ext_resource type="Script" path="res://scripts/obstacles/explosive/explosive.gd" id="1_xkex1"]
 [ext_resource type="PackedScene" uid="uid://b33lspjglp7x6" path="res://scripts/components/area_of_effect/area_of_effect_component.tscn" id="2_f4scm"]
@@ -46,6 +46,9 @@ _data = {
 "explosion": SubResource("Animation_uhrw0")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_t3sps"]
+radius = 25.0
+
 [node name="Explosive" type="StaticBody2D" node_paths=PackedStringArray("area_of_effect_component", "single_damage_component") groups=["BattlegroundObjects"]]
 collision_layer = 4
 collision_mask = 14
@@ -76,4 +79,15 @@ libraries = {
 
 [node name="SingleDamageDealComponent" parent="." instance=ExtResource("5_3dk63")]
 
+[node name="TriggerRadius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerRadius"]
+shape = SubResource("CircleShape2D_t3sps")
+
 [connection signal="animation_finished" from="Sprite2D/ExplosionAnimation" to="." method="_on_explosion_finished"]
+[connection signal="area_entered" from="TriggerRadius" to="." method="_on_radius_area_entered"]
+[connection signal="body_entered" from="TriggerRadius" to="." method="_on_radius_area_entered"]
+[connection signal="body_shape_entered" from="TriggerRadius" to="." method="_on_radius_area_entered"]
