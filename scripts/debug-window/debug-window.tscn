@@ -1,10 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://7i2s2qp0nlea"]
+[gd_scene load_steps=2 format=3 uid="uid://7i2s2qp0nlea"]
 
 [ext_resource type="Script" path="res://scripts/debug-window/debug-window.gd" id="1_ytlis"]
-[ext_resource type="Script" path="res://scripts/debug-window/pause_game_btn.gd" id="2_ey2dl"]
-[ext_resource type="Theme" uid="uid://db10h5ld3amb0" path="res://assets/ui.tres" id="2_rbell"]
-
-[sub_resource type="Shortcut" id="Shortcut_4jusq"]
 
 [node name="DebugWindow" type="CanvasLayer"]
 process_mode = 3
@@ -42,18 +38,3 @@ layout_mode = 2
 
 [node name="FpsTracker" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-
-[node name="PauseGameBtn" type="CheckButton" parent="."]
-process_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -33.0
-offset_right = 137.0
-grow_vertical = 0
-theme = ExtResource("2_rbell")
-shortcut = SubResource("Shortcut_4jusq")
-text = "Pause Game"
-script = ExtResource("2_ey2dl")
-
-[connection signal="pressed" from="PauseGameBtn" to="PauseGameBtn" method="_on_pressed"]

@@ -1,16 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwjx8ngai4jgo"]
+[gd_scene load_steps=15 format=3 uid="uid://dwjx8ngai4jgo"]
 
 [ext_resource type="Script" path="res://scenes/ui/battle_ground_ui/construction_bar.gd" id="1_2yw1w"]
 [ext_resource type="PackedScene" uid="uid://2icamt22lsy2" path="res://scripts/turret.tscn" id="2_7lcei"]
 [ext_resource type="Theme" uid="uid://db10h5ld3amb0" path="res://assets/ui.tres" id="2_8abfy"]
+[ext_resource type="Texture2D" uid="uid://bvppio0wqfphf" path="res://assets/buildings/turret/turret.tres" id="3_1btif"]
 [ext_resource type="Script" path="res://scripts/ui/construction_button.gd" id="3_a2xcb"]
 [ext_resource type="PackedScene" uid="uid://cbdtbgejpnn82" path="res://scenes/buildings/gold_mine/gold_mine.tscn" id="6_fybrs"]
+[ext_resource type="Texture2D" uid="uid://dpv7mjhq8mijf" path="res://assets/buildings/gold_mine/gold_mine.tres" id="6_jm6s1"]
 [ext_resource type="Texture2D" uid="uid://dybfujopnw1u1" path="res://assets/img/control/icon_coin.png" id="6_nrklo"]
 [ext_resource type="Texture2D" uid="uid://kbugqe2fayg5" path="res://assets/img/control/icon_skull.png" id="7_gpeug"]
 [ext_resource type="Texture2D" uid="uid://dpgwswco202k1" path="res://assets/img/control/icon_hand.png" id="8_4p5og"]
 [ext_resource type="Texture2D" uid="uid://cy757md7q5x80" path="res://assets/img/control/icon_liquid.png" id="9_axd8u"]
+[ext_resource type="Script" path="res://scripts/debug-window/pause_game_btn.gd" id="12_sg428"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vonor"]
+
+[sub_resource type="Shortcut" id="Shortcut_xlprd"]
 
 [node name="Ui" type="CanvasLayer"]
 
@@ -48,6 +53,10 @@ script = ExtResource("1_2yw1w")
 layout_mode = 2
 theme = ExtResource("2_8abfy")
 text = "Turret"
+icon = ExtResource("3_1btif")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
 script = ExtResource("3_a2xcb")
 constructed_entity = ExtResource("2_7lcei")
 
@@ -55,6 +64,10 @@ constructed_entity = ExtResource("2_7lcei")
 layout_mode = 2
 theme = ExtResource("2_8abfy")
 text = "Gold Mine"
+icon = ExtResource("6_jm6s1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
 script = ExtResource("3_a2xcb")
 constructed_entity = ExtResource("6_fybrs")
 
@@ -145,3 +158,18 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.674596, 0.721527)
 theme = ExtResource("2_8abfy")
+
+[node name="PauseGameBtn" type="CheckButton" parent="."]
+process_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+offset_right = 137.0
+grow_vertical = 0
+theme = ExtResource("2_8abfy")
+shortcut = SubResource("Shortcut_xlprd")
+text = "Pause Game"
+script = ExtResource("12_sg428")
+
+[connection signal="pressed" from="PauseGameBtn" to="PauseGameBtn" method="_on_pressed"]

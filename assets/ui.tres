@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://db10h5ld3amb0"]
 
 [ext_resource type="FontFile" uid="uid://c8axnpxc0nrk4" path="res://addons/gut/fonts/AnonymousPro-Bold.ttf" id="1_nuw2y"]
-[ext_resource type="Texture2D" uid="uid://duc0rto1hv63" path="res://assets/Spritesheets/Spritesheet_UI_Flat.png" id="2_hdw0t"]
+[ext_resource type="Texture2D" uid="uid://duc0rto1hv63" path="res://assets/Spritesheets/Spritesheet_UI_Flat.png" id="2_20mu5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hm62k"]
 border_width_left = 2
@@ -18,7 +18,7 @@ shadow_size = 1
 shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d4i2i"]
-texture = ExtResource("2_hdw0t")
+texture = ExtResource("2_20mu5")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
@@ -30,7 +30,7 @@ expand_margin_bottom = 2.0
 region_rect = Rect2(32, 128, 32, 32)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gtn7u"]
-texture = ExtResource("2_hdw0t")
+texture = ExtResource("2_20mu5")
 texture_margin_left = 2.0
 texture_margin_top = 2.0
 texture_margin_right = 2.0
