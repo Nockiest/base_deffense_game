@@ -22,9 +22,7 @@ func _ready() -> void:
 
  
 func _on_timer_timeout() -> void:
-	print_debug('firing',enabled , magazine_component != null , magazine_component.has_method("fire_bullet") ) 
 	if enabled and magazine_component != null and magazine_component.has_method("fire_bullet"):
-		print_debug('firing,', owner.rotation,$"../Sprite2D".rotation )
 		magazine_component.fire_bullet(owner.rotation)
 		
 func _start_auto_shooting() -> void:

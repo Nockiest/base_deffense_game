@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxva1cv4q0r3b"]
+
+[ext_resource type="Script" path="res://scripts/components/gold_storage/gold_storage.gd" id="1_biiv7"]
+
+[node name="GoldStorage" type="Node2D" groups=["GoldStorers"]]
+script = ExtResource("1_biiv7")

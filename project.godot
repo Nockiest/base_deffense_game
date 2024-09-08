@@ -21,6 +21,7 @@ Utils="*res://scripts/utils/utils.gd"
 Globals="*res://scripts/globals/globals.gd"
 Test="*res://utils/test_utils/test.gd"
 oneErr="*res://scripts/utils/oneTimeErrorLogger.gd"
+GoldManager="*res://scripts/globals/gold_balance_manager.gd"
 
 [editor_plugins]
 
@@ -50,6 +51,8 @@ base_objects="all the buildings enemies can attack"
 ConstructionButtons="Buttons used to construct new buildings"
 BattlegroundObjects=""
 buildings=""
+callWaveEarly="button for calling wave early. Used to connect to the enemy spawner node"
+GoldStorers="Every gold storage in game"
 
 [input]
 

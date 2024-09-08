@@ -8,4 +8,4 @@ func provide_recource()->int:
 
 
 func respond_to_click(click_power):
-	Globals.gold += click_power * provide_recource()
+	GoldManager.redistribute( click_power * provide_recource(), self)  

@@ -5,9 +5,9 @@ var game_lost := false:
 		if value == true:
 			print('game lost chaning to end game screen')
 
-@export var gold:int = 0:
-	set(value):
-		if value <= 0:
-			push_error('attempting to set gold bellow 0:', value)
-		gold = max(0, value)
-		print( 'gold changed to value:', gold)
+#@export var gold:int = 0:
+	#set(value):
+		#if value <= 0:
+			#push_error('attempting to set gold bellow 0:', value)
+		#gold = max(0, value)
+		#print( 'gold changed to value:', gold)

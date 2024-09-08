@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var aiming_component: AimingComponent  # Reference to the AimingComponent
 @export var melee_attack_component: MeleeAttackComponent  # Reference to the AimingComponent
 
+@export_group('stats')
+@export var gold_on_death := 10 
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,7 +25,7 @@ func _process(_delta: float) -> void:
 func _on_health_component_hp_ran_out() -> void:
 	if self_destruction_component:
 		self_destruction_component.kill_owner() 
-
+	GoldManager.gold += gold_on_death
 func _physics_process(delta: float) -> void:
 	var dir = to_local(navigation_agent_2d.get_next_path_position())
 	#velocity = dir * speed_px_sec

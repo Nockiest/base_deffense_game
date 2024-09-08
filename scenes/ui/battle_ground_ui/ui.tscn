@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwjx8ngai4jgo"]
+[gd_scene load_steps=20 format=3 uid="uid://dwjx8ngai4jgo"]
 
 [ext_resource type="Script" path="res://scenes/ui/battle_ground_ui/construction_bar.gd" id="1_2yw1w"]
 [ext_resource type="Theme" uid="uid://db10h5ld3amb0" path="res://assets/ui.tres" id="2_8abfy"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://burqtism06kl2" path="res://scenes/obstacles/explosive/explosive.tscn" id="9_jb17p"]
 [ext_resource type="Script" path="res://scripts/debug-window/pause_game_btn.gd" id="12_sg428"]
 [ext_resource type="Script" path="res://scripts/ui/check_button.gd" id="15_aoy74"]
+[ext_resource type="Texture2D" uid="uid://cavx43s5pywr4" path="res://assets/Sprites/UI_Flat_ButtonPlay01a.png" id="16_7woqp"]
+[ext_resource type="Script" path="res://scripts/ui/call_wave_early_btn.gd" id="17_x8sum"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vonor"]
 
@@ -173,27 +175,31 @@ offset_bottom = 40.0
 scale = Vector2(0.674596, 0.721527)
 theme = ExtResource("2_8abfy")
 
-[node name="PauseGameBtn" type="CheckButton" parent="."]
-process_mode = 3
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -33.0
-offset_right = 137.0
+offset_top = -89.0
+offset_right = 177.0
 grow_vertical = 0
+
+[node name="PauseGameBtn" type="CheckButton" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
 theme = ExtResource("2_8abfy")
 shortcut = SubResource("Shortcut_xlprd")
 text = "Pause Game"
 script = ExtResource("12_sg428")
 
-[node name="SpeedUpBtn" type="CheckButton" parent="."]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -68.0
-offset_right = 113.0
-offset_bottom = -41.0
-grow_vertical = 0
+[node name="SpeedUpBtn" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
 theme = ExtResource("2_8abfy")
 text = "2xSpeed"
 script = ExtResource("15_aoy74")
+
+[node name="CallWaveEarlyBtn" type="Button" parent="VBoxContainer" groups=["callWaveEarly"]]
+layout_mode = 2
+theme = ExtResource("2_8abfy")
+text = "Call Wave Early"
+icon = ExtResource("16_7woqp")
+script = ExtResource("17_x8sum")

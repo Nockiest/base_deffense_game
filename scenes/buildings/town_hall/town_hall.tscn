@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0g8ofdb0pyl2"]
+[gd_scene load_steps=7 format=3 uid="uid://c0g8ofdb0pyl2"]
 
 [ext_resource type="Script" path="res://scripts/town_hall.gd" id="1_wqvst"]
 [ext_resource type="Texture2D" uid="uid://doy1g5isridhu" path="res://assets/buildings/town_hall/RedKeep.png" id="2_2d5ix"]
 [ext_resource type="Script" path="res://scripts/components/health_component/health_component.gd" id="3_y5kmb"]
 [ext_resource type="PackedScene" uid="uid://bnkur2kld0tc4" path="res://scripts/components/self_destruction_component/self_destruction_component.tscn" id="4_48gcq"]
+[ext_resource type="PackedScene" uid="uid://bxva1cv4q0r3b" path="res://scripts/components/gold_storage/gold_storage.tscn" id="5_foua7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ogy7"]
 size = Vector2(32, 32)
@@ -25,5 +26,7 @@ script = ExtResource("3_y5kmb")
 shape = SubResource("RectangleShape2D_8ogy7")
 
 [node name="SelfDestructionComponent" parent="." instance=ExtResource("4_48gcq")]
+
+[node name="GoldStorage" parent="." groups=["GoldStorers"] instance=ExtResource("5_foua7")]
 
 [connection signal="hp_ran_out" from="HealthComponent" to="." method="_on_health_component_hp_ran_out"]

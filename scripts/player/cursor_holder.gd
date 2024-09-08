@@ -49,10 +49,7 @@ func _input(event: InputEvent) -> void:
 			
 				if preview_instance.can_place:
 					place_scene()
-			else:
-				print("Cannot place the scene here.", preview_instance , )
-				if preview_instance:
-					print(preview_instance.get('can_place'))
+			
 
 # Function to place the scene into the world
 func place_scene():

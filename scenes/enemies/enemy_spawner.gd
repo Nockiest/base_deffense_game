@@ -17,6 +17,9 @@ func _ready() -> void:
 	spawn_timer.connect("timeout",  _on_spawn_timer_timeout )
 	add_child(spawn_timer)
 	spawn_timer.start()
+	
+	for node in get_tree().get_nodes_in_group('callWaveEarly'):
+		node.connect("call_next_wave_early", spawn_wave)
 
 # Timer timeout callback to spawn an enemy
 func _on_spawn_timer_timeout() -> void:

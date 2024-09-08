@@ -1,7 +1,6 @@
 class_name Player
 extends Node2D
 
-var gold: int
 var click_power: float = 1
 signal building_to_place_changed(building:PackedScene)
 
@@ -21,9 +20,6 @@ func _input(event: InputEvent) -> void:
 		# Check if a node was found
 		if results.size() > 0:
 			clicked_node = results[0].collider  # Get the node (collider) that was clicked
-			print("Clicked node:", clicked_node.name)
-
-			# Perform actions based on the clicked node
 		$StateMachine.state._on_node_clicked(clicked_node)
 		 
 func _on_construction_button_pressed(constructed_entity: PackedScene) -> void:

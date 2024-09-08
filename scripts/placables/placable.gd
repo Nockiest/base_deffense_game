@@ -13,7 +13,8 @@ func _ready() -> void:
 	
 	
 func can_afford_build() -> bool:
-	return Globals.gold >= gold_cost
+	return GoldManager.gold >= gold_cost
 
 func purchase():
-	Globals.gold -= gold_cost
+	print('purchased')
+	GoldManager.redistribute(-gold_cost, self)  

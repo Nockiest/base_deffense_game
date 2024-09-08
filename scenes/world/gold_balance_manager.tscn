@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cliqnibab2hkt"]
+
+[ext_resource type="Script" path="res://scripts/globals/gold_balance_manager.gd" id="1_ii4k4"]
+
+[node name="GoldBalanceManager" type="Node"]
+script = ExtResource("1_ii4k4")
