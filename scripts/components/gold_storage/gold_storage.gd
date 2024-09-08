@@ -9,6 +9,7 @@ var stored_gold := 0
 func _ready() -> void:
 	GoldManager.update_max_gold(  )
 	
+## caled to update goldmanager masstored gold correctly
 func cleanup_before_free() -> void:
 	print("Cleaning up before freeing:", self)
 	# Subtract the stored gold and max stored gold from the GoldManager

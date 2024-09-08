@@ -14,7 +14,12 @@ func update_max_gold(  ):
 	for node in get_tree().get_nodes_in_group('GoldStorers'):
 		new_max += node.max_stored_gold
 	max_gold = new_max
-
+ 
+"""
+## take the gold amount the game wants to save and put it into storages that have space 
+## to insert that ammount
+## or to remove it 
+"""
 func redistribute(ammount:int, origin:Node)->void:
 	print('must redistribute ammount:', ammount, origin)
 	if gold + ammount < 0:
