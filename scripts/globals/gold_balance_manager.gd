@@ -9,9 +9,11 @@ var max_gold := 0:
 		max_gold = value
 		gold = min(gold,max_gold)
 
-	
-func update_max_gold( gold_change:int):
-	max_gold += gold_change
+func update_max_gold(  ):
+	var new_max = 0
+	for node in get_tree().get_nodes_in_group('GoldStorers'):
+		new_max += node.max_stored_gold
+	max_gold = new_max
 
 func redistribute(ammount:int, origin:Node)->void:
 	print('must redistribute ammount:', ammount, origin)
