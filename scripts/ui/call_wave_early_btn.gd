@@ -11,4 +11,3 @@ func _ready() -> void:
 
 func _on_button_pressed() -> void:
 	call_next_wave_early.emit()
-	print("Call next wave early signal emitted!")

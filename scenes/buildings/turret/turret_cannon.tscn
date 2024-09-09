@@ -41,3 +41,6 @@ range_px = 1000.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -0.785398
 texture = ExtResource("1_gnnjy")
+
+[connection signal="target_changed" from="EntityAimingComponent" to="StateMachine/Idle" method="_on_entity_aiming_component_target_changed"]
+[connection signal="target_changed" from="EntityAimingComponent" to="StateMachine/Aiming" method="_on_entity_aiming_component_target_changed"]

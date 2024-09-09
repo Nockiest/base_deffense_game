@@ -38,3 +38,6 @@ layout_mode = 2
 
 [node name="FpsTracker" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+
+[node name="TurretEnabled" type="Label" parent="VBoxContainer"]
+layout_mode = 2

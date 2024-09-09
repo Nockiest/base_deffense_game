@@ -8,9 +8,8 @@ extends Component
 
 var enabled := true:
 	set(value):
-		print('is enabled, ', enabled,value)
 		enabled = value
-		
+		print('is enabled, ', enabled )
 		if enabled:
 			_start_auto_shooting()
 		else:
@@ -20,7 +19,6 @@ func _ready() -> void:
 	if enabled:
 		_start_auto_shooting()
 
- 
 func _on_timer_timeout() -> void:
 	if enabled and magazine_component != null and magazine_component.has_method("fire_bullet"):
 		magazine_component.fire_bullet(owner.rotation)

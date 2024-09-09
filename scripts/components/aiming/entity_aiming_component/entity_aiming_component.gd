@@ -13,7 +13,7 @@ var current_target: Node2D = null:
 			target_changed.emit(value)
 			return
 		if current_target != value:
-			print_rich('[b]current target is[/b]', current_target)
+			#print_rich('[b]current target is[/b]', current_target)
 			current_target = value
 			target_changed.emit(value)
 

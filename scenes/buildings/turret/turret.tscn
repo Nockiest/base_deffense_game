@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edhb5"]
 size = Vector2(15, 15)
 
-[node name="Turret" instance=ExtResource("1_ikpoq")]
+[node name="Turret" groups=["turrets"] instance=ExtResource("1_ikpoq")]
 script = ExtResource("2_cm2gi")
 placable_scene_to_load_path = "res://scenes/buildings/preview/turret/turret_placable.tscn"
 gold_cost = 1

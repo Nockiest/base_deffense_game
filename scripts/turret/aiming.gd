@@ -21,7 +21,9 @@ func _process(_delta: float) -> void:
 	if not owner.aiming_component.current_target:
 		state_machine.transition_to('Idle')
 
-#func _on_entity_aiming_component_target_changed(target: Node2D) -> void:
-	#print('target_changed', target, owner)
-	#if not target:
-		#state_machine.transition_to('Idle')
+func _on_entity_aiming_component_target_changed(target: Node2D) -> void:
+	if not target:
+		state_machine.transition_to('Idle')
+
+
+ 
