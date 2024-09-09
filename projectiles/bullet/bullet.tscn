@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjvr1segvh8bd"]
+[gd_scene load_steps=13 format=3 uid="uid://bjvr1segvh8bd"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/bullet/bullet.gd" id="1_2qxcl"]
 [ext_resource type="Script" path="res://projectiles/bullet/color_rect.gd" id="1_5iuyv"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://m2l1ves4ob85" path="res://scenes/effects/fire_effect/fire_effect.tscn" id="7_oeqkb"]
 [ext_resource type="PackedScene" uid="uid://bb7eair2q4oc3" path="res://scenes/effects/freeze_effect/freeze_effect.tscn" id="8_y3iw8"]
 [ext_resource type="PackedScene" uid="uid://ccdxj42urvt06" path="res://scenes/effects/glue_effect/glue_effect.tscn" id="9_3vtoa"]
+[ext_resource type="PackedScene" uid="uid://d46fjh56v5yp" path="res://scripts/components/upgrader/upgrader.tscn" id="10_xhixo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n45sy"]
 size = Vector2(40, 40)
@@ -61,6 +62,8 @@ damage = 10
 [node name="FreezeEffect" parent="." instance=ExtResource("8_y3iw8")]
 
 [node name="GlueEffect" parent="." instance=ExtResource("9_3vtoa")]
+
+[node name="Upgrader" parent="." instance=ExtResource("10_xhixo")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://44d2vab15xql"]
+
+[ext_resource type="PackedScene" uid="uid://vs4x5r3jjq8" path="res://scenes/buildings/_preview/placable_preview.tscn" id="1_7a4oh"]
+[ext_resource type="Texture2D" uid="uid://bvppio0wqfphf" path="res://assets/buildings/turret/turret.tres" id="2_4o0gk"]
+
+[node name="TurretPreview" instance=ExtResource("1_7a4oh")]
+collision_layer = 16
+collision_mask = 30
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+position = Vector2(-60, 60)
+polygon = PackedVector2Array(52, -52, 68, -52, 68, -68, 52, -68)
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_4o0gk")

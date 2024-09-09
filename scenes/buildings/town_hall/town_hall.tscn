@@ -27,6 +27,6 @@ shape = SubResource("RectangleShape2D_8ogy7")
 
 [node name="SelfDestructionComponent" parent="." instance=ExtResource("4_48gcq")]
 
-[node name="GoldStorage" parent="." groups=["GoldStorers"] instance=ExtResource("5_foua7")]
+[node name="GoldStorage" parent="." instance=ExtResource("5_foua7")]
 
 [connection signal="hp_ran_out" from="HealthComponent" to="." method="_on_health_component_hp_ran_out"]

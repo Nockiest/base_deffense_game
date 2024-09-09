@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf42ulvasr7h5"]
+
+[ext_resource type="Theme" uid="uid://db10h5ld3amb0" path="res://assets/ui.tres" id="1_xuw7j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hc2d"]
+
+[node name="SkillButton" type="TextureButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7hc2d")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 0
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_xuw7j")
+text = "0/0"
